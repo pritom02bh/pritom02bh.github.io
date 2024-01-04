@@ -2,301 +2,308 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="I'm Mrinmoy,and this is my personal portfolio website..">
+    <meta name="keywords" content="Mrinmoy, Mrinmoy Deka, mrinmoy ">
 
-  <title>iPortfolio Bootstrap Template - Index</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <!--==================== UNICONS ====================-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!--==================== SWIPER CSS ====================-->
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css" />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!--==================== CSS ====================-->
+    <link rel="stylesheet" href="assets/css/style.css" />
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <title>Pritom's Portfolio</title>
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+    <!--==================== Favicon ====================-->
+    <link rel="shortcut icon" href="/assets/img/favicon_edited.png" type="image/png">
 
-  <!-- =======================================================
-  * Template Name: iPortfolio
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!--==================== Animate on scroll CDN ====================-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 </head>
 
 <body>
+    
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">Welcome to my Portfolio</a>
+            
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+            <div data-aos="fade-in" class="nav__menu" id="nav-menu">
+                <ul class="nav__list grid">
+                    <li class="nav__items">
+                        <a href="#home" class="nav__link active-link">
+                            <i class="uil uil-estate nav__icon"></i> Home
+                        </a>
+                    </li>
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
+                    <li class="nav__items">
+                        <a href="#about" class="nav__link ">
+                            <i class="uil uil-scenery nav__icon"></i> Portfolio
+                        </a>
+                    </li>
 
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Pritom Bhowmik</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
-      </div>
 
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-          <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-    </div>
-  </header><!-- End Header -->
+                    <li class="nav__items">
+                        <a href="#contact" class="nav__link ">
+                            <i class="uil uil-message nav__icon"></i> Contact me
+                        </a>
+                    </li>
+                </ul>
+                <i class="uil uil-times nav__close" id="nav-close"></i>
+            </div>
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Welcome to my Data Science Portfolio.</h1>
-      <p>I'm a <span class="typed" data-typed-items="Data Science Student, Programmer , Problem Solver, learner"></span></p>
-    </div>
-  </section><!-- End Hero -->
+            <div class="nav__btns">
+                
 
-  <main id="main">
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="uil uil-apps"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home">
+            <div data-aos="fade-left" class="home__container container grid">
+                <div class="home__content grid">
+                    <div class="home__social">
+                        <a href="https://www.linkedin.com/in/pritom-bhowmik-870280194/"
+                            target="_blank" class="home__social-icon">
+                            <i class="uil uil-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/pritom02bh" target="_blank" class="home__social-icon">
+                            <i class="uil uil-github-alt"></i>
+                        </a>
+                    </div>
 
-        <div class="section-title">
-          <h2>About Me</h2>
-          <p>Hello, I'm Pritom Bhowmik, and I'm passionate about the field of data science. As a dedicated graduate data science student, I am committed to exploring the depths of data analytics, machine learning, and artificial intelligence to derive meaningful insights and drive informed decision-making.</p>
-        </div>
+                    <div data-aos="fade-right" class="home__img">
+                        <svg class="home__blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            
+                            <g mask="url(#mask0)">
+                               
 
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Data Professional &amp; AI Enthusiast</h3>
-            <p class="fst-italic">
-              I don't want to repeat my resume here. I want to showcase my skills and works in this portfilio. But It is always a good thing to share some personal things that probably describe me who am i as a human being.
-            </p>
-          </div>
-        </div>
+                                <image class="home__blob-img" x="6" y="3" href="assets/img/pritom.jpg"  />
+                            </g>
+                        </svg>
+                    </div>
 
-      </div>
-    </section><!-- End About Section -->
+                    <div class="home__data">
+                        <h1 class="home_title">Hi!<span class="wave">👋</span>, I'm Pritom Bhowmik</h1>
+                        <h3 class="home__subtitle">
+                            I'm a Data Professional with expertise in MLOps & Engineering.
+                        </h3>
+                        <p class="home__description">
+                            Data Science Graduate Student specializing in designing and implementing sophisticated data-driven solutions. Proficient in advanced statistical modeling, machine learning, and data processing, with a keen focus on MLOps practices to ensure seamless model deployment and maintenance in a production environment.
+                        </p>
+                        <a href="#contact" class="button button--flex">
+                            Contact Me <i class="uil uil-message button__icon"></i>
+                        </a>
+                        
+                        <a download="" href="assets/pdf/resume.pdf" class="button button--flex">
+                            Download CV <i class="uil uil-download-alt button__icon"></i>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
 
+                <div class="home__scroll">
+                    <a href="#about" class="home__scroll-button button--flex">
+                        <i class="uil uil-mouse-alt home__scroll-mouse"></i>
+                        <span class="home__scroll-name"> My Project Portfolio</span>
+                        <i class="uil uil-arrow-down home__scroll-arrow"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== Project One ====================-->
+        <section class="about section" id="about">
+            <h3 class="section__title">Project one: MLOps In Finance</h3>
+            <span class="section__subtitle"> Project Name: CreditGuard: MLOps for Robust Credit Risk Modeling</span>
+
+            <div data-aos="fade-left" class="about__container container grid">
+                <img src="assets/img/about.jpg" alt="" class="about__img" />
+
+                <div class="about__data">
+                    <p class="about__description">
+                        Hi I'm Mrinmoy Deka. I'm 15 years old. When I have free time, it's
+                        great to indulge in some of my favorite hobbies like study Maths & Science and exploring
+                        different kinds of new technology. <br>
+
+                        I'm a full-stack developer. I have learnt HTML, CSS, JS and Python. I am interested in
+                        working on projects with an open-source focus.
+                    </p>
+
+                    <div class="about_info">
+                        <div>
+                            <span class="about__info-title">02+</span>
+                            <span class="about__info-name">Years <br />
+                                experience</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">20+</span>
+                            <span class="about__info-name">Completed <br />
+                                project</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">24/7</span>
+                            <span class="about__info-name">Online<br />
+                                support</span>
+                        </div>
+                    </div>
+
+                    <div class="about__buttons">
+                        <a download="" href="assets/pdf/mrinmoy-cv.pdf" class="button button--flex">
+                            View Details of the Project <i class="uil uil--alt button__icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <!--==================== Project Two ====================-->
+        <section class="about section" id="about">
+            <h3 class="section__title">Project Two: MLOps In Finance</h3>
+            <span class="section__subtitle"> Project Name: CreditGuard: MLOps for Robust Credit Risk Modeling</span>
+
+            <div data-aos="fade-left" class="about__container container grid">
+                <img src="assets/img/about.jpg" alt="" class="about__img" />
+
+                <div class="about__data">
+                    <p class="about__description">
+                        Hi I'm Mrinmoy Deka. I'm 15 years old. When I have free time, it's
+                        great to indulge in some of my favorite hobbies like study Maths & Science and exploring
+                        different kinds of new technology. <br>
+
+                        I'm a full-stack developer. I have learnt HTML, CSS, JS and Python. I am interested in
+                        working on projects with an open-source focus.
+                    </p>
+
+                    <div class="about_info">
+                        <div>
+                            <span class="about__info-title">02+</span>
+                            <span class="about__info-name">Years <br />
+                                experience</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">20+</span>
+                            <span class="about__info-name">Completed <br />
+                                project</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">24/7</span>
+                            <span class="about__info-name">Online<br />
+                                support</span>
+                        </div>
+                    </div>
+
+                    <div class="about__buttons">
+                        <a download="" href="assets/pdf/mrinmoy-cv.pdf" class="button button--flex">
+                            View Details of the Project <i class="uil uil--alt button__icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        
+
+        <!--==================== CONTACT ME ====================-->
+        <section class="contact section" id="contact">
+            <h2 class="section__title">Contact Me</h2>
+            <span class="section__subtitle">Get in touch</span>
+
+            <div data-aos="fade-in" class="contact__container container grid">
+                <div>
+                    <div class="contact__information">
+                        <i class="uil uil-envelope contact__icon "></i>
+                        <!--home__social-->
+                        <div>
+                            <h3 class="contact__title">Email</h3>
+                            <span class="contact__subtitle"> pritom01dev@gmail.com</span>
+                        </div>
+                        
+                    </div>
+                    <div class="contact__information">
+                        <i class="uil uil-phone-alt contact__icon"></i>
+                        <div>
+                            <h3 class="contact__title">Phone Number</h3>
+                            <span class="contact__subtitle">+1 (862) 3999031 </span>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="https://formsubmit.co/3291f4338dc27f344cdc564a1df42f85" method="POST"
+                    class="contact__form grid">
+                    
+                    
+                    <div class="contact__content">
+                        <label for="" class="contact__label">Message</label>
+                        <textarea name="" id="" cols="0" rows="7" class="contact__input" name="message"></textarea>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="button button--flex">
+                            Send Message
+                            <i class="uil uil-message button__icon"></i>
+                        </button>
+
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
 
    
 
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
+    <!--==================== SCROLL TOP ====================-->
+    <div><a href="#" class="scrollup" id="scroll-up">
+            <i class="uil uil-arrow-up scrollup__icon"></i>
+        </a></div>
 
-        <div class="section-title">
-          <h2>My Portfolio</h2>
-          <p>My projects and works presented here are open to access and I welcome every visitor and my future employeer to have a look at my works. I will be more than happy for any feedbacks and suggesitons. All the codes and related materials are on my GitHub page. <br> <strong>Special Note:</strong> For the privacy and contract aggrement reasons, I did not add any of my contract/freelance projects here or anywhere else.</p>
-        </div>
+    <!--==================== SWIPER JS ====================-->
+    <script src="/assets/js/swiper-bundle.min.js"></script>
 
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">Regression Analysis</li>
-              <li data-filter=".filter-card">End-to-end Projects</li>
-              <li data-filter=".filter-web">Dashboards</li>
-            </ul>
-          </div>
-        </div>
+    <!--==================== MAIN JS ====================-->
+    <script src="assets/js/main.js"></script>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+    <!--=================== Animated text ===============-->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var typed = new Typed(".auto-input", {
+            strings: [
+                "a Web Developer",
+                "an OS developer",
+                "a student",
+                "an UI Designer",
+            ],
+            typeSpeed: 100,
+            backSpeed: 100,
+            loop: true,
+        });
+    </script>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
-
-
-
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Please, feel free to contact me with any inquiries and meetings. I am available for any data science & related internship opportunities. My preferred areas are New Jersey and New York. Thank you. </p>
-        </div>
-
-        <div class="row" data-aos="fade-in">
-
-          <div class="col-lg-12 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>Parsippany-Troy Hills, New Jersey</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>Personal: pritom01dev@gmail.com <br>
-                   Academic: bhowmikp1@montclair.edu</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 862 3999 031</p>
-              </div>
-            </div>
-
-          </div>
-
-          
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Pritom Bhowmik</span></strong>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-       
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+    <!--=================== Animate scroll js ===============-->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 300,
+            duration: 2000
+        });
+    </script>
 
 </body>
 
