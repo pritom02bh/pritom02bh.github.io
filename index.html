@@ -1,310 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="I'm Mrinmoy,and this is my personal portfolio website..">
-    <meta name="keywords" content="Mrinmoy, Mrinmoy Deka, mrinmoy ">
-
-    <!--==================== UNICONS ====================-->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-
-    <!--==================== SWIPER CSS ====================-->
-    <link rel="stylesheet" href="/assets/css/swiper-bundle.min.css" />
-
-    <!--==================== CSS ====================-->
-    <link rel="stylesheet" href="assets/css/style.css" />
-
-    <title>Pritom's Portfolio</title>
-
-    <!--==================== Favicon ====================-->
-    <link rel="shortcut icon" href="/assets/img/favicon_edited.png" type="image/png">
-
-    <!--==================== Animate on scroll CDN ====================-->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    
-    <!--==================== HEADER ====================-->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="index.html" class="nav__logo">Welcome to my Portfolio</a>
+    <div class="container">
+        <div class="profile">
+            <div class="photo">
+                <img src="assets/pritom.jpg" alt="Profile Photo">
+            </div>
+            <div class="info">
+                <h1>Pritom Bhowmik</h1>
+                <h3>AI & Data Science Expert & an Effective Communicator</h3>
+                <p>Email: <a href="bhowmikp1@montclair.edu">bhowmikp1@montclair.edu </a></p>
+                <p>I  am currently a second-year Data Science Master's student at <a href="https://www.montclair.edu/">Montclair State University</a>, , having completed my Bachelor's degree in Computer Science & Engineering from <a href="https://iem.edu.in/">IEM, Kolkata</a>. <p>Previously, I co-founded a technology startup, Deepanalytica.com, which specialized in providing advanced analytics solutions for businesses. You can read more about my work in this <a href="https://example.com/feedback">article</a> on it to know more.
+                <p>I am deeply passionate about leveraging Artificial Intelligence (AI) and Machine Learning (ML) to innovate and solve complex problems in the supply chain and healthcare industries.</p>
+                <div class="links">
+                    <a href="#">CV</a> | 
+                    <a href="#">Google Scholar</a> | 
+                    <a href="#">LinkedIn</a> | 
+                    <a href="#">GitHub</a> | 
+                    <a href="#">Email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        
+        <div class="updates">
+            <h2>Expertise & Work </h2>
+            <ul>
+                <li><span class="date">Generative AI</span> Teaching assistant for CS 224N again in Spring 24</li>
+                <li><span class="date">LLMs Based AI Application Development</span> Teaching assistant for CS 224N Natural Language Processing with Deep Learning (Winter 24)</li>
+                <li><span class="date">Big Data & Analytics</span> Teaching assistant for CS 236 Deep Generative Models (Fall 23)</li>
+                <li><span class="date">SQL, API & Databases</span> Started internship at Apple in the Machine Translation team</li>
+                <li><span class="date">Gen AI powered Supply Chain Analytics</span> New preprint on information retrieval from different data sources</li>
+                <li><span class="date">AI in Healthcare</span> Started working on FlexFlow</li>
+            </ul>
+        </div>
+        
+        <div class="publications">
+            <h2>Projects:</h2>
+            <div class="publication">
+                <img src="assets/project1.png" alt="Publication Image">
+                <p><strong>Accurate Online Posterior Alignments for Principled Lexically-Constrained Decoding</strong><br>
+                Soumya Chatterjee, Sunita Sarawagi, Preethi Jyothi<br>
+                Annual Meeting of the Association for Computational Linguistics (ACL), 2022</p>
+            </div>
             
-
-            <div data-aos="fade-in" class="nav__menu" id="nav-menu">
-                <ul class="nav__list grid">
-                    <li class="nav__items">
-                        <a href="#home" class="nav__link active-link">
-                            <i class="uil uil-estate nav__icon"></i> Home
-                        </a>
-                    </li>
-
-                    <li class="nav__items">
-                        <a href="#about" class="nav__link ">
-                            <i class="uil uil-scenery nav__icon"></i> Portfolio
-                        </a>
-                    </li>
-
-
-                    <li class="nav__items">
-                        <a href="#contact" class="nav__link ">
-                            <i class="uil uil-message nav__icon"></i> Contact me
-                        </a>
-                    </li>
-                </ul>
-                <i class="uil uil-times nav__close" id="nav-close"></i>
+            <div class="publication">
+                <img src="assets/project1.png" alt="Publication Image">
+                <p><strong>Accurate Online Posterior Alignments for Principled Lexically-Constrained Decoding</strong><br>
+                Soumya Chatterjee, Sunita Sarawagi, Preethi Jyothi<br>
+                Annual Meeting of the Association for Computational Linguistics (ACL), 2022</p>
             </div>
-
-            <div class="nav__btns">
-                
-
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class="uil uil-apps"></i>
-                </div>
+            
+            <div class="publication">
+                <img src="assets/project1.png" alt="Publication Image">
+                <p><strong>Accurate Online Posterior Alignments for Principled Lexically-Constrained Decoding</strong><br>
+                Soumya Chatterjee, Sunita Sarawagi, Preethi Jyothi<br>
+                Annual Meeting of the Association for Computational Linguistics (ACL), 2022</p>
             </div>
-        </nav>
-    </header>
-
-    <!--==================== MAIN ====================-->
-    <main class="main">
-        <!--==================== HOME ====================-->
-        <section class="home section" id="home">
-            <div data-aos="fade-left" class="home__container container grid">
-                <div class="home__content grid">
-                    <div class="home__social">
-                        <a href="https://www.linkedin.com/in/pritom-bhowmik-870280194/"
-                            target="_blank" class="home__social-icon">
-                            <i class="uil uil-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/pritom02bh" target="_blank" class="home__social-icon">
-                            <i class="uil uil-github-alt"></i>
-                        </a>
-                    </div>
-
-                    <div data-aos="fade-right" class="home__img">
-                        <svg class="home__blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                            
-                            <g mask="url(#mask0)">
-                               
-
-                                <image class="home__blob-img" x="6" y="3" href="assets/img/pritom.jpg"  />
-                            </g>
-                        </svg>
-                    </div>
-
-                    <div class="home__data">
-                        <h1 class="home_title">Hi!<span class="wave">👋</span>, I'm Pritom Bhowmik</h1>
-                        <h3 class="home__subtitle">
-                            I'm a Data Professional with expertise in MLOps & Engineering.
-                        </h3>
-                        <p class="home__description">
-                            Data Science Graduate Student specializing in designing and implementing sophisticated data-driven solutions. Proficient in advanced statistical modeling, machine learning, and data processing, with a keen focus on MLOps practices to ensure seamless model deployment and maintenance in a production environment.
-                        </p>
-                        <a href="#contact" class="button button--flex">
-                            Contact Me <i class="uil uil-message button__icon"></i>
-                        </a>
-                        
-                        <a download="" href="assets/pdf/resume.pdf" class="button button--flex">
-                            Download CV <i class="uil uil-download-alt button__icon"></i>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-
-                <div class="home__scroll">
-                    <a href="#about" class="home__scroll-button button--flex">
-                        <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-                        <span class="home__scroll-name"> My Project Portfolio</span>
-                        <i class="uil uil-arrow-down home__scroll-arrow"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!--==================== Project One ====================-->
-        <section class="about section" id="about">
-            <h3 class="section__title">Project one: MLOps In Finance</h3>
-            <span class="section__subtitle"> Project Name: CreditGuard: MLOps for Robust Credit Risk Modeling</span>
-
-            <div data-aos="fade-left" class="about__container container grid">
-                <img src="assets/img/about.jpg" alt="" class="about__img" />
-
-                <div class="about__data">
-                    <p class="about__description">
-                        Hi I'm Mrinmoy Deka. I'm 15 years old. When I have free time, it's
-                        great to indulge in some of my favorite hobbies like study Maths & Science and exploring
-                        different kinds of new technology. <br>
-
-                        I'm a full-stack developer. I have learnt HTML, CSS, JS and Python. I am interested in
-                        working on projects with an open-source focus.
-                    </p>
-
-                    <div class="about_info">
-                        <div>
-                            <span class="about__info-title">02+</span>
-                            <span class="about__info-name">Years <br />
-                                experience</span>
-                        </div>
-                        <div>
-                            <span class="about__info-title">20+</span>
-                            <span class="about__info-name">Completed <br />
-                                project</span>
-                        </div>
-                        <div>
-                            <span class="about__info-title">24/7</span>
-                            <span class="about__info-name">Online<br />
-                                support</span>
-                        </div>
-                    </div>
-
-                    <div class="about__buttons">
-                        <a download="" href="assets/pdf/mrinmoy-cv.pdf" class="button button--flex">
-                            View Details of the Project <i class="uil uil--alt button__icon"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        
-        <!--==================== Project Two ====================-->
-        <section class="about section" id="about">
-            <h3 class="section__title">Project Two: MLOps In Finance</h3>
-            <span class="section__subtitle"> Project Name: CreditGuard: MLOps for Robust Credit Risk Modeling</span>
-
-            <div data-aos="fade-left" class="about__container container grid">
-                <img src="assets/img/about.jpg" alt="" class="about__img" />
-
-                <div class="about__data">
-                    <p class="about__description">
-                        Hi I'm Mrinmoy Deka. I'm 15 years old. When I have free time, it's
-                        great to indulge in some of my favorite hobbies like study Maths & Science and exploring
-                        different kinds of new technology. <br>
-
-                        I'm a full-stack developer. I have learnt HTML, CSS, JS and Python. I am interested in
-                        working on projects with an open-source focus.
-                    </p>
-
-                    <div class="about_info">
-                        <div>
-                            <span class="about__info-title">02+</span>
-                            <span class="about__info-name">Years <br />
-                                experience</span>
-                        </div>
-                        <div>
-                            <span class="about__info-title">20+</span>
-                            <span class="about__info-name">Completed <br />
-                                project</span>
-                        </div>
-                        <div>
-                            <span class="about__info-title">24/7</span>
-                            <span class="about__info-name">Online<br />
-                                support</span>
-                        </div>
-                    </div>
-
-                    <div class="about__buttons">
-                        <a download="" href="assets/pdf/mrinmoy-cv.pdf" class="button button--flex">
-                            View Details of the Project <i class="uil uil--alt button__icon"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        
-
-        <!--==================== CONTACT ME ====================-->
-        <section class="contact section" id="contact">
-            <h2 class="section__title">Contact Me</h2>
-            <span class="section__subtitle">Get in touch</span>
-
-            <div data-aos="fade-in" class="contact__container container grid">
-                <div>
-                    <div class="contact__information">
-                        <i class="uil uil-envelope contact__icon "></i>
-                        <!--home__social-->
-                        <div>
-                            <h3 class="contact__title">Email</h3>
-                            <span class="contact__subtitle"> pritom01dev@gmail.com</span>
-                        </div>
-                        
-                    </div>
-                    <div class="contact__information">
-                        <i class="uil uil-phone-alt contact__icon"></i>
-                        <div>
-                            <h3 class="contact__title">Phone Number</h3>
-                            <span class="contact__subtitle">+1 (862) 3999031 </span>
-                        </div>
-                    </div>
-                </div>
-
-                <form action="https://formsubmit.co/3291f4338dc27f344cdc564a1df42f85" method="POST"
-                    class="contact__form grid">
-                    
-                    
-                    <div class="contact__content">
-                        <label for="" class="contact__label">Message</label>
-                        <textarea name="" id="" cols="0" rows="7" class="contact__input" name="message"></textarea>
-                    </div>
-
-                    <div>
-                        <button type="submit" class="button button--flex">
-                            Send Message
-                            <i class="uil uil-message button__icon"></i>
-                        </button>
-
-                    </div>
-                </form>
-            </div>
-        </section>
-    </main>
-
-   
-
-
-    <!--==================== SCROLL TOP ====================-->
-    <div><a href="#" class="scrollup" id="scroll-up">
-            <i class="uil uil-arrow-up scrollup__icon"></i>
-        </a></div>
-
-    <!--==================== SWIPER JS ====================-->
-    <script src="/assets/js/swiper-bundle.min.js"></script>
-
-    <!--==================== MAIN JS ====================-->
-    <script src="assets/js/main.js"></script>
-
-    <!--=================== Animated text ===============-->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script>
-        var typed = new Typed(".auto-input", {
-            strings: [
-                "a Web Developer",
-                "an OS developer",
-                "a student",
-                "an UI Designer",
-            ],
-            typeSpeed: 100,
-            backSpeed: 100,
-            loop: true,
-        });
-    </script>
-
-    <!--=================== Animate scroll js ===============-->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            offset: 300,
-            duration: 2000
-        });
-    </script>
-
+            
+        </div>
+    </div>
 </body>
-
 </html>
