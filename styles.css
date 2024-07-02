@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #d0d5dd;
+    background-color: #4b5669;
     color: #eaeaea;
     margin: 0;
     padding: 0;
@@ -84,7 +84,7 @@ h2 {
 
 .updates ul, .publications {
     list-style-type: none;
-    padding: 84;
+    padding: 150;
     margin: 36;
     
 }
@@ -105,7 +105,8 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
 }
 
 .publication img {
@@ -118,11 +119,11 @@ h2 {
 
 .publication p {
     margin: 0;
-    max-width: 600px;
+    max-width: 800px;
     text-align: left;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
     .container, .main-content {
         flex-direction: column;
         padding: 15px;
