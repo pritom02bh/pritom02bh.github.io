@@ -17,12 +17,13 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     max-width: 1400px;
-    width: 100%;
+    width: 90%;
     margin-bottom: 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: center;
+    justify-content: center;
 }
 
 .profile {
@@ -40,7 +41,10 @@ body {
 }
 
 .info {
+    max-width: 840px;
     text-align: left;
+    margin: 20px;
+    flex: 1 1 600px;
 }
 
 .info h1 {
@@ -68,7 +72,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     max-width: 1400px;
-    width: 100%;
+    width: 90%;
+    margin-bottom: 20px;
 }
 
 h2 {
@@ -79,8 +84,9 @@ h2 {
 
 .updates ul, .publications {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
+    padding: 84;
+    margin: 36;
+    
 }
 
 .updates li {
@@ -97,12 +103,14 @@ h2 {
 
 .publication {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin-top: 10px;
 }
 
 .publication img {
     max-width: 450px;
+    width: 100%;
     margin-right: 20px;
     border-radius: 5px;
     border: 0px solid #000000;
@@ -110,4 +118,31 @@ h2 {
 
 .publication p {
     margin: 0;
+    max-width: 600px;
+    text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+    .container, .main-content {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .photo img {
+        max-width: 100%;
+    }
+    
+    .info {
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    .publication {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .publication img {
+        margin-bottom: 10px;
+    }
 }
