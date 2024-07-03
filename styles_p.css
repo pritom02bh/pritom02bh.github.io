@@ -35,7 +35,7 @@ body {
 }
 
 .container {
-    background-color: #202a38;
+    background-color: #fffafa;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -52,28 +52,32 @@ body {
 .project-header {
     text-align: center;
     margin-bottom: 20px;
+    color: #000000;
 }
 
 .project-header h1 {
     font-size: 2.1 rem;
-    color: #ffffff;
+    color: #000000;
 }
 
 .project-content {
     text-align: left;
+    color: #000000;
+    
 }
 
 .project-content h2 {
     font-size: 1.5rem;
-    border-bottom: 2px solid #eaeaea;
+    border-bottom: 2px solid #000000;
     padding-bottom: 4px;
     margin-bottom: 10px;
-    color: #eaeaea;
+    color: #000000;
 }
 
 .project-content p, .project-content ul {
     line-height: 1.9;
     margin: 11px 0;
+    color: #000000;
 }
 
 .project-content ul {
@@ -94,7 +98,7 @@ body {
     width: 100%;
     max-width: 650px;
     border-radius: 10px;
-    border: 2px solid #1a73e8;
+    border: 1px solid #000000;
 }
 
 .video-container {
@@ -106,7 +110,7 @@ body {
 iframe {
     max-width: 100%;
     border-radius: 10px;
-    border: 2px solid #e81a1a;
+    border: 1px solid #000000;
 }
 
 .return-button {
@@ -118,7 +122,7 @@ iframe {
 .button {
     font-size: 1rem;
     padding: 1rem 2rem;
-    background-color: #007bff;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;

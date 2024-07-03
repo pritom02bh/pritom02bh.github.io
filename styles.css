@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #4b5669;
+    background-color: #202a38;
     color: #eaeaea;
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-    background-color: #202a38;
+    background-color: #fffafa;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -45,6 +45,7 @@ body {
     text-align: left;
     margin: 20px;
     flex: 1 1 600px;
+    color: #000000;
 }
 
 .info h1 {
@@ -67,7 +68,7 @@ body {
 }
 
 .main-content {
-    background-color: #202a38;
+    background-color: #fff;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -77,25 +78,27 @@ body {
 }
 
 h2 {
-    border-bottom: 2px solid #eaeaea;
+    border-bottom: 2px solid #202a38;
     padding-bottom: 5px;
     margin-bottom: 10px;
+    color: #000000;
 }
 
 .updates ul, .publications {
     list-style-type: none;
     padding: 150;
     margin: 36;
+    color: #000000;
     
 }
 
 .updates li {
-    padding: 5px 0;
+    padding: 2px 0;
 }
 
 .date {
-    background-color: #1a73e8;
-    color: #fff;
+    background-color: #b1c9f1;
+    color: #160101;
     padding: 2px 5px;
     border-radius: 3px;
     margin-right: 10px;
@@ -114,7 +117,7 @@ h2 {
     width: 100%;
     margin-right: 20px;
     border-radius: 5px;
-    border: 0px solid #000000;
+    border: 1px solid #202a38;
 }
 
 mark {
