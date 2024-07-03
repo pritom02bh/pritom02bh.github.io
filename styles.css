@@ -117,6 +117,11 @@ h2 {
     border: 0px solid #000000;
 }
 
+mark {
+  background-color: #04479f;
+  color: #fff;
+}
+
 .publication p {
     margin: 0;
     max-width: 800px;
