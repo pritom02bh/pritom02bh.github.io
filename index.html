@@ -172,7 +172,10 @@
         <!-- Navigation -->
         <nav class="navbar">
             <div class="nav-content">
-                <a href="#" class="logo-link">Pritom.dev</a>
+                <a href="#" class="logo-link">Pritom Bhowmik</a>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <div class="nav-links">
                     <a href="#about" class="nav-link">About</a>
                     <a href="#projects" class="nav-link">Projects</a>
@@ -486,6 +489,25 @@
             sections.forEach(section => {
                 section.style.opacity = '0';
                 sectionObserver.observe(section);
+            });
+
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.nav-content')) {
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.nav-links').classList.remove('active');
+                });
             });
         });
     </script>
