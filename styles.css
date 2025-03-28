@@ -236,7 +236,7 @@ p {
 /* Project Cards */
 .publications {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
     padding: 0 1rem;
@@ -557,33 +557,46 @@ p {
     .publications {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-        padding: 0 0.5rem;
+        padding: 0 1rem;
+        max-width: 500px;
+        margin: 2rem auto;
     }
 
     .publication {
         margin-bottom: 0;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .project-slider {
-        height: 200px;
+        height: 220px;
+    }
+
+    .publication .content {
+        padding: 1.25rem;
+    }
+
+    .project-header {
+        margin-bottom: 0.75rem;
     }
 
     .project-header strong {
         font-size: 1.25rem;
-        text-align: left;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
     }
 
     .project-description {
         font-size: 0.9rem;
-        text-align: left;
+        line-height: 1.6;
+        margin-bottom: 1rem;
     }
 
     .project-stats {
-        flex-direction: row;
         flex-wrap: wrap;
-        justify-content: flex-start;
         gap: 0.5rem;
+        margin: 0.75rem 0;
     }
 
     .stat {
@@ -593,15 +606,18 @@ p {
 
     .tech-stack {
         margin-top: 1rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .tech-tags {
-        justify-content: flex-start;
+        gap: 0.5rem;
+        flex-wrap: wrap;
     }
 
     .tech-tag {
         font-size: 0.8rem;
-        padding: 0.3rem 0.6rem;
+        padding: 0.4rem 0.8rem;
     }
 
     .main-content h2 {
@@ -661,7 +677,7 @@ p {
     }
 
     .project-slider {
-        height: 180px;
+        height: 200px;
     }
 
     .slider-dot {
@@ -675,13 +691,14 @@ p {
     }
 
     .tech-tag {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+        padding: 0.35rem 0.7rem;
     }
 
     .publications {
-        padding: 0;
-        gap: 1rem;
+        padding: 0 0.5rem;
+        gap: 1.25rem;
+        max-width: 100%;
     }
 
     .publication {
@@ -690,15 +707,17 @@ p {
 
     .project-header strong {
         font-size: 1.2rem;
+        line-height: 1.4;
     }
 
     .project-description {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
     }
 
     .stat {
         font-size: 0.8rem;
-        padding: 0.3rem 0.7rem;
+        padding: 0.35rem 0.7rem;
     }
 }
 
