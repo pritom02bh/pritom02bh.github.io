@@ -3,65 +3,713 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details</title>
+    <title>Customer Churn Analytics | Pritom Bhowmik</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles_p.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bg-primary: #0a0a0f;
+        --bg-secondary: #111118;
+        --text-primary: #ffffff;
+        --text-secondary: #94a3b8;
+        --accent-primary: #00f2fe;
+        --accent-secondary: #4facfe;
+        --border-radius: 12px;
+        --transition-speed: 0.3s;
+        --container-width: 1200px;
+        --spacing: 1.5rem;
+        --spacing-sm: 0.75rem;
+        --spacing-lg: 2rem;
+    }
+
+    html {
+        background: var(--bg-primary);
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        color: var(--text-primary);
+        line-height: 1.6;
+        padding-top: 60px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg-primary);
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 15, 0.8);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .project-container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: var(--spacing);
+    }
+
+    .project-header {
+        text-align: center;
+        margin-bottom: var(--spacing);
+    }
+
+    .project-header h1 {
+        font-size: 2.25rem;
+        margin: 0 0 var(--spacing-sm);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+    }
+
+    .project-meta {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .tech-tag {
+        background: var(--bg-secondary);
+        color: var(--text-secondary);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        margin: var(--spacing) 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: var(--bg-secondary);
+    }
+
+    .slider-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .slider-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        opacity: 0;
+        transition: opacity var(--transition-speed);
+    }
+
+    .slider-image.active { opacity: 1; }
+
+    .slider-dots {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 2;
+        padding: 8px 16px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 20px;
+        backdrop-filter: blur(5px);
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all var(--transition-speed);
+    }
+
+    .dot.active {
+        background: var(--accent-primary);
+        transform: scale(1.2);
+    }
+
+    .project-description {
+        background: var(--bg-secondary);
+        padding: var(--spacing);
+        border-radius: var(--border-radius);
+        margin-top: var(--spacing);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .project-description h2 {
+        font-size: 1.6rem;
+        margin: var(--spacing) 0 var(--spacing-sm);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+    }
+
+    .project-description h2:first-child {
+        margin-top: 0;
+    }
+
+    .project-description p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .results-grid, .key-features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-sm);
+        margin: var(--spacing-sm) 0;
+    }
+
+    .result-item, .feature-card {
+        background: var(--bg-secondary);
+        padding: var(--spacing);
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: transform var(--transition-speed);
+    }
+
+    .result-item:hover, .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .result-number {
+        font-size: 2rem;
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .result-label {
+        color: var(--text-secondary);
+        font-size: 1rem;
+    }
+
+    .feature-card h4 {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-sm);
+        font-weight: 600;
+    }
+
+    .feature-card p {
+        color: var(--text-secondary);
+        margin-bottom: 0;
+    }
+
+    .analysis-section {
+        background: var(--bg-secondary);
+        padding: var(--spacing);
+        border-radius: var(--border-radius);
+        margin: var(--spacing-sm) 0;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .analysis-section h3 {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: var(--spacing);
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    .analysis-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .analysis-section li {
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-sm);
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .analysis-section li:last-child {
+        margin-bottom: 0;
+    }
+
+    .analysis-section li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--accent-primary);
+    }
+
+    .analysis-section strong {
+        color: var(--text-primary);
+        font-weight: 600;
+        display: block;
+        margin-bottom: 0.3rem;
+    }
+
+    .tech-stack-footer {
+        margin-top: var(--spacing);
+        padding-top: var(--spacing);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tech-stack-footer h3 {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .tech-tag {
+        background: var(--bg-secondary);
+        color: var(--text-secondary);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all var(--transition-speed);
+    }
+
+    .tech-tag:hover {
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+    }
+
+    .project-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin: var(--spacing) 0;
+    }
+
+    .nav-button {
+        background: var(--bg-secondary);
+        padding: 0.6rem 1.2rem;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--accent-primary);
+        color: var(--accent-primary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1rem;
+        transition: all var(--transition-speed);
+    }
+
+    .nav-button:hover {
+        background: var(--accent-primary);
+        color: var(--bg-primary);
+    }
+
+    footer {
+        text-align: center;
+        padding: 0.75rem 0;
+        background: var(--bg-primary);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        margin-top: auto;
+    }
+
+    footer p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    /* Remove any potential gaps */
+    body::before,
+    body::after {
+        content: '';
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--bg-primary);
+        z-index: 2;
+    }
+
+    body::before {
+        top: 0;
+    }
+
+    body::after {
+        bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --spacing: 1rem;
+            --spacing-sm: 0.5rem;
+            --spacing-lg: 1.5rem;
+        }
+
+        .project-container {
+            padding: var(--spacing);
+        }
+
+        .hero-slider {
+            height: 350px;
+        }
+
+        .results-grid, 
+        .key-features {
+            grid-template-columns: 1fr;
+            gap: var(--spacing);
+        }
+
+        .project-description {
+            padding: var(--spacing);
+        }
+
+        .tech-tags {
+            gap: 0.4rem;
+        }
+
+        .project-header h1 {
+            font-size: 2rem;
+        }
+
+        .project-description h2 {
+            font-size: 1.4rem;
+        }
+
+        .result-number {
+            font-size: 1.8rem;
+        }
+
+        .feature-card h4 {
+            font-size: 1.1rem;
+        }
+    }
+
+    .recommendations-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing);
+        margin: var(--spacing) 0;
+    }
+
+    .recommendation-card {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .recommendation-card h4 {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .recommendation-card ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .recommendation-card li {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .recommendation-card li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--accent-primary);
+    }
+
+    @media (max-width: 768px) {
+        .recommendations-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .recommendation-card {
+            padding: var(--spacing);
+        }
+    }
+    </style>
 </head>
 <body>
-    <div class="home-button-container">
-        <a href="index.html" class="home-button" title="Home">
-            <i class="fas fa-home"></i>
-        </a>
-    </div>
-    <div class="container">
-        <header class="project-header">
-            <h1>Retrieval Augmented Generation (RAG)-based Chatbot System for Patient Engagement and Diagnosis</h1>
-        </header>
-        <div class="project-content">
-            <section class="project-overview">
-                <h2>Project Overview</h2>
-                <p>This project focuses on developing a chatbot system using Retrieval Augmented Generation (RAG) techniques to enhance patient engagement and diagnosis. The system provides real-time analytics and forecasting for healthcare organizations.</p>
-                <p>Technology Used: Apache Kafka, MLflow, Python, Apache Spark, Docker, AWS, MySQL, MongoDB</p>
-            </section>
-            <section class="project-gallery">
-                <h2>Project Gallery</h2>
-                <div class="gallery">
-                    <img src="assets/project1.png" alt="Project Image 1">
-                    <img src="assets/project2.png" alt="Project Image 2">
-                    <img src="assets/project1.png" alt="Project Image 3">
-                    
+    <header>
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html" class="logo-link">Pritom Bhowmik</a>
                 </div>
-            </section>
-            <section class="project-video">
-                <h2>Project Video</h2>
-                <div class="video-container">
-                    <iframe width="779" height="400" src="https://www.youtube.com/embed/wjZofJX0v4M?start=1104" title="Project Video" allowfullscreen></iframe>
+                <div class="nav-links">
+                    <a href="index.html#about" class="nav-link">About</a>
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                    <a href="index.html#publications" class="nav-link">Publications</a>
+                    <a href="https://www.linkedin.com/in/pritom-bhowmik-296285337" class="contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
                 </div>
-            </section>
+            </div>
+        </nav>
+    </header>
 
-            <section class="project-details">
-                <h2>Details of the Project</h2>
-                <p>This section provides a detailed description of the project's lifecycle, including:</p>
-                <h2>Objective:</h2>
-                <p>Create a generative AI-powered chatbot that can engage with patients, collect symptoms, provide preliminary diagnoses, and suggest next steps.</p>
+    <main class="project-detail">
+        <div class="project-container">
+            <div class="project-header">
+                <h1>Customer Churn Analytics & Insights Dashboard</h1>
+                <div class="project-meta">
+                    <span class="tech-tag">PowerBI</span>
+                    <span class="tech-tag">Data Analytics</span>
+                    <span class="tech-tag">Customer Insights</span>
+                    <span class="tech-tag">Predictive Analytics</span>
+                </div>
+            </div>
 
-                <h2>Details:</h2>
-                <ul style="list-style: none; padding: 0;">
-                  <li><strong>Data Sources:</strong> Symptom checkers, patient interaction logs, medical knowledge databases.</li>
-                  <li><strong>Model:</strong> Use a combination of Natural Language Processing (NLP) models like GPT and BERT for conversational AI, along with GANs for generating realistic patient interaction scenarios.</li>
-                  <li><strong>Features:</strong> Symptom collection, preliminary diagnosis, appointment scheduling, medication reminders.</li>
-                </ul>
+            <div class="project-content">
+                <div class="project-hero">
+                    <div class="hero-slider">
+                        <div class="slider-container">
+                            <img src="assets/project1/1.png" alt="Main Dashboard" class="slider-image active">
+                            <img src="assets/project1/2.png" alt="Demographics Analysis" class="slider-image">
+                            <img src="assets/project1/3.png" alt="Churn Drivers" class="slider-image">
+                            <img src="assets/project1/4.png" alt="Contract Analysis" class="slider-image">
+                            <img src="assets/project1/5.png" alt="Service Plans" class="slider-image">
+                            <img src="assets/project1/6.png" alt="Account Tenure" class="slider-image">
+                            <img src="assets/project1/7.png" alt="Geographic Analysis" class="slider-image">
+                            <img src="assets/project1/8.png" alt="Recommendations" class="slider-image">
+                            <img src="assets/project1/9.png" alt="Conclusions" class="slider-image">
+                        </div>
+                        <div class="slider-dots"></div>
+                    </div>
+                </div>
 
-                <h2>Outcome:</h2>
-                <p>An interactive chatbot that enhances patient engagement, provides initial diagnoses, and assists with healthcare management.</p>
+                <div class="project-description">
+                    <h2>Executive Summary</h2>
+                    <p>This comprehensive analysis investigates customer churn across multiple dimensions, including age, contract type, payment method, consumption patterns, and account tenure. With an overall churn rate of 26.86% among 6,687 customers (with 1,796 churned), the analysis reveals key trends and underlying causes for customer attrition. The insights presented here guide strategic initiatives aimed at reducing churn and enhancing customer loyalty.</p>
 
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-number">6,687</div>
+                            <div class="result-label">Total Customers</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-number">1,796</div>
+                            <div class="result-label">Churned Customers</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-number">26.86%</div>
+                            <div class="result-label">Overall Churn Rate</div>
+                        </div>
+                    </div>
 
-                <p>The RAG-based chatbot system leverages the power of deep learning and information retrieval to provide accurate and relevant responses to user queries, improving patient satisfaction and engagement.</p>
-            </section>
-            <div class="return-button">
-                <a href="index.html" class="button button--flex">Return to Main Page <i class="fas fa-arrow-left"></i></a>
+                    <h2>Demographics & Age Analysis</h2>
+                    <p>Customer segmentation by age groups reveals varying churn rates across different demographics. Notably, younger customers (under 30) show distinct patterns, indicating that targeted engagement strategies would be beneficial for these segments. This demographic analysis helps pinpoint which age groups are more at risk of churning.</p>
+
+                    <h2>Churn Drivers Analysis</h2>
+                    <div class="analysis-section">
+                        <h3>Primary Reasons for Customer Churn</h3>
+                        <ul>
+                            <li>
+                                <strong>Competitor Offerings (44.82%)</strong>
+                                <span>Better offers and devices from competitors emerged as the leading cause of churn, indicating a need for competitive package enhancement</span>
+                            </li>
+                            <li>
+                                <strong>Service Attitude & Support (15.98%)</strong>
+                                <span>Significant impact from negative interactions with support personnel, highlighting the need for improved customer service training</span>
+                            </li>
+                            <li>
+                                <strong>Pricing & Dissatisfaction (11.14%)</strong>
+                                <span>Product dissatisfaction and pricing concerns contribute notably to customer churn</span>
+                            </li>
+                            <li>
+                                <strong>Other Factors</strong>
+                                <span>Miscellaneous reasons including uncertainty and service issues comprise the remaining percentage</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h2>Contract & Payment Analysis</h2>
+                    <div class="key-features">
+                        <div class="feature-card">
+                            <h4>Contract Types</h4>
+                            <p>Month-to-month contracts (51.01% of customers) show a high churn rate of 46.29%, while yearly contracts demonstrate significantly lower rates at 6.62%. One-year (22.12%) and two-year (26.87%) contracts show better retention.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Payment Methods</h4>
+                            <p>Direct Debit dominates with 4K customers (55.36%), followed by Credit Card with 3K customers (39.09%). Paper Check represents a small segment at 5.55%. Payment method analysis reveals potential friction points.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Contract Impact</h4>
+                            <p>Longer contract commitments strongly correlate with lower churn rates, suggesting the benefit of incentivizing longer-term agreements. Early contract stages show higher vulnerability to churn.</p>
+                        </div>
+                    </div>
+
+                    <h2>Service Plan & Usage Insights</h2>
+                    <div class="key-features">
+                        <div class="feature-card">
+                            <h4>Data Plan Distribution</h4>
+                            <p>Customer segmentation shows: Less than 5 GB, Between 5-10 GB, and 10+ GB usage groups. Unlimited plan subscribers (4,494) show higher churn (32.11%) compared to limited plan users (2,193) at 16.10%.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Additional Charges</h4>
+                            <p>Average extra international charges: $33.64, Extra data charges: $3.37. Customer service averages 0.92 calls per customer, with state-level variations indicating localized issues.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Account Tenure</h4>
+                            <p>Early stages of customer tenure show higher churn rates, with gradual decline as tenure increases. Month-to-month contracts with short account lengths are particularly vulnerable.</p>
+                        </div>
+                    </div>
+
+                    <h2>Geographic Analysis</h2>
+                    <div class="analysis-section">
+                        <h3>Regional Insights</h3>
+                        <ul>
+                            <li>
+                                <strong>State-Level Churn Patterns</strong>
+                                <span>Dashboard provides detailed breakdown of churn rates by state, enabling targeted interventions based on geographic performance</span>
+                            </li>
+                            <li>
+                                <strong>Service Call Distribution</strong>
+                                <span>Variations in average service calls across states indicate localized service quality or network reliability issues</span>
+                            </li>
+                            <li>
+                                <strong>Regional Strategy</strong>
+                                <span>Focus on identifying high-churn states and implementing localized campaigns and network improvements in underperforming regions</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h2>Strategic Recommendations</h2>
+                    <div class="recommendations-grid">
+                        <div class="recommendation-card">
+                            <h4>Competitive Enhancement</h4>
+                            <ul>
+                                <li>Develop competitive packages to counter competitor promotions</li>
+                                <li>Improve support training and customer service responsiveness</li>
+                                <li>Enhance value proposition in high-churn regions</li>
+                            </ul>
+                        </div>
+                        <div class="recommendation-card">
+                            <h4>Contract Optimization</h4>
+                            <ul>
+                                <li>Offer incentives for yearly and multi-year contracts</li>
+                                <li>Develop targeted retention programs for month-to-month customers</li>
+                                <li>Focus on early tenure support and engagement</li>
+                            </ul>
+                        </div>
+                        <div class="recommendation-card">
+                            <h4>Service Improvements</h4>
+                            <ul>
+                                <li>Review and optimize unlimited data plan offerings</li>
+                                <li>Monitor and align extra charges with customer expectations</li>
+                                <li>Enhance network reliability in problem areas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2>Project Impact & Conclusion</h2>
+                    <p>This analysis reveals that customer churn is driven by a complex mix of competitive pressures, service quality issues, contract terms, and plan-specific challenges. By implementing targeted strategies—particularly in enhancing support quality, incentivizing longer commitments, and addressing unlimited data plan issues—the company can work towards reducing churn rates and improving customer satisfaction. The continuous monitoring through these dashboards enables a proactive, data-driven approach to customer retention.</p>
+
+                    <div class="tech-stack-footer">
+                        <h3>Tools & Technologies Used</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">PowerBI</span>
+                            <span class="tech-tag">DAX</span>
+                            <span class="tech-tag">Data Modeling</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Statistical Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-navigation">
+                <a href="index.html#projects" class="nav-button">
+                    <i class="fas fa-arrow-left"></i> Back to Projects
+                </a>
+                <a href="project_two.html" class="nav-button">
+                    Next Project <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <p>© 2023 Pritom Bhowmik</p>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.querySelector('.hero-slider');
+        const images = slider.querySelectorAll('.slider-image');
+        const dotsContainer = slider.querySelector('.slider-dots');
+        let currentIndex = 0;
+
+        // Create dots
+        images.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                showImage(currentIndex);
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll('.dot');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                dots[i].classList.remove('active');
+            });
+            images[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        // Auto advance slides
+        setInterval(nextImage, 5000);
+    });
+    </script>
 </body>
 </html>

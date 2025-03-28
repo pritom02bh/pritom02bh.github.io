@@ -3,73 +3,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio</title>
+    <title>Pritom Bhowmik | Data Analytics & AI Specialist</title>
+    <meta name="description" content="Portfolio of Pritom Bhowmik - Data Analytics & AI Specialist">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Remove initial opacity settings */
+        section {
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        section.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-image {
+            width: 300px;
+            height: auto;
+        }
+
+        /* Adjust image container size and add animations */
+        .publication img {
+            max-width: 100%;
+            height: auto;
+            border-radius: calc(var(--border-radius) - 4px);
+            object-fit: cover;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .publication:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-slider {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slider-image.active {
+            opacity: 1;
+        }
+
+        .content {
+            padding: 1.5rem;
+        }
+
+        /* Add matrix rain effect */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        /* Neural network background */
+        .neural-network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.1;
+        }
+
+        /* Add data stream effect */
+        .data-stream {
+            position: absolute;
+            width: 2px;
+            background: var(--primary-color);
+            opacity: 0.5;
+            filter: blur(1px);
+            animation: streamDown 2s linear infinite;
+        }
+
+        @keyframes streamDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(100%); }
+        }
+
+        /* Add cyber elements */
+        .cyber-line {
+            position: absolute;
+            background: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .cyber-line.horizontal {
+            height: 1px;
+            width: 100%;
+        }
+
+        .cyber-line.vertical {
+            width: 1px;
+            height: 100%;
+        }
+
+        /* Add AI-themed decorative elements */
+        .ai-decorator {
+            position: absolute;
+            border: 1px solid var(--primary-color);
+            opacity: 0.3;
+        }
+
+        .ai-decorator.corner {
+            width: 20px;
+            height: 20px;
+            border-radius: 2px;
+        }
+
+        /* Enhanced section headers */
+        section h2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::before {
+            content: '<AI>';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            font-size: 0.8em;
+            color: var(--primary-color);
+            opacity: 0.5;
+        }
+
+        section h2::after {
+            content: '</AI>';
+            position: absolute;
+            bottom: -20px;
+            right: 0;
+            font-size: 0.8em;
+            color: var(--primary-color);
+            opacity: 0.5;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="profile">
-            <div class="photo">
-                <img src="assets/pritom.png" alt="Profile Photo">
-            </div>
-            <div class="info">
-                <h1>Pritom Bhowmik</h1>
-                <h3>AI Engineer Specializing in Supply Chain Analytics & Masterful Communication</h3>
-                <h4>Guided by the principle, 'What I Understand, I Can Build,' I am committed to delivering high-quality solutions. Thank you for exploring my portfolio. Please do not hesitate to reach out for any inquiries or opportunities.</h4>
-                <h4>Email: <a href="bhowmikp1@montclair.edu">bhowmikp1@montclair.edu </a></h4>
-                <p>I am currently a second-year Data Science Master's student at <a href="https://www.montclair.edu/">Montclair State University</a>, having completed my Bachelor's degree in Computer Science & Engineering from <a href="https://iem.edu.in/">IEM, Kolkata</a>. </p>
-                <p>Previously, I co-founded a Freelance Technology Agency named Deepanalytica.com, which specialized in providing advanced analytics solutions for businesses. You can read more about my work in this <a href="https://example.com/feedback">article</a>.</p>
-                <p>I am deeply passionate about leveraging Artificial Intelligence (AI) and Machine Learning (ML) to innovate and solve complex problems in the supply chain and healthcare industries.</p>
-                <div class="links">
-                    <a href="assets/resume.pdf">Resume</a> | 
-                    <a href="https://scholar.google.com/citations?user=txXBb_MAAAAJ&hl=en">Google Scholar</a> | 
-                    <a href="https://github.com/pritom02bh">GitHub</a>
+    <div class="page-wrapper">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <a href="#" class="logo-link">Pritom.dev</a>
+                <div class="nav-links">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#publications" class="nav-link">Publications</a>
+                    <a href="https://www.linkedin.com/in/pritom-bhowmik-296285337" class="contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
                 </div>
             </div>
-        </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="about">
+            <div class="container">
+                <div class="profile">
+                    <div class="photo-wrapper">
+                        <img src="assets/pritom.png" alt="Pritom Bhowmik">
+                    </div>
+                    <div class="info">
+                        <h1>Pritom Bhowmik</h1>
+                        <h3>Data Analytics & AI Specialist</h3>
+                        <div class="title-bar"></div>
+                        <p>With  3+  years  of  experience  in  Advance  Data  Analytics,  Supply  Chain  Analytics,  ML  and  Generative  AI,  I  specialize  in  solving 
+                            business problems, driving data-driven insights, optimizing processes, and delivering measurable impact.</p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-number">3+</span>
+                                <span class="stat-label">Years Experience in Advance Data Analytics</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">AI & ML</span>
+                                <span class="stat-label">RAG, Fine-Tuning, Prompt Engineering, Embeddings</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">Analytics</span>
+                                <span class="stat-label">Supply Chain, Customer Churn, Fraud Detection, Anomaly Detection</span>
+                            </div>
+                        </div>
+
+                        <div class="tech-stack">
+                            <h4>Tech Stack</h4>
+                            <div class="tech-tags">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                                <span class="tech-tag">PowerBI</span>
+                                <span class="tech-tag">Tableau</span>
+                                <span class="tech-tag">ELT</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">LangChain</span>
+                                <span class="tech-tag">Pinecone</span>
+                                <span class="tech-tag">LangGraph</span>
+
+                            </div>
+                        </div>
+
+                        <div class="links">
+                            <a href="assets/resume.pdf" class="button" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Download CV
+                            </a>
+                            <a href="https://github.com/pritom02bh" class="button" target="_blank">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                            <a href="https://linkedin.com/in/pritom-bhowmik" class="button" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="main-content">
+            <h2>Featured Projects</h2>
+            <p class="section-subtitle">A showcase of my recent work in AI and Analytics</p>
+            
+
+            <div class="publications">
+                <!-- First Row - Project 1 -->
+                <div class="publication fade-in" data-category="analytics">
+                    <div class="project-slider">
+                        <div class="slider-container">
+                            <img src="assets/project1/1.png" alt="Customer Churn Analytics Dashboard" class="slider-image active">
+                            <img src="assets/project1/2.png" alt="Churn Prediction Model" class="slider-image">
+                            <img src="assets/project1/3.png" alt="Analytics Results" class="slider-image">
+                            <img src="assets/project1/4.png" alt="Analytics Dashboard" class="slider-image">
+                            <img src="assets/project1/5.png" alt="Data Visualization" class="slider-image">
+                            <img src="assets/project1/6.png" alt="Predictive Models" class="slider-image">
+                            <img src="assets/project1/7.png" alt="Performance Metrics" class="slider-image">
+                            <img src="assets/project1/8.png" alt="Customer Insights" class="slider-image">
+                            <img src="assets/project1/9.png" alt="Analysis Results" class="slider-image">
+                        </div>
+                        <div class="slider-nav">
+                            <span class="slider-dot active"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="project-header">
+                            <strong>Data-Driven Customer Churn Analytics</strong>
+                            <div class="project-stats">
+                                <span class="stat"><i class="fas fa-chart-line"></i> 12% Churn Reduction</span>
+                                <span class="stat"><i class="fas fa-users"></i> 18% Re-engagement</span>
+                                <span class="stat"><i class="fas fa-users"></i> 22% Conversion Rate Boost</span>
+                            </div>
+                        </div>
+                        <p>Identified top churn factors, including customer tenure, engagement, and support issues, provided actionable insights for 
+                           reducing churn by 12% through targeted retention strategies.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">PowerBI</span>
+                            <span class="tech-tag">Statistical Data Analysis</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Business Intelligence</span>
+                            <span class="tech-tag">Data Visualization & Storytelling</span>
+                        </div>
+                        <a href="project_one.html" class="button">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- First Row - Project 2 -->
+                <div class="publication fade-in" data-category="ai supply-chain">
+                    <div class="project-slider">
+                        <div class="slider-container">
+                            <img src="assets/project2.png" alt="RAG-CAG Chatbot Interface" class="slider-image active">
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="project-header">
+                            <strong>A Multi-Agent AI RAG Chatbot</strong>
+                            <div class="project-stats">
+                                <span class="stat"><i class="fas fa-robot"></i> MajorEfficiency Gain in Inventory Management</span>
+                                <span class="stat"><i class="fas fa-clock"></i> Analysis of SCM with a Chatbot</span>
+                            </div>
+                        </div>
+                        <p>A sophisticated multi-agents based Retrieval Augmented Generation (RAG) system designed for pharmaceutical inventory management, leveraging multiple data sources to provide comprehensive insights about inventory, shipping, compliance, and regulatory requirements.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">RAG</span>
+                            <span class="tech-tag">Vector Database</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">OpenAI</span>
+                            <span class="tech-tag">Pydentic AI</span>
+                            <span class="tech-tag">FastAPI</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">LangGraph</span>
+                            <span class="tech-tag">Sentence Transformers</span>
+                        </div>
+                        <a href="project_two.html" class="button">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Second Row - Project 3 -->
+                <div class="publication fade-in" data-category="ai">
+                    <div class="project-slider">
+                        <div class="slider-container">
+                            <img src="assets/project3.png" alt="Fraud Detection System" class="slider-image active">
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="project-header">
+                            <strong>AI-Powered Fraud Detection System</strong>
+                            <div class="project-stats">
+                                <span class="stat"><i class="fas fa-shield-alt"></i> 95% Accuracy</span>
+                                <span class="stat"><i class="fas fa-chart-bar"></i> 40% Cost Reduction</span>
+                            </div>
+                        </div>
+                        <p>Developed and implemented an advanced fraud detection system using machine learning algorithms and real-time data analysis.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        <a href="project_three.html" class="button">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Second Row - Project 4 -->
+                <div class="publication fade-in" data-category="analytics supply-chain">
+                    <div class="project-slider">
+                        <div class="slider-container">
+                            <img src="assets/project2.png" alt="Supply Chain Analytics Dashboard" class="slider-image active">
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="project-header">
+                            <strong>Supply Chain Analytics & Optimization</strong>
+                            <div class="project-stats">
+                                <span class="stat"><i class="fas fa-truck"></i> 30% Delivery Optimization</span>
+                                <span class="stat"><i class="fas fa-warehouse"></i> 25% Inventory Reduction</span>
+                            </div>
+                        </div>
+                        <p>Led the development of an end-to-end supply chain analytics solution that optimized inventory management and distribution networks.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PowerBI</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Optimization</span>
+                        </div>
+                        <a href="project_four.html" class="button">View Details <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2025 Pritom Bhowmik. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
-    <div class="main-content">
-        <div class="updates">
-            <h2>Expertise & Work</h2>
-            <ul>
-                <li><span class="date">Generative AI:</span> Prompt Engineering, Fine Tunning, RAG, Langchain, LLMs Powered Applications</li>
-                <li><span class="date">Supply Chain Analytics:</span> Logistics, Inventory Management, Procurement, ERP Systems (SAP, Oracle)</li>
-                <li><span class="date">Advance Analytics:</span> Predictive Modeling, Optimization, Forecasting</li>
-                <li><span class="date">Machine Learning:</span>Classification, Regression, Clustering, Dimensionality Reduction, Feature Engineering </li>
-                <li><span class="date">Big Data & Analytics:</span> Apache Kafka, Apache Spark, Python, PowerBI </li>
-                <li><span class="date">SQL, API & Databases:</span> SQL, MongoDB, Fast API, Vector Database</li>
-                <li><span class="date">Cloud Technologies:</span> Azure, Docker, Kubernetes </li>
-            </ul>
-        </div>
-        <div class="publications">
-            <h2>Projects</h2>
-            <div class="publication">
-                <img src="assets/project1.png" alt="Publication Image">
-                <p><strong>Retrieval Augmented Generation (RAG)-based Chatbot System for Patient Engagement and Diagnosis</strong><br>By Pritom Bhowmik<br>
-                A generative AI-powered chatbot that can engage with patients, collect symptoms, provide preliminary diagnoses, and suggest next steps <br><br><a href="project_one.html" class="button button--flex"><Mark>View Project Details</Mark><i class="fas fa-arrow-left"></i></a>
-            </div>
-            <div class="publication">
-                <img src="assets/project2.png" alt="Publication Image">
-                <p><strong>Scalable Multi-Task Learning for Supply Chain Optimization</strong><br>
-                Ananya Gupta, Pritom Bhowmik, Rahul Sharma<br>
-                International Conference on Machine Learning (ICML), 2023 <br><br><a href="project_Two.html" target="_blank"><mark>View Project</mark></a><br></p>
-            </div>
-            <div class="publication">
-                <img src="assets/project3.png" alt="Publication Image">
-                <p><strong>AI-Driven Healthcare Diagnostics</strong><br>
-                Pritom Bhowmik, Neha Singh, Vikram Kumar<br>
-                IEEE Transactions on Medical Imaging, 2024</p>
-            </div>
-        </div>
-        
-                <div class="updates">
-            <h2>Reseach Papers & Articles</h2>
-            <ul>
-                <li><a href="link_to_paper1.pdf" target="_blank">Machine Learning In Production</a></li>
-                <li><a href="link_to_paper2.pdf" target="_blank">Paper Title 2</a></li>
-            </ul>
-        </div>
-        
-    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Project Image Slider
+            const sliders = document.querySelectorAll('.project-slider');
+            
+            sliders.forEach(slider => {
+                const images = slider.querySelectorAll('.slider-image');
+                const dots = slider.querySelectorAll('.slider-dot');
+                let currentIndex = 0;
+                
+                // Show initial images
+                images.forEach((img, index) => {
+                    if (index === 0) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                });
+                
+                function showImage(index) {
+                    images.forEach((img, i) => {
+                        if (i === index) {
+                            img.classList.add('active');
+                        } else {
+                            img.classList.remove('active');
+                        }
+                    });
+                    
+                    dots.forEach((dot, i) => {
+                        if (i === index) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+                
+                // Add click events to dots
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        currentIndex = index;
+                        showImage(currentIndex);
+                    });
+                });
+                
+                // Auto-advance slides every 3 seconds
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    showImage(currentIndex);
+                }, 3000); // Changed to 3000ms (3 seconds)
+            });
+
+            // Project Filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projects = document.querySelectorAll('.publication');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.dataset.filter;
+                    projects.forEach(project => {
+                        if (filter === 'all' || project.dataset.category.includes(filter)) {
+                            project.style.display = 'flex';
+                        } else {
+                            project.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Initialize all sections as visible
+            const sections = document.querySelectorAll('section');
+            
+            const revealSection = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+
+            const sectionObserver = new IntersectionObserver(revealSection, {
+                root: null,
+                threshold: 0.15
+            });
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                sectionObserver.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
