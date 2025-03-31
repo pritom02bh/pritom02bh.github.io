@@ -3,115 +3,642 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supply Chain Risk Analysis | Pritom Bhowmik</title>
+    <title>IntelliStock | Pritom Bhowmik</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styles_p.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bg-primary: #0a0a0f;
+        --bg-secondary: #111118;
+        --text-primary: #ffffff;
+        --text-secondary: #94a3b8;
+        --accent-primary: #00f2fe;
+        --accent-secondary: #4facfe;
+        --border-radius: 12px;
+        --transition-speed: 0.3s;
+        --container-width: 1200px;
+        --spacing: 1.5rem;
+        --spacing-sm: 0.75rem;
+        --spacing-lg: 2rem;
+    }
+
+    html {
+        background: var(--bg-primary);
+        height: 100%;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        color: var(--text-primary);
+        line-height: 1.6;
+        padding-top: 60px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg-primary);
+        overflow-x: hidden;
+    }
+
+    main {
+        flex: 1;
+        padding-bottom: 2rem;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 15, 0.95);
+        z-index: 1000;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .nav-content {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-link {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--accent-primary);
+        text-decoration: none;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .nav-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color var(--transition-speed);
+    }
+
+    .nav-link:hover {
+        color: var(--text-primary);
+    }
+
+    .contact-btn {
+        background: transparent;
+        color: var(--accent-primary);
+        border: 1px solid var(--accent-primary);
+        padding: 0.5rem 1.5rem;
+        border-radius: 2rem;
+        text-decoration: none;
+        transition: all var(--transition-speed);
+    }
+
+    .contact-btn:hover {
+        background: rgba(0, 242, 254, 0.1);
+    }
+
+    .project-container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: var(--spacing);
+    }
+
+    .project-header {
+        text-align: center;
+        margin-bottom: var(--spacing);
+    }
+
+    .project-header h1 {
+        font-size: 2.25rem;
+        margin: 0 0 var(--spacing-sm);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+    }
+
+    .project-meta {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .tech-tag {
+        background: var(--bg-secondary);
+        color: var(--text-secondary);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        margin: var(--spacing) 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        background: var(--bg-secondary);
+    }
+
+    .slider-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .slider-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        background-color: var(--bg-secondary);
+    }
+
+    .slider-image.active { 
+        opacity: 1; 
+        z-index: 1;
+    }
+
+    .slider-dots {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+        padding: 8px 16px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 20px;
+        backdrop-filter: blur(5px);
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all var(--transition-speed);
+    }
+
+    .dot.active {
+        background: var(--accent-primary);
+        transform: scale(1.2);
+    }
+
+    .project-description {
+        background: var(--bg-secondary);
+        padding: var(--spacing);
+        border-radius: var(--border-radius);
+        margin-top: var(--spacing);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .project-description h2 {
+        font-size: 1.6rem;
+        margin: var(--spacing) 0 var(--spacing-sm);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 600;
+    }
+
+    .project-description h2:first-child {
+        margin-top: 0;
+    }
+
+    .project-description p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .results-grid, .key-features {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-sm);
+        margin: var(--spacing-sm) 0;
+    }
+
+    .result-item, .feature-card {
+        background: var(--bg-secondary);
+        padding: var(--spacing);
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: transform var(--transition-speed);
+    }
+
+    .result-item:hover, .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .result-number {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-sm);
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+    }
+
+    .feature-card h4 {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.2rem;
+        margin-bottom: var(--spacing-sm);
+        font-weight: 600;
+    }
+
+    .analysis-section {
+        background: var(--bg-secondary);
+        padding: var(--spacing);
+        border-radius: var(--border-radius);
+        margin: var(--spacing-sm) 0;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .analysis-section h3 {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: var(--spacing);
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    .analysis-section li {
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-sm);
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .analysis-section li:before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-primary);
+    }
+
+    .analysis-section strong {
+        color: var(--text-primary);
+        display: inline-block;
+        margin-bottom: 0.25rem;
+    }
+
+    .recommendations-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-sm);
+        margin: var(--spacing-sm) 0;
+    }
+
+    .recommendation-card {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .recommendation-card h4 {
+        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .recommendation-card ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .recommendation-card li {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .recommendation-card li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--accent-primary);
+    }
+
+    .tech-stack-footer {
+        margin-top: var(--spacing);
+        padding-top: var(--spacing);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .project-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin: var(--spacing) 0;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.75rem 1.5rem;
+        border-radius: 100px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all var(--transition-speed);
+    }
+
+    .button:hover {
+        background: rgba(0, 242, 254, 0.1);
+        border-color: var(--accent-primary);
+    }
+
+    @media (max-width: 768px) {
+        :root {
+            --spacing: 1rem;
+            --spacing-sm: 0.5rem;
+            --spacing-lg: 1.5rem;
+        }
+
+        .project-header h1 {
+            font-size: 2rem;
+        }
+
+        .project-description h2 {
+            font-size: 1.4rem;
+        }
+
+        .result-number {
+            font-size: 1.8rem;
+        }
+
+        .feature-card h4,
+        .recommendation-card h4 {
+            font-size: 1.1rem;
+        }
+
+        .hero-slider {
+            height: 300px;
+        }
+
+        .recommendations-grid,
+        .results-grid,
+        .key-features {
+            grid-template-columns: 1fr;
+        }
+
+        .project-navigation {
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    footer {
+        padding: 1rem 0;
+        background: #0a0a0f;
+        border-top: 1px solid rgba(255, 255, 255, 0.03);
+        margin-top: auto;
+        text-align: center;
+    }
+
+    footer .container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    footer p {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.85rem;
+        margin: 0;
+    }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="nav-content">
-                <div class="logo"><a href="index.html">Pritom Bhowmik</a></div>
-                <div class="nav-links">
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#projects">Projects</a>
-                    <a href="index.html#publications">Publications</a>
-                    <a href="mailto:bhowmikp1@montclair.edu" class="contact-btn">Contact</a>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo-link">Pritom Bhowmik</a>
+            <div class="nav-links">
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#projects" class="nav-link">Projects</a>
+                <a href="index.html#publications" class="nav-link">Publications</a>
+                <a href="https://www.linkedin.com/in/pritom-bhowmik-296285337" class="contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="project-container">
+            <div class="project-header">
+                <h1>IntelliStock: Intelligent Demand Forecasting & Inventory Optimization Platform</h1>
+                <div class="project-meta">
+                    <span class="tech-tag">Machine Learning</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">Supply Chain Analytics</span>
+                    <span class="tech-tag">Ensemble Models</span>
                 </div>
             </div>
-        </nav>
-    </header>
 
-    <main class="project-detail">
-        <div class="container">
-            <div class="project-header">
-                <h1>Supply Chain Risk & Inventory Optimization Analysis</h1>
-                <div class="project-meta">
-                    <div class="tech-tags">
-                        <span class="tech-tag">OpenAI</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Statistical Analytics</span>
-                        <span class="tech-tag">Risk Management</span>
+            <div class="hero-slider">
+                <div class="slider-container">
+                    <img src="assets/project3/1.png" alt="IntelliStock Dashboard Overview" class="slider-image active">
+                    <img src="assets/project3/2.png" alt="Demand Forecasting Models" class="slider-image">
+                    <img src="assets/project3/3.png" alt="Inventory Optimization Analytics" class="slider-image">
+                    <img src="assets/project3/4.png" alt="Reorder Point Calculation" class="slider-image">
+                    <img src="assets/project3/5.png" alt="Supply Chain Performance Metrics" class="slider-image">
+                    <img src="assets/project3/6.png" alt="Economic Order Quantity Analysis" class="slider-image">
+                    <img src="assets/project3/7.png" alt="Inventory Forecasting Results" class="slider-image">
+                    <img src="assets/project3/8.png" alt="Supply Chain Analytics Dashboard" class="slider-image">
+                </div>
+                <div class="slider-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                    <span class="dot" data-index="4"></span>
+                    <span class="dot" data-index="5"></span>
+                    <span class="dot" data-index="6"></span>
+                    <span class="dot" data-index="7"></span>
+                </div>
+            </div>
+
+            <div class="project-description">
+                <h2>Executive Summary</h2>
+                <p>Developed a supply chain analytics system that uses ensemble machine learning models to optimize inventory management decisions. IntelliStock provides accurate demand forecasting and determines optimal inventory levels to minimize carrying costs while preventing stockouts.</p>
+
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-number">9.2%</div>
+                        <div class="result-label">MAPE in Demand Forecasts</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-number">15%</div>
+                        <div class="result-label">Reduced Inventory Costs</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-number">EOQ</div>
+                        <div class="result-label">Optimized Order Quantities</div>
                     </div>
                 </div>
-            </div>
 
-            <div class="project-content">
-                <div class="project-image-wrapper">
-                    <img src="assets/project3.png" alt="Supply Chain Risk Analysis Dashboard" class="project-hero-image">
+                <h2>Key Achievements</h2>
+                <div class="key-features">
+                    <div class="feature-card">
+                        <h4>Advanced Forecasting</h4>
+                        <p>Achieved 9.2% mean absolute percentage error (MAPE) in demand forecasts using ensemble machine learning models, significantly outperforming industry average of 15-20%.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Cost Optimization</h4>
+                        <p>Reduced inventory carrying costs by 15% through optimized economic order quantities (EOQ) and safety stock calculations tuned to service level targets.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>Stockout Prevention</h4>
+                        <p>Determined optimal reorder points to minimize stockouts while balancing inventory holding costs, resulting in significant decrease in stockout events.</p>
+                    </div>
                 </div>
 
-                <div class="project-description">
-                    <h2>Project Overview</h2>
-                    <p>Developed a comprehensive supply chain risk analysis and inventory optimization system using OpenAI technologies and advanced statistical methods. The project focused on improving supplier performance and reducing stockout risks through AI-driven analysis.</p>
-
-                    <h2>Key Achievements</h2>
+                <h2>Technical Implementation</h2>
+                <div class="analysis-section">
+                    <h3>Demand Forecasting Engine</h3>
                     <ul>
-                        <li>35% improvement in supplier performance through AI-driven analysis</li>
-                        <li>42% reduction in stockout risk using predictive analytics</li>
-                        <li>Optimized reorder points based on demand variability</li>
-                        <li>Enhanced risk management through comprehensive supplier evaluation</li>
-                    </ul>
-
-                    <h2>Technical Implementation</h2>
-                    <h3>Risk Analysis System</h3>
-                    <ul>
-                        <li>Developed comprehensive supplier evaluation metrics:
-                            <ul>
-                                <li>On-time delivery rate analysis</li>
-                                <li>Defect rate tracking</li>
-                                <li>Financial stability scoring</li>
-                                <li>Performance trend analysis</li>
-                            </ul>
+                        <li>
+                            <strong>Ensemble Machine Learning Approach</strong>
+                            <span>Combined ARIMA time series modeling, XGBoost regression, and Prophet forecasting with ensemble weighting based on historical accuracy</span>
                         </li>
-                        <li>Implemented machine learning models for risk prediction</li>
-                        <li>Created automated risk assessment pipelines</li>
+                        <li>
+                            <strong>Feature Engineering</strong>
+                            <span>Leveraged seasonal patterns, promotions, and market factors to improve forecast accuracy</span>
+                        </li>
+                        <li>
+                            <strong>Automated Retraining Pipeline</strong>
+                            <span>Implemented continuous model improvement through automated retraining on new data</span>
+                        </li>
                     </ul>
+                </div>
 
+                <div class="analysis-section">
                     <h3>Inventory Optimization</h3>
                     <ul>
-                        <li>Developed predictive models for demand forecasting</li>
-                        <li>Implemented dynamic reorder point calculation</li>
-                        <li>Created lead time optimization algorithms</li>
-                        <li>Built safety stock optimization models</li>
+                        <li>
+                            <strong>Economic Order Quantity (EOQ) Calculator</strong>
+                            <span>Incorporated carrying costs, ordering costs, demand variability, and lead time analysis into a comprehensive optimizer</span>
+                        </li>
+                        <li>
+                            <strong>Dynamic Safety Stock</strong>
+                            <span>Calculated optimal safety stock levels based on service level targets and demand uncertainty</span>
+                        </li>
+                        <li>
+                            <strong>Reorder Point Optimization</strong>
+                            <span>Balanced stockout risk against holding costs through sophisticated modeling</span>
+                        </li>
                     </ul>
+                </div>
 
-                    <h3>Statistical Analysis</h3>
+                <div class="analysis-section">
+                    <h3>Interactive Analytics Dashboard</h3>
                     <ul>
-                        <li>Time series analysis for demand patterns</li>
-                        <li>Regression analysis for risk factor correlation</li>
-                        <li>Monte Carlo simulations for risk scenarios</li>
-                        <li>Bayesian inference for uncertainty quantification</li>
+                        <li>
+                            <strong>Real-time KPI Monitoring</strong>
+                            <span>Tracked key inventory performance metrics through dynamic, interactive visualizations</span>
+                        </li>
+                        <li>
+                            <strong>Scenario Planning</strong>
+                            <span>Built tools for what-if analysis of demand shocks and supply chain disruptions</span>
+                        </li>
+                        <li>
+                            <strong>Comparative Analysis</strong>
+                            <span>Visualized forecast accuracy and supply chain performance metrics over time</span>
+                        </li>
                     </ul>
+                </div>
 
-                    <h2>Technologies Used</h2>
-                    <div class="tech-stack">
+                <h2>Strategic Recommendations</h2>
+                <div class="recommendations-grid">
+                    <div class="recommendation-card">
+                        <h4>Forecast Optimization</h4>
                         <ul>
-                            <li><strong>AI/ML:</strong> OpenAI APIs, scikit-learn, TensorFlow</li>
-                            <li><strong>Statistical Tools:</strong> R, SciPy, StatsModels</li>
-                            <li><strong>Data Processing:</strong> Pandas, NumPy, PySpark</li>
-                            <li><strong>Visualization:</strong> Plotly, Seaborn, D3.js</li>
-                            <li><strong>Backend:</strong> Python, FastAPI</li>
+                            <li>Expand feature set with external market indicators</li>
+                            <li>Implement deep learning models for improved accuracy</li>
+                            <li>Develop category-specific forecasting models</li>
                         </ul>
                     </div>
+                    <div class="recommendation-card">
+                        <h4>Inventory Strategy</h4>
+                        <ul>
+                            <li>Segment inventory by demand volatility</li>
+                            <li>Implement ABC classification with tailored policies</li>
+                            <li>Create vendor-managed inventory programs</li>
+                        </ul>
+                    </div>
+                    <div class="recommendation-card">
+                        <h4>System Integration</h4>
+                        <ul>
+                            <li>Connect with supplier management systems</li>
+                            <li>Develop lead time prediction models</li>
+                            <li>Create mobile application for on-the-go insights</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <h2>Impact & Results</h2>
-                    <ul>
-                        <li>Significant reduction in supply chain disruptions</li>
-                        <li>Improved inventory turnover rates</li>
-                        <li>Enhanced supplier relationship management</li>
-                        <li>Reduced operational costs through optimized inventory levels</li>
-                    </ul>
-
-                    <h2>Risk Management Framework</h2>
-                    <ul>
-                        <li>Real-time risk monitoring and alerts</li>
-                        <li>Automated risk mitigation recommendations</li>
-                        <li>Supplier performance scorecards</li>
-                        <li>Predictive risk indicators</li>
-                    </ul>
+                <h2>Technologies Used</h2>
+                <div class="tech-stack-footer">
+                    <div class="tech-tags">
+                        <span class="tech-tag">Time Series Analysis</span>
+                        <span class="tech-tag">Statistical Modeling</span>
+                        <span class="tech-tag">Prophet</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Gradient Boosting</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Plotly</span>
+                        <span class="tech-tag">Plotly</span>
+                        <span class="tech-tag">Excel</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">ARIMA</span>
+                    </div>
                 </div>
             </div>
 
@@ -130,9 +657,86 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2023 Pritom Bhowmik. All rights reserved.</p>
-        </div>
+        <p>© 2025 Pritom Bhowmik</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preload images
+            const preloadImages = () => {
+                const sliderImages = document.querySelectorAll('.slider-image');
+                sliderImages.forEach(img => {
+                    const src = img.getAttribute('src');
+                    if (src) {
+                        const newImg = new Image();
+                        newImg.src = src;
+                    }
+                });
+            };
+            
+            preloadImages();
+            
+            // Image slider functionality
+            const sliderImages = document.querySelectorAll('.slider-image');
+            const sliderDots = document.querySelectorAll('.dot');
+            let currentIndex = 0;
+
+            // Function to change the active image
+            function showImage(index) {
+                sliderImages.forEach(img => img.classList.remove('active'));
+                sliderDots.forEach(dot => dot.classList.remove('active'));
+                
+                sliderImages[index].classList.add('active');
+                sliderDots[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            // Set up click events for dots
+            sliderDots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    showImage(index);
+                });
+            });
+
+            // Auto slideshow
+            let slideInterval = setInterval(function() {
+                currentIndex = (currentIndex + 1) % sliderImages.length;
+                showImage(currentIndex);
+            }, 4000);
+            
+            // Pause slideshow when mouse is over the slider
+            const slider = document.querySelector('.hero-slider');
+            
+            if (slider) {
+                slider.addEventListener('mouseenter', () => {
+                    clearInterval(slideInterval);
+                });
+                
+                slider.addEventListener('mouseleave', () => {
+                    slideInterval = setInterval(function() {
+                        currentIndex = (currentIndex + 1) % sliderImages.length;
+                        showImage(currentIndex);
+                    }, 4000);
+                });
+            }
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.nav-content')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

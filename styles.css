@@ -833,3 +833,28 @@ img {
         margin: -8px;
     }
 }
+
+/* Slider Navigation */
+.slider-nav {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 2;
+}
+
+.slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.slider-dot.active {
+    background: var(--accent-primary);
+    transform: scale(1.2);
+}

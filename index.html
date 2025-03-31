@@ -165,6 +165,157 @@
             color: var(--primary-color);
             opacity: 0.5;
         }
+
+        /* Additional project section styles for better spacing */
+        .publications {
+            margin-top: 3rem;
+            gap: 2.5rem;
+        }
+
+        .publication {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--bg-secondary);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .publication:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: rgba(0, 242, 254, 0.2);
+        }
+
+        .project-header {
+            margin-bottom: 1.25rem;
+        }
+
+        .project-header strong {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .stat {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 242, 254, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--text-primary);
+            border: 1px solid var(--accent-primary);
+            padding: 0.9rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition-speed);
+            margin-top: 1.75rem;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button:hover {
+            background: rgba(0, 242, 254, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .button:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+        }
+
+        .button:hover:after {
+            transform: translateX(100%);
+            transition: transform 0.6s ease;
+        }
+
+        .button i {
+            transition: transform 0.3s ease;
+        }
+
+        .button:hover i {
+            transform: translateX(3px);
+        }
+
+        .publication .content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 1.5rem;
+        }
+
+        .tech-tags {
+            margin-bottom: 1rem;
+            margin-top: auto;
+        }
+
+        .publication p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            flex-grow: 1;
+        }
+
+        /* Add these styles for the links in the hero section */
+        .links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .links .button {
+            flex: 1;
+            min-width: 120px;
+            padding: 0.6rem 1rem;
+            margin-top: 0;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            justify-content: center;
+        }
+
+        @media (max-width: 600px) {
+            .links {
+                gap: 0.75rem;
+            }
+            
+            .links .button {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -315,7 +466,7 @@
                         <div class="project-header">
                             <strong>A Multi-Agent AI RAG Chatbot</strong>
                             <div class="project-stats">
-                                <span class="stat"><i class="fas fa-robot"></i> MajorEfficiency Gain in Inventory Management</span>
+                                <span class="stat"><i class="fas fa-robot"></i> Major Efficiency Gain in Inventory Management</span>
                                 <span class="stat"><i class="fas fa-clock"></i> Analysis of SCM with a Chatbot</span>
                             </div>
                         </div>
@@ -336,26 +487,43 @@
                 </div>
 
                 <!-- Second Row - Project 3 -->
-                <div class="publication fade-in" data-category="ai">
+                <div class="publication fade-in" data-category="ai supply-chain">
                     <div class="project-slider">
                         <div class="slider-container">
-                            <img src="assets/project3.png" alt="Fraud Detection System" class="slider-image active">
+                            <img src="assets/project3/1.png" alt="IntelliStock Dashboard Overview" class="slider-image active">
+                            <img src="assets/project3/2.png" alt="Demand Forecasting Models" class="slider-image">
+                            <img src="assets/project3/3.png" alt="Inventory Optimization Analytics" class="slider-image">
+                            <img src="assets/project3/4.png" alt="Reorder Point Calculation" class="slider-image">
+                            <img src="assets/project3/5.png" alt="Supply Chain Performance Metrics" class="slider-image">
+                            <img src="assets/project3/6.png" alt="Economic Order Quantity Analysis" class="slider-image">
+                            <img src="assets/project3/7.png" alt="Inventory Forecasting Results" class="slider-image">
+                            <img src="assets/project3/8.png" alt="Supply Chain Analytics Dashboard" class="slider-image">
+                        </div>
+                        <div class="slider-nav">
+                            <span class="slider-dot active"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
+                            <span class="slider-dot"></span>
                         </div>
                     </div>
                     <div class="content">
                         <div class="project-header">
-                            <strong>AI-Powered Fraud Detection System</strong>
+                            <strong>IntelliStock: Intelligent Demand Forecasting & Inventory Optimization</strong>
                             <div class="project-stats">
-                                <span class="stat"><i class="fas fa-shield-alt"></i> 95% Accuracy</span>
-                                <span class="stat"><i class="fas fa-chart-bar"></i> 40% Cost Reduction</span>
+                                <span class="stat"><i class="fas fa-chart-line"></i> 9.2% MAPE</span>
+                                <span class="stat"><i class="fas fa-boxes"></i> 15% Cost Reduction</span>
                             </div>
                         </div>
-                        <p>Developed and implemented an advanced fraud detection system using machine learning algorithms and real-time data analysis.</p>
+                        <p>Developed an AI-powered supply chain analytics system using ensemble machine learning models that achieved 9.2% mean absolute percentage error (MAPE) in demand forecasts, enabling optimal inventory management decisions.</p>
                         <div class="tech-tags">
+                            <span class="tech-tag">Machine Learning</span>
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Data Visualization</span>
+                            <span class="tech-tag">Supply Chain Analytics</span>
                         </div>
                         <a href="project_three.html" class="button">View Details <i class="fas fa-arrow-right"></i></a>
                     </div>
@@ -392,7 +560,7 @@
         <!-- Footer -->
         <footer>
             <div class="container">
-                <p>&copy; 2025 Pritom Bhowmik. All rights reserved.</p>
+                <p>&copy; 2025 Pritom Bhowmik</p>
             </div>
         </footer>
     </div>
