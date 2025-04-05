@@ -3,685 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IntelliStock | Pritom Bhowmik</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles_p.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>IntelliStock: Intelligent Demand Forecasting & Inventory Optimization | Pritom Bhowmik</title>
+    <link rel="stylesheet" href="project-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    :root {
-        --bg-primary: #0a0a0f;
-        --bg-secondary: #111118;
-        --text-primary: #ffffff;
-        --text-secondary: #94a3b8;
-        --accent-primary: #00f2fe;
-        --accent-secondary: #4facfe;
-        --border-radius: 12px;
-        --transition-speed: 0.3s;
-        --container-width: 1200px;
-        --spacing: 1.5rem;
-        --spacing-sm: 0.75rem;
-        --spacing-lg: 2rem;
-    }
-
-    html {
-        background: var(--bg-primary);
-        height: 100%;
-    }
-
-    body {
-        font-family: 'Inter', sans-serif;
-        color: var(--text-primary);
-        line-height: 1.6;
-        padding-top: 60px;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        background: var(--bg-primary);
-        overflow-x: hidden;
-    }
-
-    main {
-        flex: 1;
-        padding-bottom: 2rem;
-    }
-
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: rgba(10, 10, 15, 0.95);
-        z-index: 1000;
-        padding: 0.75rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .nav-content {
-        max-width: var(--container-width);
-        margin: 0 auto;
-        padding: 0 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo-link {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--accent-primary);
-        text-decoration: none;
-    }
-
-    .mobile-menu-btn {
-        display: none;
-        background: transparent;
-        border: none;
-        color: var(--text-primary);
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-    }
-
-    .nav-link {
-        color: var(--text-secondary);
-        text-decoration: none;
-        transition: color var(--transition-speed);
-    }
-
-    .nav-link:hover {
-        color: var(--text-primary);
-    }
-
-    .contact-btn {
-        background: transparent;
-        color: var(--accent-primary);
-        border: 1px solid var(--accent-primary);
-        padding: 0.5rem 1.5rem;
-        border-radius: 2rem;
-        text-decoration: none;
-        transition: all var(--transition-speed);
-    }
-
-    .contact-btn:hover {
-        background: rgba(0, 242, 254, 0.1);
-    }
-
-    .project-container {
-        max-width: var(--container-width);
-        margin: 0 auto;
-        padding: var(--spacing);
-    }
-
-    .project-header {
-        text-align: center;
-        margin-bottom: var(--spacing);
-    }
-
-    .project-header h1 {
-        font-size: 2.25rem;
-        margin: 0 0 var(--spacing-sm);
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 700;
-    }
-
-    .project-meta {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-    }
-
-    .tech-tag {
-        background: var(--bg-secondary);
-        color: var(--text-secondary);
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .hero-slider {
-        position: relative;
-        width: 100%;
-        height: 500px;
-        border-radius: var(--border-radius);
-        overflow: hidden;
-        margin: var(--spacing) 0;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        background: var(--bg-secondary);
-    }
-
-    .slider-container {
-        width: 100%;
-        height: 100%;
-        position: relative;
-    }
-
-    .slider-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-        background-color: var(--bg-secondary);
-    }
-
-    .slider-image.active { 
-        opacity: 1; 
-        z-index: 1;
-    }
-
-    .slider-dots {
-        position: absolute;
-        bottom: 15px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 8px;
-        z-index: 10;
-        padding: 8px 16px;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 20px;
-        backdrop-filter: blur(5px);
-    }
-
-    .dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        cursor: pointer;
-        transition: all var(--transition-speed);
-    }
-
-    .dot.active {
-        background: var(--accent-primary);
-        transform: scale(1.2);
-    }
-
-    .project-description {
-        background: var(--bg-secondary);
-        padding: var(--spacing);
-        border-radius: var(--border-radius);
-        margin-top: var(--spacing);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .project-description h2 {
-        font-size: 1.6rem;
-        margin: var(--spacing) 0 var(--spacing-sm);
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 600;
-    }
-
-    .project-description h2:first-child {
-        margin-top: 0;
-    }
-
-    .project-description p {
-        color: var(--text-secondary);
-        font-size: 1.1rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-    }
-
-    .results-grid, .key-features {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--spacing-sm);
-        margin: var(--spacing-sm) 0;
-    }
-
-    .result-item, .feature-card {
-        background: var(--bg-secondary);
-        padding: var(--spacing);
-        border-radius: var(--border-radius);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: transform var(--transition-speed);
-    }
-
-    .result-item:hover, .feature-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .result-number {
-        font-size: 2rem;
-        margin-bottom: var(--spacing-sm);
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 700;
-    }
-
-    .feature-card h4 {
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 1.2rem;
-        margin-bottom: var(--spacing-sm);
-        font-weight: 600;
-    }
-
-    .analysis-section {
-        background: var(--bg-secondary);
-        padding: var(--spacing);
-        border-radius: var(--border-radius);
-        margin: var(--spacing-sm) 0;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .analysis-section h3 {
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: var(--spacing);
-        font-size: 1.3rem;
-        font-weight: 600;
-    }
-
-    .analysis-section li {
-        color: var(--text-secondary);
-        margin-bottom: var(--spacing-sm);
-        padding-left: 1.5rem;
-        position: relative;
-    }
-
-    .analysis-section li:before {
-        content: "•";
-        position: absolute;
-        left: 0;
-        color: var(--accent-primary);
-    }
-
-    .analysis-section strong {
-        color: var(--text-primary);
-        display: inline-block;
-        margin-bottom: 0.25rem;
-    }
-
-    .recommendations-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--spacing-sm);
-        margin: var(--spacing-sm) 0;
-    }
-
-    .recommendation-card {
-        background: var(--bg-secondary);
-        padding: 1.5rem;
-        border-radius: var(--border-radius);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .recommendation-card h4 {
-        background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        font-weight: 600;
-    }
-
-    .recommendation-card ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .recommendation-card li {
-        color: var(--text-secondary);
-        margin-bottom: 0.5rem;
-        padding-left: 1.5rem;
-        position: relative;
-    }
-
-    .recommendation-card li:before {
-        content: "→";
-        position: absolute;
-        left: 0;
-        color: var(--accent-primary);
-    }
-
-    .tech-stack-footer {
-        margin-top: var(--spacing);
-        padding-top: var(--spacing);
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .tech-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: var(--spacing-sm);
-    }
-
-    .project-navigation {
-        display: flex;
-        justify-content: space-between;
-        margin: var(--spacing) 0;
-    }
-
-    .button {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 0.75rem 1.5rem;
-        border-radius: 100px;
-        font-weight: 500;
-        text-decoration: none;
-        transition: all var(--transition-speed);
-    }
-
-    .button:hover {
-        background: rgba(0, 242, 254, 0.1);
-        border-color: var(--accent-primary);
-    }
-
-    @media (max-width: 768px) {
-        :root {
-            --spacing: 1rem;
-            --spacing-sm: 0.5rem;
-            --spacing-lg: 1.5rem;
+        /* Add animation for the logo */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
-        .mobile-menu-btn {
-            display: block;
+        .animated-logo a {
+            background: linear-gradient(270deg, #00f2fe, #4facfe, #00c4ff, #0077ff, #4facfe);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientAnimation 8s ease infinite;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease;
         }
         
-        .nav-links {
+        .animated-logo a:hover {
+            transform: scale(1.05);
+        }
+        
+        .animated-logo a::after {
+            content: '';
             position: absolute;
-            top: 100%;
+            bottom: -5px;
             left: 0;
-            right: 0;
-            background: var(--bg-primary);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            flex-direction: column;
-            padding: 1rem 0;
-            gap: 1rem;
-            transform: translateY(-100%);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links.active {
-            transform: translateY(0);
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .contact-btn {
-            width: 80%;
-            text-align: center;
-        }
-
-        .project-header h1 {
-            font-size: 1.7rem;
-        }
-        
-        .project-description h2 {
-            font-size: 1.3rem;
-        }
-        
-        .project-description p {
-            font-size: 1rem;
-        }
-
-        .recommendations-grid,
-        .results-grid,
-        .key-features {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-        
-        .hero-slider {
-            height: 250px;
-        }
-        
-        .tech-tags {
-            justify-content: center;
-        }
-        
-        .project-navigation {
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .project-navigation .button {
             width: 100%;
-            justify-content: center;
-            text-align: center;
+            height: 2px;
+            background: linear-gradient(90deg, #00f2fe, #4facfe);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
         }
         
-        .project-meta {
-            justify-content: center;
+        .animated-logo a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
-        
-        .project-container {
-            padding: 1rem;
-        }
-        
-        .analysis-section h3 {
-            font-size: 1.2rem;
-        }
-    }
-
-    footer {
-        padding: 1rem 0;
-        background: #0a0a0f;
-        border-top: 1px solid rgba(255, 255, 255, 0.03);
-        margin-top: auto;
-        text-align: center;
-    }
-
-    footer .container {
-        max-width: var(--container-width);
-        margin: 0 auto;
-        padding: 0 1.5rem;
-    }
-
-    footer p {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.85rem;
-        margin: 0;
-    }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-content">
-            <a href="index.html" class="logo-link">Pritom Bhowmik</a>
+            <div class="logo animated-logo">
+                <a href="index.html">Pritom Bhowmik</a>
+            </div>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="nav-links">
-                <a href="index.html#about" class="nav-link">About</a>
-                <a href="index.html#projects" class="nav-link">Projects</a>
-                <a href="index.html#publications" class="nav-link">Publications</a>
-                <a href="https://www.linkedin.com/in/pritom-bhowmik-296285337" class="contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
+                <a href="index.html" class="home-btn"><i class="fas fa-home"></i> Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="https://linkedin.com/in/bhowmikpritom" class="contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
             </div>
         </div>
     </nav>
 
-    <main>
-        <div class="project-container">
+    <main class="project-detail">
+        <div class="container">
             <div class="project-header">
                 <h1>IntelliStock: Intelligent Demand Forecasting & Inventory Optimization Platform</h1>
                 <div class="project-meta">
-                    <span class="tech-tag">Machine Learning</span>
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Data Visualization</span>
-                    <span class="tech-tag">Supply Chain Analytics</span>
-                    <span class="tech-tag">Ensemble Models</span>
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-chart-line"></i> 9.2% MAPE</span>
+                        <span class="stat"><i class="fas fa-boxes"></i> 15% Cost Reduction</span>
+                        <span class="stat"><i class="fas fa-calculator"></i> EOQ Optimization</span>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Time Series Analysis</span>
+                        <span class="tech-tag">Supply Chain</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="hero-slider">
-                <div class="slider-container">
-                    <img src="assets/project3/1.png" alt="IntelliStock Dashboard Overview" class="slider-image active">
-                    <img src="assets/project3/2.png" alt="Demand Forecasting Models" class="slider-image">
-                    <img src="assets/project3/3.png" alt="Inventory Optimization Analytics" class="slider-image">
-                    <img src="assets/project3/4.png" alt="Reorder Point Calculation" class="slider-image">
-                    <img src="assets/project3/5.png" alt="Supply Chain Performance Metrics" class="slider-image">
-                    <img src="assets/project3/6.png" alt="Economic Order Quantity Analysis" class="slider-image">
-                    <img src="assets/project3/7.png" alt="Inventory Forecasting Results" class="slider-image">
-                    <img src="assets/project3/8.png" alt="Supply Chain Analytics Dashboard" class="slider-image">
-                </div>
-                <div class="slider-dots">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
-                    <span class="dot" data-index="3"></span>
-                    <span class="dot" data-index="4"></span>
-                    <span class="dot" data-index="5"></span>
-                    <span class="dot" data-index="6"></span>
-                    <span class="dot" data-index="7"></span>
-                </div>
-            </div>
-
-            <div class="project-description">
-                <h2>Executive Summary</h2>
-                <p>Developed a supply chain analytics system that uses ensemble machine learning models to optimize inventory management decisions. IntelliStock provides accurate demand forecasting and determines optimal inventory levels to minimize carrying costs while preventing stockouts.</p>
-
-                <div class="results-grid">
-                    <div class="result-item">
-                        <div class="result-number">9.2%</div>
-                        <div class="result-label">MAPE in Demand Forecasts</div>
+            <div class="project-content">
+                <div class="project-slider">
+                    <div class="slider-container">
+                        <button class="slider-button prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-button next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <img src="assets/project3/1.png" alt="Healthcare Analytics Dashboard" class="slider-image active">
+                        <img src="assets/project3/2.png" alt="Patient Risk Analysis" class="slider-image">
+                        <img src="assets/project3/3.png" alt="Medical Imaging AI" class="slider-image">
+                        <img src="assets/project3/4.png" alt="Treatment Recommendations" class="slider-image">
+                        <img src="assets/project3/5.png" alt="Patient Monitoring" class="slider-image">
+                        <img src="assets/project3/6.png" alt="Healthcare Metrics" class="slider-image">
+                        <img src="assets/project3/7.png" alt="Clinical Decision Support" class="slider-image">
+                        <img src="assets/project3/8.png" alt="Performance Analysis" class="slider-image">
                     </div>
-                    <div class="result-item">
-                        <div class="result-number">15%</div>
-                        <div class="result-label">Reduced Inventory Costs</div>
-                    </div>
-                    <div class="result-item">
-                        <div class="result-number">EOQ</div>
-                        <div class="result-label">Optimized Order Quantities</div>
+                    <div class="slider-nav">
+                        <div class="slider-dot active"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
+                        <div class="slider-dot"></div>
                     </div>
                 </div>
 
-                <h2>Key Achievements</h2>
-                <div class="key-features">
-                    <div class="feature-card">
-                        <h4>Advanced Forecasting</h4>
-                        <p>Achieved 9.2% mean absolute percentage error (MAPE) in demand forecasts using ensemble machine learning models, significantly outperforming industry average of 15-20%.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4>Cost Optimization</h4>
-                        <p>Reduced inventory carrying costs by 15% through optimized economic order quantities (EOQ) and safety stock calculations tuned to service level targets.</p>
-                    </div>
-                    <div class="feature-card">
-                        <h4>Stockout Prevention</h4>
-                        <p>Determined optimal reorder points to minimize stockouts while balancing inventory holding costs, resulting in significant decrease in stockout events.</p>
-                    </div>
-                </div>
+                <div class="project-description">
+                    <h2>Executive Summary</h2>
+                    <p>Developed a supply chain analytics system that uses ensemble machine learning models to optimize inventory management decisions. IntelliStock provides accurate demand forecasting and determines optimal inventory levels to minimize carrying costs while preventing stockouts.</p>
 
-                <h2>Technical Implementation</h2>
-                <div class="analysis-section">
-                    <h3>Demand Forecasting Engine</h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3>9.2% MAPE</h3>
+                            <p>In Demand Forecasts</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-percentage"></i></div>
+                            <h3>15% Reduction</h3>
+                            <p>In Inventory Costs</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-calculator"></i></div>
+                            <h3>EOQ</h3>
+                            <p>Optimized Order Quantities</p>
+                        </div>
+                    </div>
+
+                    <h2>Key Achievements</h2>
                     <ul>
-                        <li>
-                            <strong>Ensemble Machine Learning Approach</strong>
-                            <span>Combined ARIMA time series modeling, XGBoost regression, and Prophet forecasting with ensemble weighting based on historical accuracy</span>
-                        </li>
-                        <li>
-                            <strong>Feature Engineering</strong>
-                            <span>Leveraged seasonal patterns, promotions, and market factors to improve forecast accuracy</span>
-                        </li>
-                        <li>
-                            <strong>Automated Retraining Pipeline</strong>
-                            <span>Implemented continuous model improvement through automated retraining on new data</span>
-                        </li>
+                        <li><strong>Advanced Forecasting:</strong> Achieved 9.2% mean absolute percentage error (MAPE) in demand forecasts using ensemble machine learning models, significantly outperforming industry average of 15-20%.</li>
+                        <li><strong>Cost Optimization:</strong> Reduced inventory carrying costs by 15% through optimized economic order quantities (EOQ) and safety stock calculations tuned to service level targets.</li>
+                        <li><strong>Stockout Prevention:</strong> Determined optimal reorder points to minimize stockouts while balancing inventory holding costs, resulting in significant decrease in stockout events.</li>
                     </ul>
-                </div>
 
-                <div class="analysis-section">
-                    <h3>Inventory Optimization</h3>
-                    <ul>
-                        <li>
-                            <strong>Economic Order Quantity (EOQ) Calculator</strong>
-                            <span>Incorporated carrying costs, ordering costs, demand variability, and lead time analysis into a comprehensive optimizer</span>
-                        </li>
-                        <li>
-                            <strong>Dynamic Safety Stock</strong>
-                            <span>Calculated optimal safety stock levels based on service level targets and demand uncertainty</span>
-                        </li>
-                        <li>
-                            <strong>Reorder Point Optimization</strong>
-                            <span>Balanced stockout risk against holding costs through sophisticated modeling</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="analysis-section">
-                    <h3>Interactive Analytics Dashboard</h3>
-                    <ul>
-                        <li>
-                            <strong>Real-time KPI Monitoring</strong>
-                            <span>Tracked key inventory performance metrics through dynamic, interactive visualizations</span>
-                        </li>
-                        <li>
-                            <strong>Scenario Planning</strong>
-                            <span>Built tools for what-if analysis of demand shocks and supply chain disruptions</span>
-                        </li>
-                        <li>
-                            <strong>Comparative Analysis</strong>
-                            <span>Visualized forecast accuracy and supply chain performance metrics over time</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <h2>Strategic Recommendations</h2>
-                <div class="recommendations-grid">
-                    <div class="recommendation-card">
-                        <h4>Forecast Optimization</h4>
-                        <ul>
-                            <li>Expand feature set with external market indicators</li>
-                            <li>Implement deep learning models for improved accuracy</li>
-                            <li>Develop category-specific forecasting models</li>
-                        </ul>
+                    <h2>Technical Implementation</h2>
+                    <div class="tech-stack">
+                        <div class="tech-category">
+                            <h4>Demand Forecasting Engine</h4>
+                            <ul>
+                                <li><strong>Ensemble Machine Learning Approach:</strong> Combined ARIMA time series modeling, XGBoost regression, and Prophet forecasting with ensemble weighting based on historical accuracy</li>
+                                <li><strong>Feature Engineering:</strong> Leveraged seasonal patterns, promotions, and market factors to improve forecast accuracy</li>
+                                <li><strong>Automated Retraining Pipeline:</strong> Implemented continuous model improvement through automated retraining on new data</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4>Inventory Optimization</h4>
+                            <ul>
+                                <li><strong>Economic Order Quantity (EOQ) Calculator:</strong> Incorporated carrying costs, ordering costs, demand variability, and lead time analysis into a comprehensive optimizer</li>
+                                <li><strong>Dynamic Safety Stock:</strong> Calculated optimal safety stock levels based on service level targets and demand uncertainty</li>
+                                <li><strong>Reorder Point Optimization:</strong> Balanced stockout risk against holding costs through sophisticated modeling</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4>Interactive Analytics Dashboard</h4>
+                            <ul>
+                                <li><strong>Real-time KPI Monitoring:</strong> Tracked key inventory performance metrics through dynamic, interactive visualizations</li>
+                                <li><strong>Scenario Planning:</strong> Built tools for what-if analysis of demand shocks and supply chain disruptions</li>
+                                <li><strong>Comparative Analysis:</strong> Visualized forecast accuracy and supply chain performance metrics over time</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="recommendation-card">
-                        <h4>Inventory Strategy</h4>
-                        <ul>
-                            <li>Segment inventory by demand volatility</li>
-                            <li>Implement ABC classification with tailored policies</li>
-                            <li>Create vendor-managed inventory programs</li>
-                        </ul>
-                    </div>
-                    <div class="recommendation-card">
-                        <h4>System Integration</h4>
-                        <ul>
-                            <li>Connect with supplier management systems</li>
-                            <li>Develop lead time prediction models</li>
-                            <li>Create mobile application for on-the-go insights</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <h2>Technologies Used</h2>
-                <div class="tech-stack-footer">
+                    <h2>Strategic Recommendations</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                            <h3>Forecast Optimization</h3>
+                            <ul>
+                                <li>Expand feature set with external market indicators</li>
+                                <li>Implement deep learning models for improved accuracy</li>
+                                <li>Develop category-specific forecasting models</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-boxes"></i></div>
+                            <h3>Inventory Strategy</h3>
+                            <ul>
+                                <li>Segment inventory by demand volatility</li>
+                                <li>Implement ABC classification with tailored policies</li>
+                                <li>Create vendor-managed inventory programs</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                            <h3>System Integration</h3>
+                            <ul>
+                                <li>Connect with supplier management systems</li>
+                                <li>Develop lead time prediction models</li>
+                                <li>Create mobile application for on-the-go insights</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2>Technologies Used</h2>
                     <div class="tech-tags">
                         <span class="tech-tag">Time Series Analysis</span>
                         <span class="tech-tag">Statistical Modeling</span>
@@ -689,7 +214,6 @@
                         <span class="tech-tag">Streamlit</span>
                         <span class="tech-tag">Gradient Boosting</span>
                         <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">Plotly</span>
                         <span class="tech-tag">Plotly</span>
                         <span class="tech-tag">Excel</span>
                         <span class="tech-tag">Python</span>
@@ -702,9 +226,6 @@
                 <a href="project_two.html" class="button">
                     <i class="fas fa-arrow-left"></i> Previous Project
                 </a>
-                <a href="index.html#projects" class="button">
-                    Back to Projects
-                </a>
                 <a href="project_four.html" class="button">
                     Next Project <i class="fas fa-arrow-right"></i>
                 </a>
@@ -714,108 +235,13 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 Pritom Bhowmik</p>
+            <p>&copy; 2024 Pritom Bhowmik. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
+        // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Preload images
-            const preloadImages = () => {
-                const sliderImages = document.querySelectorAll('.slider-image');
-                sliderImages.forEach(img => {
-                    const src = img.getAttribute('src');
-                    if (src) {
-                        const newImg = new Image();
-                        newImg.src = src;
-                    }
-                });
-            };
-            
-            preloadImages();
-            
-            // Image slider functionality
-            const sliderImages = document.querySelectorAll('.slider-image');
-            const sliderDots = document.querySelectorAll('.dot');
-            let currentIndex = 0;
-
-            // Function to change the active image
-            function showImage(index) {
-                sliderImages.forEach(img => img.classList.remove('active'));
-                sliderDots.forEach(dot => dot.classList.remove('active'));
-                
-                sliderImages[index].classList.add('active');
-                sliderDots[index].classList.add('active');
-                currentIndex = index;
-            }
-
-            // Set up click events for dots
-            sliderDots.forEach((dot, index) => {
-                dot.addEventListener('click', function() {
-                    showImage(index);
-                });
-            });
-
-            // Auto slideshow
-            let slideInterval = setInterval(function() {
-                currentIndex = (currentIndex + 1) % sliderImages.length;
-                showImage(currentIndex);
-            }, 4000);
-            
-            // Pause slideshow when mouse is over the slider
-            const slider = document.querySelector('.hero-slider');
-            
-            if (slider) {
-                slider.addEventListener('mouseenter', () => {
-                    clearInterval(slideInterval);
-                });
-                
-                slider.addEventListener('mouseleave', () => {
-                    slideInterval = setInterval(function() {
-                        currentIndex = (currentIndex + 1) % sliderImages.length;
-                        showImage(currentIndex);
-                    }, 4000);
-                });
-                
-                // Touch swipe functionality for mobile
-                let touchStartX = 0;
-                let touchEndX = 0;
-                
-                slider.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                    // Pause slideshow on touch
-                    clearInterval(slideInterval);
-                }, { passive: true });
-                
-                slider.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                    
-                    // Resume slideshow after touch
-                    slideInterval = setInterval(function() {
-                        currentIndex = (currentIndex + 1) % sliderImages.length;
-                        showImage(currentIndex);
-                    }, 4000);
-                }, { passive: true });
-                
-                function handleSwipe() {
-                    const swipeThreshold = 50; // Minimum distance considered as swipe
-                    
-                    if (touchEndX < touchStartX - swipeThreshold) {
-                        // Swipe left - next image
-                        currentIndex = (currentIndex + 1) % sliderImages.length;
-                        showImage(currentIndex);
-                    }
-                    
-                    if (touchEndX > touchStartX + swipeThreshold) {
-                        // Swipe right - previous image
-                        currentIndex = (currentIndex - 1 + sliderImages.length) % sliderImages.length;
-                        showImage(currentIndex);
-                    }
-                }
-            }
-
-            // Mobile menu toggle
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
             
@@ -825,19 +251,87 @@
                 });
             }
             
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.nav-content') && !event.target.closest('.mobile-menu-btn')) {
-                    navLinks.classList.remove('active');
-                }
-            });
-            
-            // Close mobile menu when clicking a link
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.addEventListener('click', () => {
+            // Close mobile menu when clicking on a link
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
                     navLinks.classList.remove('active');
                 });
             });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Slider functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.slider-image');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevButton = document.querySelector('.slider-button.prev');
+            const nextButton = document.querySelector('.slider-button.next');
+            let currentIndex = 0;
+            const interval = 4000; // 4 seconds
+            let slideInterval;
+
+            function showImage(index) {
+                images.forEach(img => img.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                images[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            }
+
+            function prevImage() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            }
+
+            function startSlideshow() {
+                slideInterval = setInterval(nextImage, interval);
+            }
+
+            function stopSlideshow() {
+                clearInterval(slideInterval);
+            }
+
+            // Event listeners for dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showImage(index);
+                    stopSlideshow();
+                    startSlideshow();
+                });
+            });
+
+            // Event listeners for buttons
+            prevButton.addEventListener('click', () => {
+                prevImage();
+                stopSlideshow();
+                startSlideshow();
+            });
+
+            nextButton.addEventListener('click', () => {
+                nextImage();
+                stopSlideshow();
+                startSlideshow();
+            });
+
+            // Pause on hover
+            const sliderContainer = document.querySelector('.slider-container');
+            sliderContainer.addEventListener('mouseenter', stopSlideshow);
+            sliderContainer.addEventListener('mouseleave', startSlideshow);
+
+            // Start the slideshow
+            startSlideshow();
         });
     </script>
 </body>
