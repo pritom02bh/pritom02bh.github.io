@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Agentic RAG System for Pharmaceutical Supply Chain | Pritom Bhowmik</title>
+    <link rel="stylesheet" href="project-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Add animation for the logo */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animated-logo a {
+            background: linear-gradient(270deg, #00f2fe, #4facfe, #00c4ff, #0077ff, #4facfe);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientAnimation 8s ease infinite;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        
+        .animated-logo a:hover {
+            transform: scale(1.05);
+        }
+        
+        .animated-logo a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #00f2fe, #4facfe);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .animated-logo a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .agent-card {
+            background: rgba(0, 229, 255, 0.05);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .agent-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 229, 255, 0.08);
+        }
+        
+        .agent-card h3 {
+            color: #00E5FF;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .agent-card p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .metric-box {
+            background: rgba(0, 229, 255, 0.05);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .metric-box:hover {
+            transform: translateY(-3px);
+            background: rgba(0, 229, 255, 0.08);
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00E5FF;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 1rem;
+            color: #ddd;
+        }
+        
+        .case-study {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 229, 255, 0.03);
+            border: 1px solid rgba(0, 229, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .case-study h3 {
+            color: #00E5FF;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo animated-logo">
+                <a href="index.html">Pritom Bhowmik</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="index.html" class="home-btn"><i class="fas fa-home"></i> Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="https://linkedin.com/in/bhowmikpritom" class="contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="project-detail">
+        <div class="container">
+            <div class="project-header">
+                <h1>Multi-Agentic RAG System for Pharmaceutical Supply Chain Optimization</h1>
+                <div class="project-meta">
+                    <div class="project-stats">
+                        <span class="stat"><i class="fas fa-chart-line"></i> 15% Inventory Cost Reduction</span>
+                        <span class="stat"><i class="fas fa-tasks"></i> 65% Faster Decision-Making</span>
+                        <span class="stat"><i class="fas fa-truck"></i> 18% Fulfillment Improvement</span>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">RAG</span>
+                        <span class="tech-tag">Vector Database</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">Flask</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-content">
+                <div class="project-slider">
+                    <div class="slider-container">
+                        <button class="slider-button prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-button next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <img src="assets/project2/1.png" alt="Pharmaceutical Supply Chain Dashboard" class="slider-image active">
+                        <img src="assets/project2/project2.png" alt="Multi-Agent Architecture" class="slider-image">
+                    </div>
+                    <div class="slider-nav">
+                        <div class="slider-dot active"></div>
+                        <div class="slider-dot"></div>
+                    </div>
+                </div>
+
+                <div class="project-description">
+                    <h2>Project Overview</h2>
+                    <p>Our Multi-Agentic RAG System revolutionizes pharmaceutical supply chain management by combining advanced artificial intelligence with domain-specific knowledge. This intelligent system seamlessly integrates multiple specialized agents to analyze inventory data, transport logistics, regulatory requirements, and market conditions, delivering unprecedented decision support for critical supply chain operations.</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                            <h3>Multi-Agent Architecture</h3>
+                            <p>Specialized AI agents working in concert to deliver comprehensive supply chain insights.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-database"></i></div>
+                            <h3>RAG Technology</h3>
+                            <p>Retrieval-Augmented Generation for accurate, context-aware responses backed by data.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-pills"></i></div>
+                            <h3>Pharmaceutical Expertise</h3>
+                            <p>Domain-specific knowledge built into the system for industry-relevant insights.</p>
+                        </div>
+                    </div>
+
+                    <h2>Core Value Proposition</h2>
+                    <ul>
+                        <li><strong>Real-time Decision Support:</strong> Transform complex data into actionable insights in seconds</li>
+                        <li><strong>Proactive Risk Management:</strong> Identify and mitigate supply chain risks before they impact operations</li>
+                        <li><strong>Cost Optimization:</strong> Reduce inventory carrying costs while maintaining optimal stock levels</li>
+                        <li><strong>Regulatory Compliance:</strong> Ensure all operations adhere to industry regulations and best practices</li>
+                        <li><strong>Enhanced Operational Efficiency:</strong> Streamline logistics and inventory management workflows</li>
+                    </ul>
+
+                    <h2>Intelligent Agent Architecture</h2>
+                    
+                    <div class="agent-grid">
+                        <div class="agent-card">
+                            <h3><i class="fas fa-search"></i> Query Enhancement Agent</h3>
+                            <p>Transforms user questions into optimized queries by adding domain-specific terminology and clarifying ambiguous terms, ensuring the most relevant information is retrieved.</p>
+                        </div>
+                        
+                        <div class="agent-card">
+                            <h3><i class="fas fa-network-wired"></i> Router Agent</h3>
+                            <p>Serves as the central coordinator, analyzing queries to determine which specialized agents and data sources are most relevant. This intelligent routing ensures efficient processing and comprehensive responses.</p>
+                        </div>
+                        
+                        <div class="agent-card">
+                            <h3><i class="fas fa-database"></i> RAG Agent</h3>
+                            <p>Employs Retrieval-Augmented Generation to find and synthesize relevant information from internal databases, delivering accurate answers backed by specific data points.</p>
+                        </div>
+                        
+                        <div class="agent-card">
+                            <h3><i class="fas fa-chart-bar"></i> Analytical Agent</h3>
+                            <p>Performs deep analysis on retrieved data, extracting metrics, identifying patterns, calculating key performance indicators, and generating visual representations of complex data.</p>
+                        </div>
+                        
+                        <div class="agent-card">
+                            <h3><i class="fas fa-globe"></i> Web Agent</h3>
+                            <p>Extends the system's knowledge by accessing real-time external data, including market conditions, regulatory updates, weather patterns, and other factors that may impact supply chain decisions.</p>
+                        </div>
+                        
+                        <div class="agent-card">
+                            <h3><i class="fas fa-file-alt"></i> Report Generator</h3>
+                            <p>Transforms complex analytical insights into clear, actionable reports with professional formatting and visual elements for immediate understanding.</p>
+                        </div>
+                    </div>
+
+                    <h2>Advanced Workflow</h2>
+                    <ol>
+                        <li><strong>Query Processing:</strong> User queries are enhanced with domain-specific terminology and context</li>
+                        <li><strong>Intelligent Routing:</strong> Enhanced queries are analyzed to determine required data sources and processing agents</li>
+                        <li><strong>Parallel Data Retrieval:</strong> Multiple agents simultaneously gather information from relevant internal and external sources</li>
+                        <li><strong>Contextual Processing:</strong> Retrieved information is analyzed within the specific context of the query</li>
+                        <li><strong>Insight Generation:</strong> Advanced analytics extract actionable insights, metrics, and recommendations</li>
+                        <li><strong>Comprehensive Reporting:</strong> Results are formatted into clear, actionable information with appropriate visualizations</li>
+                    </ol>
+
+                    <h2>Key Performance Metrics</h2>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <div class="metric-value">-15%</div>
+                            <div class="metric-label">Inventory Carrying Costs</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">+18%</div>
+                            <div class="metric-label">Order Fulfillment Rate</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">-65%</div>
+                            <div class="metric-label">Decision Response Time</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">+22%</div>
+                            <div class="metric-label">Operational Efficiency</div>
+                        </div>
+                    </div>
+
+                    <h2>Case Study Highlights</h2>
+                    
+                    <div class="case-study">
+                        <h3>Global Pharmaceutical Distributor</h3>
+                        <p>A global distributor with operations in 12 countries struggled with inventory management across multiple warehouses, facing high carrying costs and frequent stockouts.</p>
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                <h3>Results</h3>
+                                <ul>
+                                    <li>Inventory costs reduced by 18%</li>
+                                    <li>Stockout incidents decreased by 62%</li>
+                                    <li>Expired product waste reduced by 47%</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+                                <h3>Key Insight</h3>
+                                <p>The Web Agent's ability to incorporate external data into inventory planning proved invaluable, allowing the company to anticipate demand spikes that would have been missed using historical data alone.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-study">
+                        <h3>Specialty Pharmaceutical Manufacturer</h3>
+                        <p>A manufacturer of temperature-sensitive biological pharmaceuticals was experiencing issues with their cold chain logistics, including temperature excursions and limited visibility.</p>
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                                <h3>Results</h3>
+                                <ul>
+                                    <li>Temperature excursions reduced from 3.2% to 0.4%</li>
+                                    <li>Transportation costs reduced by 11%</li>
+                                    <li>Compliance documentation time reduced by 85%</li>
+                                </ul>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+                                <h3>Key Insight</h3>
+                                <p>The Router Agent's coordination between multiple data sources created a comprehensive view of logistics operations that human analysts couldn't achieve, identifying patterns that led to significant improvements.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Technology Foundation</h2>
+                    <div class="tech-stack">
+                        <div class="tech-category">
+                            <h4>AI & ML</h4>
+                            <ul>
+                                <li>OpenAI GPT-4</li>
+                                <li>Text Embeddings</li>
+                                <li>Vector Similarity Search</li>
+                                <li>LangChain Framework</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4>Data Systems</h4>
+                            <ul>
+                                <li>FAISS Vector Database</li>
+                                <li>Pandas & NumPy</li>
+                                <li>Redis</li>
+                                <li>PostgreSQL</li>
+                            </ul>
+                        </div>
+                        <div class="tech-category">
+                            <h4>Integration & Visualization</h4>
+                            <ul>
+                                <li>Flask REST API</li>
+                                <li>Matplotlib & Plotly</li>
+                                <li>LangGraph</li>
+                                <li>React Frontend</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h2>Implementation Benefits</h2>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                            <h3>Rapid Deployment</h3>
+                            <p>Cloud-based implementation with minimal infrastructure requirements and seamless integration with existing systems.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                            <h3>Continuous Learning</h3>
+                            <p>System improves over time through usage patterns and feedback, adapting to your specific supply chain dynamics.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h3>Operational Resilience</h3>
+                            <p>Build supply chains that can adapt to disruptions and market changes with proactive risk management.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-navigation">
+                <a href="project_one.html" class="button">
+                    <i class="fas fa-arrow-left"></i> Previous Project
+                </a>
+                <a href="project_three.html" class="button">
+                    Next Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Pritom Bhowmik. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Slider functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.slider-image');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevButton = document.querySelector('.slider-button.prev');
+            const nextButton = document.querySelector('.slider-button.next');
+            let currentIndex = 0;
+            const interval = 4000; // 4 seconds
+            let slideInterval;
+
+            function showImage(index) {
+                images.forEach(img => img.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                images[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            function nextImage() {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            }
+
+            function prevImage() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            }
+
+            function startSlideshow() {
+                slideInterval = setInterval(nextImage, interval);
+            }
+
+            function stopSlideshow() {
+                clearInterval(slideInterval);
+            }
+
+            // Event listeners for dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showImage(index);
+                    stopSlideshow();
+                    startSlideshow();
+                });
+            });
+
+            // Event listeners for buttons
+            prevButton.addEventListener('click', () => {
+                prevImage();
+                stopSlideshow();
+                startSlideshow();
+            });
+
+            nextButton.addEventListener('click', () => {
+                nextImage();
+                stopSlideshow();
+                startSlideshow();
+            });
+
+            // Pause on hover
+            const sliderContainer = document.querySelector('.slider-container');
+            sliderContainer.addEventListener('mouseenter', stopSlideshow);
+            sliderContainer.addEventListener('mouseleave', startSlideshow);
+
+            // Start the slideshow
+            startSlideshow();
+        });
+    </script>
+</body>
+</html>
