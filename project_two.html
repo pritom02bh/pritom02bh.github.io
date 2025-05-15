@@ -924,10 +924,50 @@
         const menuToggle = document.querySelector('.mobile-menu-btn');
         const navbarMenu = document.querySelector('.nav-links');
         
-        menuToggle.addEventListener('click', function() {
-            navbarMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
+        if (menuToggle && navbarMenu) {
+            menuToggle.addEventListener('click', function() {
+                navbarMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+            
+            // Close menu when clicking on a nav link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navbarMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (navbarMenu.classList.contains('active') && 
+                    !navbarMenu.contains(e.target) && 
+                    !menuToggle.contains(e.target)) {
+                    navbarMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
     </script>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Pritom Bhowmik. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#hero">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#skills">Skills</a>
+                    <a href="index.html#projects">Projects</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
