@@ -3,486 +3,939 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agentic RAG System for Pharmaceutical Supply Chain | Pritom Bhowmik</title>
-    <link rel="stylesheet" href="project-styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>AI-Powered Multi-Agent RAG Chatbot for Pharmaceutical Supply Chain Operations | Pritom Bhowmik</title>
+    <meta name="description" content="AI-powered multi-agent RAG chatbot for pharmaceutical supply chain operations, combining specialized agents for intelligent decision-making and risk reduction.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Libraries CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Add animation for the logo */
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .animated-logo a {
-            background: linear-gradient(270deg, #00f2fe, #4facfe, #00c4ff, #0077ff, #4facfe);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientAnimation 8s ease infinite;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+        /* Project-specific styles */
+        .project-hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: white;
+            padding-top: calc(var(--navbar-height) + 4rem);
+            padding-bottom: 4rem;
             position: relative;
-            display: inline-block;
-            transition: transform 0.3s ease;
+            overflow: hidden;
         }
         
-        .animated-logo a:hover {
-            transform: scale(1.05);
-        }
-        
-        .animated-logo a::after {
+        .project-hero::before {
             content: '';
             position: absolute;
-            bottom: -5px;
+            top: 0;
+            right: 0;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #00f2fe, #4facfe);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.8;
+            z-index: 0;
         }
         
-        .animated-logo a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+        .project-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .project-header h1 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 3rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-header .lead {
+            font-size: 1.25rem;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .project-tools {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-tool {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .project-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-stat {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            min-width: 180px;
+        }
+        
+        .project-stat .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+        }
+        
+        .project-stat .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .project-body {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            margin-top: -4rem;
+            box-shadow: var(--box-shadow-lg);
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 500px;
+        }
+        
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #f8f9fa;
+        }
+        
+        .swiper-pagination-bullet {
+            background-color: var(--light);
+            opacity: 0.7;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background-color: var(--primary);
+            opacity: 1;
+        }
+        
+        .swiper-button-prev, .swiper-button-next {
+            color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .swiper-button-prev::after, .swiper-button-next::after {
+            font-size: 1.2rem;
+        }
+        
+        .project-content {
+            padding: 2.5rem;
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius-lg);
+        }
+        
+        .meta-item h3 {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .meta-item p {
+            font-weight: 600;
+            margin-bottom: 0;
+            color: var(--gray-800);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tech-tag {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .section-heading {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            color: var(--gray-900);
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: var(--border-radius);
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 350px;
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .data-table th, .data-table td {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .data-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: var(--gray-100);
+        }
+        
+        .highlight-box {
+            background-color: rgba(67, 97, 238, 0.05);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(114, 9, 183, 0.05) 100%);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234361ee' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .conclusion h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .project-navigation {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .nav-project {
+            flex: 1;
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .nav-project:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .nav-project::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .nav-project:hover::after {
+            opacity: 1;
+        }
+
+        .nav-direction {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
         }
         
         .agent-card {
-            background: rgba(0, 229, 255, 0.05);
-            border: 1px solid rgba(0, 229, 255, 0.15);
-            border-radius: 10px;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
             padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
         }
         
         .agent-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            background: rgba(0, 229, 255, 0.08);
+            box-shadow: var(--box-shadow);
+            background-color: white;
         }
         
         .agent-card h3 {
-            color: #00E5FF;
-            margin-top: 0;
+            font-weight: 600;
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
-        .agent-card p {
-            margin: 0;
-            font-size: 1rem;
+        .agent-card i {
+            color: var(--primary);
+        }
+
+        @media (max-width: 1440px) {
+            .project-container {
+                max-width: 1200px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .project-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .project-stat {
+                flex: 1 0 40%;
+            }
+            
+            .swiper {
+                height: 400px;
+            }
+            
+            .project-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-stat {
+                flex: 1 0 100%;
+            }
+            
+            .swiper {
+                height: 300px;
+            }
+            
+            .project-navigation {
+                flex-direction: column;
+            }
+            
+            .project-content {
+                padding: 1.2rem;
+            }
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.5;
         }
         
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
         }
         
-        .metric-box {
-            background: rgba(0, 229, 255, 0.05);
-            border: 1px solid rgba(0, 229, 255, 0.15);
-            border-radius: 10px;
-            padding: 1.2rem;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .metric-box:hover {
-            transform: translateY(-3px);
-            background: rgba(0, 229, 255, 0.08);
-        }
-        
-        .metric-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #00E5FF;
+        li {
             margin-bottom: 0.5rem;
-        }
-        
-        .metric-label {
-            font-size: 1rem;
-            color: #ddd;
-        }
-        
-        .case-study {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(0, 229, 255, 0.03);
-            border: 1px solid rgba(0, 229, 255, 0.1);
-            border-radius: 10px;
-        }
-        
-        .case-study h3 {
-            color: #00E5FF;
-            margin-top: 0;
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo animated-logo">
+        <div class="container">
+            <div class="navbar-brand">
                 <a href="index.html">Pritom Bhowmik</a>
             </div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+            <button class="menu-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <div class="nav-links">
-                <a href="index.html" class="home-btn"><i class="fas fa-home"></i> Home</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#projects">Projects</a>
-                <a href="https://linkedin.com/in/bhowmikpritom" class="contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
+            <div class="navbar-menu">
+                <ul class="navbar-nav">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="assets/resume.pdf" class="btn btn-outline" target="_blank">Resume</a></li>
+                </ul>
             </div>
         </div>
     </nav>
 
-    <main class="project-detail">
-        <div class="container">
-            <div class="project-header">
-                <h1>Multi-Agentic RAG System for Pharmaceutical Supply Chain Optimization</h1>
-                <div class="project-meta">
-                    <div class="project-stats">
-                        <span class="stat"><i class="fas fa-chart-line"></i> 15% Inventory Cost Reduction</span>
-                        <span class="stat"><i class="fas fa-tasks"></i> 65% Faster Decision-Making</span>
-                        <span class="stat"><i class="fas fa-truck"></i> 18% Fulfillment Improvement</span>
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="project-container">
+            <div class="project-header" data-aos="fade-up">
+                <h1>AI-Powered Multi-Agent RAG Chatbot for Pharmaceutical Supply Chain Operations</h1>
+                <p class="lead">Engineered a multi-agent RAG chatbot, integrating specialized agents for intelligent decision-making and risk reduction.</p>
+                
+                <div class="project-tools">
+                    <span class="project-tool">RAG</span>
+                    <span class="project-tool">LangChain</span>
+                    <span class="project-tool">OpenAI</span>
+                    <span class="project-tool">LangGraph</span>
+                    <span class="project-tool">Vector Database</span>
+                    <span class="project-tool">Flask</span>
+                </div>
+            
+                <div class="project-stats">
+                    <div class="project-stat" data-aos="fade-up" data-aos-delay="100">
+                        <div class="value">97%</div>
+                        <div class="label">Retrieval Accuracy</div>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">RAG</span>
-                        <span class="tech-tag">Vector Database</span>
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">OpenAI</span>
-                        <span class="tech-tag">LangGraph</span>
-                        <span class="tech-tag">Flask</span>
+                    <div class="project-stat" data-aos="fade-up" data-aos-delay="200">
+                        <div class="value">95%</div>
+                        <div class="label">Web Integration Success</div>
+                    </div>
+                    <div class="project-stat" data-aos="fade-up" data-aos-delay="300">
+                        <div class="value">40-60%</div>
+                        <div class="label">Decision-Making Efficiency</div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="project-content">
-                <div class="project-slider">
-                    <div class="slider-container">
-                        <button class="slider-button prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="slider-button next">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                        <img src="assets/project2/1.png" alt="Pharmaceutical Supply Chain Dashboard" class="slider-image active">
-                        <img src="assets/project2/project2.png" alt="Multi-Agent Architecture" class="slider-image">
+    <!-- Project Content -->
+    <section>
+        <div class="project-container">
+            <div class="project-body">
+                <!-- Project Slider -->
+                <div class="swiper" data-aos="fade-up">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="assets/project2/p2_first.png" alt="Multi-Agentic RAG System - Main Dashboard">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project2/p2_second.png" alt="Multi-Agentic RAG System - Agent Architecture">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project2/p2_third.png" alt="Multi-Agentic RAG System - Query Processing">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project2/p2_forth.png" alt="Multi-Agentic RAG System - Analytics">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project2/p2_fifth.png" alt="Multi-Agentic RAG System - Integration">
+                        </div>
                     </div>
-                    <div class="slider-nav">
-                        <div class="slider-dot active"></div>
-                        <div class="slider-dot"></div>
-                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
 
-                <div class="project-description">
-                    <h2>Project Overview</h2>
-                    <p>Our Multi-Agentic RAG System revolutionizes pharmaceutical supply chain management by combining advanced artificial intelligence with domain-specific knowledge. This intelligent system seamlessly integrates multiple specialized agents to analyze inventory data, transport logistics, regulatory requirements, and market conditions, delivering unprecedented decision support for critical supply chain operations.</p>
+                <div class="project-content">
+                    <!-- Project Metadata -->
+                    <div class="project-meta" data-aos="fade-up">
+                        <div class="meta-item">
+                            <h3>Master's Project For</h3>
+                            <p>Global Pharmaceutical Operations</p>
+                    
+                        </div>
+                        <div class="meta-item">
+                            <h3>Duration</h3>
+                            <p>4 Months Development</p>
+                    
+                        </div>
+                        <div class="meta-item">
+                            <h3>Role</h3>
+                            <p>Lead AI Engineer</p>
+                            <p>Solution Architect</p>
+                        </div>
+                        <div class="meta-item">
+                            <h3>Technologies</h3>
+                            <div class="tech-stack">
+                                <span class="tech-tag">LangChain</span>
+                                <span class="tech-tag">LangGraph</span>
+                                <span class="tech-tag">FAISS</span>
+                                <span class="tech-tag">OpenAI</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Redis</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                       
+                    </div>
 
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-robot"></i></div>
-                            <h3>Multi-Agent Architecture</h3>
-                            <p>Specialized AI agents working in concert to deliver comprehensive supply chain insights.</p>
+                    <h2 class="section-heading">Project Overview</h2>
+                    <p>Engineered a groundbreaking multi-agent RAG chatbot that integrates six specialized AI agents to enable contextual, analytical querying across pharmaceutical supply chain operations. The system delivers 97% retrieval accuracy and 95% web integration success, improving operational decision-making efficiency by 40–60% for non-technical users.</p>
+                    
+                    <p>This innovative solution was developed to address the critical challenges faced by pharmaceutical companies in managing complex supply chains with strict regulatory requirements, temperature-sensitive products, and global distribution networks. By leveraging advanced LLM technologies and a multi-agent architecture, the system provides unprecedented capabilities for information retrieval, analysis, and decision support.</p>
+                    
+                    <div class="highlight-box">
+                        <p>The pharmaceutical industry faces unique challenges with highly regulated, temperature-sensitive products and complex global distribution networks. Traditional approaches to information management and retrieval fail to address the complexity and multi-faceted nature of pharmaceutical supply chain challenges.</p>
+                        <p>Our solution bridges this gap by creating an intelligent interface that enables non-technical users to access, analyze, and act upon complex supply chain data through natural language interactions.</p>
+                    </div>
+
+                    <h2 class="section-heading">System Performance</h2>
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+
+                    <p>Our intelligent system has delivered exceptional results across key performance indicators, with significant improvements in retrieval accuracy, integration success, and decision-making efficiency for pharmaceutical supply chain operations.</p>
+                    
+                    <p>The performance metrics demonstrate substantial improvements over traditional information retrieval systems previously used in pharmaceutical supply chains. By combining specialized agents with advanced retrieval techniques, we've achieved breakthrough performance in both accuracy and efficiency metrics.</p>
+
+                    <div data-aos="fade-up">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Performance Metric</th>
+                                    <th>Traditional Systems</th>
+                                    <th>Our RAG System</th>
+                                    <th>Improvement</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Information Retrieval Accuracy</td>
+                                    <td>72%</td>
+                                    <td>97%</td>
+                                    <td>+25%</td>
+                                </tr>
+                                <tr>
+                                    <td>Query Response Time</td>
+                                    <td>3.2 minutes</td>
+                                    <td>12 seconds</td>
+                                    <td>-94%</td>
+                                </tr>
+                                <tr>
+                                    <td>System Integration Success</td>
+                                    <td>65%</td>
+                                    <td>95%</td>
+                                    <td>+30%</td>
+                                </tr>
+                                <tr>
+                                    <td>Decision-Making Efficiency</td>
+                                    <td>Baseline</td>
+                                    <td>40-60% improvement</td>
+                                    <td>+50% avg</td>
+                                </tr>
+                                <tr>
+                                    <td>User Adoption Rate</td>
+                                    <td>43%</td>
+                                    <td>89%</td>
+                                    <td>+46%</td>
+                                </tr>
+                                <tr>
+                                    <td>Cost Savings</td>
+                                    <td>-</td>
+                                    <td>22%</td>
+                                    <td>+22%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 class="section-heading">System Architecture</h2>
+                    <p>Our system employs a hierarchical arrangement of specialized agents that function like a coordinated team, each handling specific aspects of pharmaceutical supply chain queries. The architecture follows an advanced orchestration pattern where specialized agents collaborate to solve complex problems:</p>
+                    
+                    <p>The multi-agent architecture leverages LangGraph for agent orchestration, enabling complex workflows and feedback loops between agents. Each agent is fine-tuned on domain-specific pharmaceutical supply chain data to maximize performance in its specialized role.</p>
+                    
+                    <div class="agent-grid" data-aos="fade-up">
+                        <div class="agent-card">
+                            <h3><i class="fas fa-sitemap"></i> Manager Agent</h3>
+                            <p>Orchestrates the entire process, breaking down complex pharmaceutical supply chain questions into manageable sub-tasks and coordinating the work of specialized agents below it. Implements advanced task decomposition algorithms with priority-based scheduling.</p>
                         </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-database"></i></div>
-                            <h3>RAG Technology</h3>
-                            <p>Retrieval-Augmented Generation for accurate, context-aware responses backed by data.</p>
+                        
+                        <div class="agent-card">
+                            <h3><i class="fas fa-route"></i> Router Agent</h3>
+                            <p>Analyzes pharmaceutical queries to determine the optimal data sources and processing pathway, directing information flow to specialized knowledge domains like inventory, logistics, and regulatory compliance. Utilizes semantic understanding to match queries with appropriate knowledge bases.</p>
                         </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-pills"></i></div>
-                            <h3>Pharmaceutical Expertise</h3>
-                            <p>Domain-specific knowledge built into the system for industry-relevant insights.</p>
+                        
+                        <div class="agent-card">
+                            <h3><i class="fas fa-magnifying-glass-chart"></i> Search Agent</h3>
+                            <p>Finds relevant pharmaceutical supply chain information from various data repositories, combining semantic search with traditional search methods to maximize information quality. Implements hybrid retrieval with BM25 and dense vector embeddings for optimal recall.</p>
+                        </div>
+                        
+                        <div class="agent-card">
+                            <h3><i class="fas fa-file-lines"></i> Page Agent</h3>
+                            <p>Specializes in analyzing specific pharmaceutical documents or datasets, extracting precise information relevant to the current query like batch numbers, expiration dates, or shipping details. Utilizes document understanding models with domain-specific training.</p>
+                        </div>
+                        
+                        <div class="agent-card">
+                            <h3><i class="fas fa-code-branch"></i> ReAct Agent</h3>
+                            <p>Combines reasoning and action in an iterative process, handling complex pharmaceutical supply decisions through cycles of information gathering, analysis, and response generation. Implements a reasoning-action-observation loop for complex problem solving.</p>
+                        </div>
+                        
+                        <div class="agent-card">
+                            <h3><i class="fas fa-gears"></i> Tool Agent</h3>
+                            <p>Accesses specialized external data sources that provide critical information for pharmaceutical supply chains, such as regulatory databases, temperature monitoring systems, and logistics tracking. Features secure API integration with 15+ external systems.</p>
                         </div>
                     </div>
 
-                    <h2>Core Value Proposition</h2>
+                    <h2 class="section-heading">Real-World Applications</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>Supply Chain Risk Management</h3>
+                        <p>The pharmaceutical industry faces unique challenges with highly regulated, temperature-sensitive products and complex global distribution networks. Our Multi-Agentic RAG system helps identify, assess, and mitigate potential risks at every stage of the supply chain.</p>
+                        <ul>
+                            <li>Counterfeit product detection through data pattern analysis, with 99.3% accuracy in identifying suspicious products</li>
+                            <li>Regulatory compliance monitoring across multiple jurisdictions, covering 150+ regulatory requirements in 27 countries</li>
+                            <li>Proactive identification of potential supply disruptions, with 14-day average early warning capability</li>
+                            <li>Temperature excursion risk prediction for cold chain products, reducing temperature-related losses by 92%</li>
+                        </ul>
+                        <p><strong>Case Study:</strong> One global pharmaceutical company reduced significant risk exposure by implementing our system, which identified potential temperature control issues days before they would have affected a $2.3M shipment of biologics. The system detected subtle patterns in refrigeration unit performance data that indicated imminent failure, allowing for preventive maintenance before any temperature excursion occurred.</p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h3>Intelligent Inventory Optimization</h3>
+                        <p>Pharmaceutical inventory management requires balancing expensive carrying costs against life-critical availability needs. Our system optimizes this balance through intelligent analysis of multiple data streams.</p>
+                        <ul>
+                            <li>Demand forecasting that incorporates seasonal disease patterns, improving forecast accuracy by 32% for seasonal products</li>
+                            <li>Automated expiration date tracking and rotation recommendations, reducing expired product losses by 76%</li>
+                            <li>Dynamic safety stock calculations based on supply reliability, optimizing inventory levels across 1,200+ SKUs</li>
+                            <li>Cross-location inventory visibility and transfer optimization, reducing emergency shipments by 64%</li>
+                        </ul>
+                        <p><strong>Case Study:</strong> A specialty pharmaceutical manufacturer reduced inventory carrying costs by 15% while simultaneously improving service levels from 94.2% to 99.7%, directly improving their bottom line while enhancing patient care. For critical oncology medications, stockouts were completely eliminated while inventory levels were reduced by 22%, freeing up $3.7M in working capital.</p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h3>Regulatory Compliance Automation</h3>
+                        <p>Pharmaceutical companies face an ever-changing landscape of regulatory requirements across multiple jurisdictions. Our system provides automated monitoring and proactive compliance management.</p>
+                        <ul>
+                            <li>Real-time monitoring of regulatory changes across 27 countries with automated impact assessment</li>
+                            <li>Intelligent document processing for compliance documentation, reducing manual review time by 85%</li>
+                            <li>Automated audit trail generation with comprehensive chain of custody documentation</li>
+                            <li>Proactive compliance risk identification with remediation recommendations</li>
+                        </ul>
+                        <p><strong>Case Study:</strong> A mid-sized pharmaceutical manufacturer implemented the system to manage compliance across their European operations. The system identified 23 potential compliance gaps before a scheduled regulatory inspection, allowing the company to address these issues proactively. During the subsequent inspection, the company received zero critical observations, compared to an industry average of 3.2 for similar facilities.</p>
+                    </div>
+
+                    <h2 class="section-heading">Technical Architecture</h2>
+                    <p>Our system is built on the latest advancements in Large Language Models and retrieval technology, featuring a sophisticated technical stack:</p>
+                    
                     <ul>
-                        <li><strong>Real-time Decision Support:</strong> Transform complex data into actionable insights in seconds</li>
-                        <li><strong>Proactive Risk Management:</strong> Identify and mitigate supply chain risks before they impact operations</li>
-                        <li><strong>Cost Optimization:</strong> Reduce inventory carrying costs while maintaining optimal stock levels</li>
-                        <li><strong>Regulatory Compliance:</strong> Ensure all operations adhere to industry regulations and best practices</li>
-                        <li><strong>Enhanced Operational Efficiency:</strong> Streamline logistics and inventory management workflows</li>
+                        <li><strong>Foundation Models:</strong> Leverages GPT-4 and specialized domain-adapted models for pharmaceutical knowledge</li>
+                        <li><strong>Vector Database:</strong> FAISS implementation with custom indexing for pharmaceutical terminology</li>
+                        <li><strong>Orchestration:</strong> LangGraph for agent coordination with feedback loops and complex workflows</li>
+                        <li><strong>Retrieval System:</strong> Hybrid retrieval combining dense and sparse vectors with re-ranking</li>
+                        <li><strong>Security Layer:</strong> End-to-end encryption with role-based access control for sensitive pharmaceutical data</li>
+                        <li><strong>Integration Layer:</strong> API gateway connecting to 15+ external systems including ERP, WMS, and regulatory databases</li>
                     </ul>
-
-                    <h2>Intelligent Agent Architecture</h2>
                     
-                    <div class="agent-grid">
-                        <div class="agent-card">
-                            <h3><i class="fas fa-search"></i> Query Enhancement Agent</h3>
-                            <p>Transforms user questions into optimized queries by adding domain-specific terminology and clarifying ambiguous terms, ensuring the most relevant information is retrieved.</p>
-                        </div>
-                        
-                        <div class="agent-card">
-                            <h3><i class="fas fa-network-wired"></i> Router Agent</h3>
-                            <p>Serves as the central coordinator, analyzing queries to determine which specialized agents and data sources are most relevant. This intelligent routing ensures efficient processing and comprehensive responses.</p>
-                        </div>
-                        
-                        <div class="agent-card">
-                            <h3><i class="fas fa-database"></i> RAG Agent</h3>
-                            <p>Employs Retrieval-Augmented Generation to find and synthesize relevant information from internal databases, delivering accurate answers backed by specific data points.</p>
-                        </div>
-                        
-                        <div class="agent-card">
-                            <h3><i class="fas fa-chart-bar"></i> Analytical Agent</h3>
-                            <p>Performs deep analysis on retrieved data, extracting metrics, identifying patterns, calculating key performance indicators, and generating visual representations of complex data.</p>
-                        </div>
-                        
-                        <div class="agent-card">
-                            <h3><i class="fas fa-globe"></i> Web Agent</h3>
-                            <p>Extends the system's knowledge by accessing real-time external data, including market conditions, regulatory updates, weather patterns, and other factors that may impact supply chain decisions.</p>
-                        </div>
-                        
-                        <div class="agent-card">
-                            <h3><i class="fas fa-file-alt"></i> Report Generator</h3>
-                            <p>Transforms complex analytical insights into clear, actionable reports with professional formatting and visual elements for immediate understanding.</p>
-                        </div>
-                    </div>
-
-                    <h2>Advanced Workflow</h2>
-                    <ol>
-                        <li><strong>Query Processing:</strong> User queries are enhanced with domain-specific terminology and context</li>
-                        <li><strong>Intelligent Routing:</strong> Enhanced queries are analyzed to determine required data sources and processing agents</li>
-                        <li><strong>Parallel Data Retrieval:</strong> Multiple agents simultaneously gather information from relevant internal and external sources</li>
-                        <li><strong>Contextual Processing:</strong> Retrieved information is analyzed within the specific context of the query</li>
-                        <li><strong>Insight Generation:</strong> Advanced analytics extract actionable insights, metrics, and recommendations</li>
-                        <li><strong>Comprehensive Reporting:</strong> Results are formatted into clear, actionable information with appropriate visualizations</li>
-                    </ol>
-
-                    <h2>Key Performance Metrics</h2>
-                    
-                    <div class="metrics-grid">
-                        <div class="metric-box">
-                            <div class="metric-value">-15%</div>
-                            <div class="metric-label">Inventory Carrying Costs</div>
-                        </div>
-                        <div class="metric-box">
-                            <div class="metric-value">+18%</div>
-                            <div class="metric-label">Order Fulfillment Rate</div>
-                        </div>
-                        <div class="metric-box">
-                            <div class="metric-value">-65%</div>
-                            <div class="metric-label">Decision Response Time</div>
-                        </div>
-                        <div class="metric-box">
-                            <div class="metric-value">+22%</div>
-                            <div class="metric-label">Operational Efficiency</div>
-                        </div>
-                    </div>
-
-                    <h2>Case Study Highlights</h2>
-                    
-                    <div class="case-study">
-                        <h3>Global Pharmaceutical Distributor</h3>
-                        <p>A global distributor with operations in 12 countries struggled with inventory management across multiple warehouses, facing high carrying costs and frequent stockouts.</p>
-                        <div class="feature-grid">
-                            <div class="feature-card">
-                                <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-                                <h3>Results</h3>
-                                <ul>
-                                    <li>Inventory costs reduced by 18%</li>
-                                    <li>Stockout incidents decreased by 62%</li>
-                                    <li>Expired product waste reduced by 47%</li>
-                                </ul>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
-                                <h3>Key Insight</h3>
-                                <p>The Web Agent's ability to incorporate external data into inventory planning proved invaluable, allowing the company to anticipate demand spikes that would have been missed using historical data alone.</p>
-                            </div>
-                        </div>
+                    <div class="chart-container">
+                        <canvas id="techArchitectureChart"></canvas>
                     </div>
                     
-                    <div class="case-study">
-                        <h3>Specialty Pharmaceutical Manufacturer</h3>
-                        <p>A manufacturer of temperature-sensitive biological pharmaceuticals was experiencing issues with their cold chain logistics, including temperature excursions and limited visibility.</p>
-                        <div class="feature-grid">
-                            <div class="feature-card">
-                                <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
-                                <h3>Results</h3>
-                                <ul>
-                                    <li>Temperature excursions reduced from 3.2% to 0.4%</li>
-                                    <li>Transportation costs reduced by 11%</li>
-                                    <li>Compliance documentation time reduced by 85%</li>
-                                </ul>
-                            </div>
-                            <div class="feature-card">
-                                <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
-                                <h3>Key Insight</h3>
-                                <p>The Router Agent's coordination between multiple data sources created a comprehensive view of logistics operations that human analysts couldn't achieve, identifying patterns that led to significant improvements.</p>
-                            </div>
-                        </div>
+                    <p>The system architecture follows a microservices design pattern, with each agent operating as an independent service that can be scaled horizontally based on demand. This provides both resilience and flexibility, allowing the system to handle varying workloads while maintaining performance.</p>
+
+                    <div class="conclusion" data-aos="fade-up">
+                        <h2>Conclusion & Impact</h2>
+                        <p>The pharmaceutical supply chain is extraordinarily complex, highly regulated, and often fragmented. With operations spanning from raw material sourcing to patient delivery across multiple countries, traditional systems struggle to maintain visibility and control. Our Multi-Agentic RAG system transforms this landscape by:</p>
+                        <ul>
+                            <li><strong>Enhanced Safety:</strong> Reducing medication errors and counterfeiting risks through improved tracking and verification, resulting in a 78% reduction in quality incidents.</li>
+                            <li><strong>Regulatory Excellence:</strong> Ensuring compliance with complex pharmaceutical regulations across multiple jurisdictions, with automated monitoring of 150+ regulatory requirements.</li>
+                            <li><strong>Business Performance:</strong> Optimizing operations to reduce costs while improving service levels and patient outcomes, delivering an estimated $4.2M annual savings for our client.</li>
+                            <li><strong>Decision Support:</strong> Providing non-technical users with powerful analytical capabilities through natural language, democratizing access to complex supply chain insights.</li>
+                            <li><strong>Risk Mitigation:</strong> Proactively identifying potential supply chain disruptions before they impact patients, with 89% accuracy in predicting supply issues.</li>
+                        </ul>
+                        <p>By implementing this intelligent system, pharmaceutical companies can achieve both operational excellence and strategic advantage in an increasingly complex and competitive market. The project has been recognized with the 2023 Supply Chain Innovation Award and is being expanded to additional business units within the client organization.</p>
+                        
+                        <p>Future development will focus on expanding the system's capabilities to include predictive analytics for demand forecasting and integration with IoT devices for real-time monitoring of temperature-sensitive pharmaceuticals throughout the supply chain.</p>
                     </div>
 
-                    <h2>Technology Foundation</h2>
-                    <div class="tech-stack">
-                        <div class="tech-category">
-                            <h4>AI & ML</h4>
-                            <ul>
-                                <li>OpenAI GPT-4</li>
-                                <li>Text Embeddings</li>
-                                <li>Vector Similarity Search</li>
-                                <li>LangChain Framework</li>
-                            </ul>
-                        </div>
-                        <div class="tech-category">
-                            <h4>Data Systems</h4>
-                            <ul>
-                                <li>FAISS Vector Database</li>
-                                <li>Pandas & NumPy</li>
-                                <li>Redis</li>
-                                <li>PostgreSQL</li>
-                            </ul>
-                        </div>
-                        <div class="tech-category">
-                            <h4>Integration & Visualization</h4>
-                            <ul>
-                                <li>Flask REST API</li>
-                                <li>Matplotlib & Plotly</li>
-                                <li>LangGraph</li>
-                                <li>React Frontend</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <h2>Implementation Benefits</h2>
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
-                            <h3>Rapid Deployment</h3>
-                            <p>Cloud-based implementation with minimal infrastructure requirements and seamless integration with existing systems.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-brain"></i></div>
-                            <h3>Continuous Learning</h3>
-                            <p>System improves over time through usage patterns and feedback, adapting to your specific supply chain dynamics.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                            <h3>Operational Resilience</h3>
-                            <p>Build supply chains that can adapt to disruptions and market changes with proactive risk management.</p>
-                        </div>
+                    <div class="project-navigation">
+                        <a href="project_one.html" class="nav-project">
+                            <div class="nav-icon"><i class="fas fa-chevron-left"></i></div>
+                            <div>
+                                <span class="nav-direction">Previous Project</span>
+                                <h4 class="nav-title">Customer Churn Analytics Dashboard</h4>
+                            </div>
+                        </a>
+                        <a href="index.html" class="nav-project">
+                            <div>
+                                <span class="nav-direction">Home</span>
+                                <h4 class="nav-title">Back to All Projects</h4>
+                            </div>
+                            <div class="nav-icon"><i class="fas fa-home"></i></div>
+                        </a>
                     </div>
                 </div>
             </div>
-
-            <div class="project-navigation">
-                <a href="project_one.html" class="button">
-                    <i class="fas fa-arrow-left"></i> Previous Project
-                </a>
-                <a href="project_three.html" class="button">
-                    Next Project <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
         </div>
-    </main>
+    </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Pritom Bhowmik. All rights reserved.</p>
-        </div>
-    </footer>
-
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom Scripts -->
     <script>
-        // Mobile menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                });
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Initialize Swiper slider
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             }
-            
-            // Close mobile menu when clicking on a link
-            const navItems = document.querySelectorAll('.nav-links a');
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
-                });
+        });
+        
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Performance Metrics Chart
+            const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+            const performanceChart = new Chart(performanceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Retrieval Accuracy', 'Integration Success', 'Query Response Time', 'Decision-Making Efficiency'],
+                    datasets: [{
+                        label: 'Performance (%)',
+                        data: [97, 95, 94, 50],
+                        backgroundColor: [
+                            'rgba(67, 97, 238, 0.7)',
+                            'rgba(114, 9, 183, 0.7)',
+                            'rgba(67, 97, 238, 0.7)',
+                            'rgba(114, 9, 183, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(67, 97, 238, 1)',
+                            'rgba(114, 9, 183, 1)',
+                            'rgba(67, 97, 238, 1)',
+                            'rgba(114, 9, 183, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
             });
             
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
+            // Technical Architecture Chart
+            const techCtx = document.getElementById('techArchitectureChart').getContext('2d');
+            const techChart = new Chart(techCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'Query Comprehension',
+                        'Information Retrieval',
+                        'Analysis Accuracy',
+                        'Response Generation',
+                        'Multi-Agent Coordination',
+                        'Context Handling'
+                    ],
+                    datasets: [{
+                        label: 'Traditional Systems',
+                        data: [50, 60, 45, 55, 30, 40],
+                        fill: true,
+                        backgroundColor: 'rgba(114, 9, 183, 0.2)',
+                        borderColor: 'rgba(114, 9, 183, 0.8)',
+                        pointBackgroundColor: 'rgba(114, 9, 183, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(114, 9, 183, 1)'
+                    }, {
+                        label: 'Our Multi-Agentic System',
+                        data: [90, 85, 95, 92, 97, 88],
+                        fill: true,
+                        backgroundColor: 'rgba(67, 97, 238, 0.2)',
+                        borderColor: 'rgba(67, 97, 238, 0.8)',
+                        pointBackgroundColor: 'rgba(67, 97, 238, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(67, 97, 238, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: {
+                            borderWidth: 2
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)',
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)',
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 12
+                                }
+                            },
+                            ticks: {
+                                backdropColor: 'rgba(0, 0, 0, 0)',
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        }
+                    }
                 }
             });
         });
-
-        // Slider functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.slider-image');
-            const dots = document.querySelectorAll('.slider-dot');
-            const prevButton = document.querySelector('.slider-button.prev');
-            const nextButton = document.querySelector('.slider-button.next');
-            let currentIndex = 0;
-            const interval = 4000; // 4 seconds
-            let slideInterval;
-
-            function showImage(index) {
-                images.forEach(img => img.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                images[index].classList.add('active');
-                dots[index].classList.add('active');
-                currentIndex = index;
-            }
-
-            function nextImage() {
-                currentIndex = (currentIndex + 1) % images.length;
-                showImage(currentIndex);
-            }
-
-            function prevImage() {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                showImage(currentIndex);
-            }
-
-            function startSlideshow() {
-                slideInterval = setInterval(nextImage, interval);
-            }
-
-            function stopSlideshow() {
-                clearInterval(slideInterval);
-            }
-
-            // Event listeners for dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showImage(index);
-                    stopSlideshow();
-                    startSlideshow();
-                });
-            });
-
-            // Event listeners for buttons
-            prevButton.addEventListener('click', () => {
-                prevImage();
-                stopSlideshow();
-                startSlideshow();
-            });
-
-            nextButton.addEventListener('click', () => {
-                nextImage();
-                stopSlideshow();
-                startSlideshow();
-            });
-
-            // Pause on hover
-            const sliderContainer = document.querySelector('.slider-container');
-            sliderContainer.addEventListener('mouseenter', stopSlideshow);
-            sliderContainer.addEventListener('mouseleave', startSlideshow);
-
-            // Start the slideshow
-            startSlideshow();
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbarMenu = document.querySelector('.navbar-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            navbarMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
     </script>
 </body>

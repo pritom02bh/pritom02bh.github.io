@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Pritom Bhowmik - Data Science & Analytics Portfolio</title>
+    <meta name="description" content="Explore Pritom Bhowmik's data science and analytics portfolio projects showcasing machine learning, data analysis, and visualization expertise.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Libraries CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Projects page specific styles */
+        .projects-header {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: white;
+            padding-top: calc(var(--navbar-height) + 4rem);
+            padding-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .projects-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.8;
+        }
+        
+        .projects-header h1 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 3rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-subtitle {
+            opacity: 0.9;
+            color: white;
+        }
+        
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .projects-body {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            margin-top: -3rem;
+            padding: 2rem;
+            box-shadow: var(--box-shadow-lg);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .search-bar {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            position: relative;
+            transition: all var(--transition);
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+            border: 1px solid var(--gray-300);
+            border-radius: var(--border-radius-lg);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+            box-shadow: var(--box-shadow-sm);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .filter-section {
+            margin: 2.5rem 0;
+        }
+        
+        .filter-heading {
+            font-size: 1.1rem;
+            color: var(--gray-700);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .filter-heading i {
+            color: var(--primary);
+        }
+        
+        .project-filters {
+            justify-content: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-btn {
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+            border: none;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .filter-btn:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: var(--light);
+        }
+        
+        .projects-grid {
+            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            border-radius: var(--border-radius-lg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: var(--box-shadow-sm);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .project-image {
+            height: 220px;
+            border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+            overflow: hidden;
+            position: relative;
+            background-color: #f8f9fa;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius-lg);
+            margin: 3rem 0;
+            display: none;
+        }
+        
+        .no-results i {
+            font-size: 4rem;
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+        }
+        
+        .no-results h3 {
+            margin-bottom: 0.8rem;
+            color: var(--gray-700);
+        }
+        
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .filter-tag {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .filter-tag .remove {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(67, 97, 238, 0.2);
+            border-radius: 50%;
+            transition: all var(--transition-fast);
+        }
+        
+        .filter-tag .remove:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        @media (max-width: 1440px) {
+            .projects-container {
+                max-width: 1200px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .projects-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .projects-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .projects-body {
+                padding: 1.5rem;
+            }
+            
+            .search-input {
+                padding: 1rem 1rem 1rem 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <a href="index.html">Pritom Bhowmik</a>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="navbar-menu">
+                <ul class="navbar-nav">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="#" class="active">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="assets/resume.pdf" class="btn btn-outline" target="_blank">Resume</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Header -->
+    <header class="projects-header">
+        <div class="projects-container">
+            <div class="section-header" data-aos="fade-up">
+                <h1>My Projects</h1>
+                <div class="section-line"></div>
+                <p class="section-subtitle">Browse through my data science and analytics portfolio</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Projects Content -->
+    <section class="projects-section">
+        <div class="projects-container">
+            <div class="projects-body">
+                <!-- Search Bar -->
+                <div class="search-bar" data-aos="fade-up">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search projects by keyword, technology, or industry..." id="projectSearch">
+                </div>
+                
+                <!-- Filter Section -->
+                <div class="filter-section" data-aos="fade-up">
+                    <h4 class="filter-heading"><i class="fas fa-filter"></i> Filter Projects</h4>
+                    <div class="project-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="machine-learning">Machine Learning</button>
+                        <button class="filter-btn" data-filter="data-analysis">Data Analysis</button>
+                        <button class="filter-btn" data-filter="visualization">Visualization</button>
+                        <button class="filter-btn" data-filter="nlp">NLP</button>
+                        <button class="filter-btn" data-filter="time-series">Time Series</button>
+                    </div>
+                    
+                    <div class="active-filters" id="activeFilters">
+                        <!-- Active filters will be added here dynamically -->
+                    </div>
+                </div>
+                
+                <!-- Projects Grid -->
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card" data-category="data-analysis visualization" data-aos="fade-up" data-aos-delay="100" data-tags="power bi, churn analysis, telecom, customer retention, dashboard">
+                        <div class="project-image">
+                            <img src="assets/project1/1.png" alt="Customer Churn Analytics Dashboard – Power BI-Driven Strategy for Reducing 27% Attrition">
+                            <div class="project-overlay">
+                                <a href="project_one.html" class="btn btn-sm btn-primary">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Customer Churn Analytics Dashboard – Power BI-Driven Strategy for Reducing 27% Attrition</h3>
+                            <p>Data-driven approach to identify key drivers of customer churn for a telecom provider with 6,687 users.</p>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>26.86% Churn Rate</span>
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-users"></i>
+                                    <span>6,687 Customers</span>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">Power BI</span>
+                                <span class="tag">Telecom</span>
+                                <span class="tag">DAX</span>
+                                <span class="tag">Visualization</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2 -->
+                    <div class="project-card" data-category="machine-learning data-analysis" data-aos="fade-up" data-aos-delay="150" data-tags="rag, llm, multi-agent, chatbot, pharmaceutical, supply chain">
+                        <div class="project-image">
+                            <img src="assets/project2/p2_first.png" alt="AI-Powered Multi-Agent RAG Chatbot for Pharmaceutical Supply Chain Operations">
+                            <div class="project-overlay">
+                                <a href="project_two.html" class="btn btn-sm btn-primary">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>AI-Powered Multi-Agent RAG Chatbot for Pharmaceutical Supply Chain Operations</h3>
+                            <p>Multi-agentic RAG system leveraging specialized AI agents to synthesize complex information from diverse sources for pharmaceutical supply chain management.</p>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-bullseye"></i>
+                                    <span>97% Retrieval Accuracy</span>
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>40-60% Decision Efficiency</span>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">RAG</span>
+                                <span class="tag">LangChain</span>
+                                <span class="tag">LLM</span>
+                                <span class="tag">Multi-Agent</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="project-card" data-category="data-analysis visualization time-series" data-aos="fade-up" data-aos-delay="200" data-tags="inventory, forecasting, supply chain, optimization, time series">
+                        <div class="project-image">
+                            <img src="assets/project3/1.png" alt="IntelliStock: Intelligent Demand Forecasting & Inventory Optimization Platform">
+                            <div class="project-overlay">
+                                <a href="project_three.html" class="btn btn-sm btn-primary">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>IntelliStock: Intelligent Demand Forecasting & Inventory Optimization Platform</h3>
+                            <p>Advanced inventory optimization platform leveraging machine learning to improve demand forecasting accuracy and reduce inventory costs.</p>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>9.2% MAPE</span>
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-boxes"></i>
+                                    <span>15% Cost Reduction</span>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">Time Series</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">Machine Learning</span>
+                                <span class="tag">Supply Chain</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 4 -->
+                    <div class="project-card" data-category="machine-learning visualization" data-aos="fade-up" data-aos-delay="250" data-tags="logistics, route optimization, delivery, weather data, transportation">
+                        <div class="project-image">
+                            <img src="assets/project4/Screenshot (2).png" alt="Last Mile Delivery Optimization">
+                            <div class="project-overlay">
+                                <a href="project_four.html" class="btn btn-sm btn-primary">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Last Mile Delivery Optimization</h3>
+                            <p>ML-powered platform for optimizing delivery routes considering real-time data like traffic and weather conditions.</p>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-truck"></i>
+                                    <span>25% Cost Reduction</span>
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-clock"></i>
+                                    <span>30% Faster Deliveries</span>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">Optimization</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">Weather API</span>
+                                <span class="tag">Logistics</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 5 -->
+                    <div class="project-card" data-category="machine-learning nlp" data-aos="fade-up" data-aos-delay="300" data-tags="nlp, sentiment analysis, customer feedback, text mining, python">
+                        <div class="project-image">
+                            <img src="assets/project1/3.png" alt="Sentiment Analysis Engine">
+                            <div class="project-overlay">
+                                <a href="#" class="btn btn-sm btn-primary">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Sentiment Analysis Engine</h3>
+                            <p>NLP-based system for analyzing customer feedback and reviews to extract actionable insights and sentiment trends.</p>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-comments"></i>
+                                    <span>92% Accuracy</span>
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>15% Product Improvement</span>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">NLP</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">BERT</span>
+                                <span class="tag">Customer Feedback</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 6 -->
+                    <div class="project-card" data-category="data-analysis visualization" data-aos="fade-up" data-aos-delay="350" data-tags="dashboard, tableau, kpi, business intelligence, sales">
+                        <div class="project-image">
+                            <img src="assets/project1/4.png" alt="Executive KPI Dashboard">
+                            <div class="project-overlay">
+                                <a href="#" class="btn btn-sm btn-primary">View Details</a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Executive KPI Dashboard</h3>
+                            <p>Interactive visualization dashboard providing real-time business metrics and KPIs for executive decision-making.</p>
+                            <div class="project-metrics">
+                                <div class="metric">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>8 Key Business Areas</span>
+                                </div>
+                                <div class="metric">
+                                    <i class="fas fa-clock"></i>
+                                    <span>65% Faster Reporting</span>
+                                </div>
+                            </div>
+                            <div class="project-tags">
+                                <span class="tag">Tableau</span>
+                                <span class="tag">Business Intelligence</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">Data Visualization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults">
+                    <i class="fas fa-search"></i>
+                    <h3>No matching projects found</h3>
+                    <p>Try adjusting your search or filter criteria</p>
+                    <button class="btn btn-primary" id="resetFilters">Reset All Filters</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Pritom Bhowmik. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#hero">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#skills">Skills</a>
+                    <a href="#" class="active">Projects</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Libraries JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="main.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
+        
+        // Projects filtering and search
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectCards = document.querySelectorAll('.project-card');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('projectSearch');
+            const noResultsMessage = document.getElementById('noResults');
+            const resetFiltersButton = document.getElementById('resetFilters');
+            const activeFiltersContainer = document.getElementById('activeFilters');
+            
+            let activeCategory = 'all';
+            let activeSearch = '';
+            let activeTags = [];
+            
+            // Update project visibility based on filters
+            const updateProjects = () => {
+                let hasVisibleProjects = false;
+                
+                projectCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    const cardTags = card.getAttribute('data-tags').toLowerCase();
+                    
+                    // Check if card matches category filter
+                    const matchesCategory = activeCategory === 'all' || cardCategory.includes(activeCategory);
+                    
+                    // Check if card matches search query
+                    const matchesSearch = activeSearch === '' || 
+                                         card.textContent.toLowerCase().includes(activeSearch) || 
+                                         cardTags.includes(activeSearch);
+                    
+                    // Check if card matches all active tags
+                    let matchesTags = true;
+                    if (activeTags.length > 0) {
+                        matchesTags = activeTags.every(tag => cardTags.includes(tag.toLowerCase()));
+                    }
+                    
+                    // Show/hide card based on filters
+                    if (matchesCategory && matchesSearch && matchesTags) {
+                        card.style.display = 'block';
+                        hasVisibleProjects = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                if (hasVisibleProjects) {
+                    noResultsMessage.style.display = 'none';
+                } else {
+                    noResultsMessage.style.display = 'flex';
+                    noResultsMessage.style.flexDirection = 'column';
+                    noResultsMessage.style.alignItems = 'center';
+                }
+                
+                // Update active filters display
+                updateActiveFilters();
+            };
+            
+            // Update active filters display
+            const updateActiveFilters = () => {
+                activeFiltersContainer.innerHTML = '';
+                
+                if (activeCategory !== 'all') {
+                    const categoryTag = document.createElement('div');
+                    categoryTag.className = 'filter-tag';
+                    categoryTag.innerHTML = `
+                        <span>Category: ${activeCategory}</span>
+                        <span class="remove" data-type="category"><i class="fas fa-times"></i></span>
+                    `;
+                    activeFiltersContainer.appendChild(categoryTag);
+                    
+                    // Add event listener to remove button
+                    categoryTag.querySelector('.remove').addEventListener('click', () => {
+                        filterButtons.forEach(btn => {
+                            if (btn.getAttribute('data-filter') === 'all') {
+                                btn.click();
+                            }
+                        });
+                    });
+                }
+                
+                if (activeSearch !== '') {
+                    const searchTag = document.createElement('div');
+                    searchTag.className = 'filter-tag';
+                    searchTag.innerHTML = `
+                        <span>Search: ${activeSearch}</span>
+                        <span class="remove" data-type="search"><i class="fas fa-times"></i></span>
+                    `;
+                    activeFiltersContainer.appendChild(searchTag);
+                    
+                    // Add event listener to remove button
+                    searchTag.querySelector('.remove').addEventListener('click', () => {
+                        searchInput.value = '';
+                        activeSearch = '';
+                        updateProjects();
+                    });
+                }
+                
+                activeTags.forEach(tag => {
+                    const tagElement = document.createElement('div');
+                    tagElement.className = 'filter-tag';
+                    tagElement.innerHTML = `
+                        <span>Tag: ${tag}</span>
+                        <span class="remove" data-type="tag" data-tag="${tag}"><i class="fas fa-times"></i></span>
+                    `;
+                    activeFiltersContainer.appendChild(tagElement);
+                    
+                    // Add event listener to remove button
+                    tagElement.querySelector('.remove').addEventListener('click', (e) => {
+                        const tagToRemove = e.currentTarget.getAttribute('data-tag');
+                        activeTags = activeTags.filter(t => t !== tagToRemove);
+                        updateProjects();
+                    });
+                });
+                
+                // Show/hide active filters container
+                if (activeFiltersContainer.innerHTML === '') {
+                    activeFiltersContainer.style.display = 'none';
+                } else {
+                    activeFiltersContainer.style.display = 'flex';
+                }
+            };
+            
+            // Filter button click event
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Update active category
+                    activeCategory = button.getAttribute('data-filter');
+                    
+                    // Update projects display
+                    updateProjects();
+                });
+            });
+            
+            // Search input event
+            searchInput.addEventListener('input', () => {
+                activeSearch = searchInput.value.toLowerCase();
+                updateProjects();
+            });
+            
+            // Reset filters button click event
+            resetFiltersButton.addEventListener('click', () => {
+                // Reset category filter
+                filterButtons.forEach(btn => {
+                    if (btn.getAttribute('data-filter') === 'all') {
+                        btn.click();
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Reset search filter
+                searchInput.value = '';
+                activeSearch = '';
+                
+                // Reset tag filters
+                activeTags = [];
+                
+                // Update projects display
+                updateProjects();
+            });
+            
+            // Add tag when clicking on a project tag
+            document.querySelectorAll('.project-tags .tag').forEach(tag => {
+                tag.addEventListener('click', () => {
+                    const tagText = tag.textContent.toLowerCase();
+                    if (!activeTags.includes(tagText)) {
+                        activeTags.push(tagText);
+                        updateProjects();
+                    }
+                });
+            });
+            
+            // Initialize project display
+            updateProjects();
+            
+            // Make project tags clickable for filtering
+            document.querySelectorAll('.project-tags .tag').forEach(tag => {
+                tag.style.cursor = 'pointer';
+                tag.title = 'Click to filter by this tag';
+            });
+        });
+    </script>
+</body>
+</html> 

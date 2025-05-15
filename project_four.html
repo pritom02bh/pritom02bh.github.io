@@ -3,337 +3,873 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Last Mile Delivery Optimization | Pritom Bhowmik</title>
-    <link rel="stylesheet" href="project-styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Last Mile Delivery Optimization Platform with Weather-Adaptive Route Intelligence | Pritom Bhowmik</title>
+    <meta name="description" content="ML-powered platform for optimizing delivery routes considering real-time data like traffic and weather conditions, reducing operational costs by 25%.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Libraries CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Add animation for the logo */
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .animated-logo a {
-            background: linear-gradient(270deg, #00f2fe, #4facfe, #00c4ff, #0077ff, #4facfe);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientAnimation 8s ease infinite;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+        /* Project-specific styles */
+        .project-hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: white;
+            padding-top: calc(var(--navbar-height) + 4rem);
+            padding-bottom: 4rem;
             position: relative;
-            display: inline-block;
-            transition: transform 0.3s ease;
+            overflow: hidden;
         }
         
-        .animated-logo a:hover {
-            transform: scale(1.05);
-        }
-        
-        .animated-logo a::after {
+        .project-hero::before {
             content: '';
             position: absolute;
-            bottom: -5px;
+            top: 0;
+            right: 0;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #00f2fe, #4facfe);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.8;
+            z-index: 0;
         }
         
-        .animated-logo a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+        .project-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .project-header h1 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 3rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-header .lead {
+            font-size: 1.25rem;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .project-tools {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-tool {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .project-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-stat {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            min-width: 180px;
+        }
+        
+        .project-stat .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+        }
+        
+        .project-stat .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .project-body {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            margin-top: -4rem;
+            box-shadow: var(--box-shadow-lg);
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 500px;
+        }
+        
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #f8f9fa;
+        }
+        
+        .swiper-pagination-bullet {
+            background-color: var(--light);
+            opacity: 0.7;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background-color: var(--primary);
+            opacity: 1;
+        }
+        
+        .swiper-button-prev, .swiper-button-next {
+            color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .swiper-button-prev::after, .swiper-button-next::after {
+            font-size: 1.2rem;
+        }
+        
+        .project-content {
+            padding: 2.5rem;
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius-lg);
+        }
+        
+        .meta-item h3 {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .meta-item p {
+            font-weight: 600;
+            margin-bottom: 0;
+            color: var(--gray-800);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tech-tag {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .section-heading {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            color: var(--gray-900);
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: var(--border-radius);
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 350px;
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .data-table th, .data-table td {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .data-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: var(--gray-100);
+        }
+        
+        .highlight-box {
+            background-color: rgba(67, 97, 238, 0.05);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(114, 9, 183, 0.05) 100%);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234361ee' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .conclusion h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .project-navigation {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .nav-project {
+            flex: 1;
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .nav-project:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .nav-project::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .nav-project:hover::after {
+            opacity: 1;
+        }
+
+        .nav-direction {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+            background-color: white;
+        }
+        
+        .feature-card h3 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .feature-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 1440px) {
+            .project-container {
+                max-width: 1200px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .project-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .project-stat {
+                flex: 1 0 40%;
+            }
+            
+            .swiper {
+                height: 400px;
+            }
+            
+            .project-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-stat {
+                flex: 1 0 100%;
+            }
+            
+            .swiper {
+                height: 300px;
+            }
+            
+            .project-navigation {
+                flex-direction: column;
+            }
+            
+            .project-content {
+                padding: 1.2rem;
+            }
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo animated-logo">
+        <div class="container">
+            <div class="navbar-brand">
                 <a href="index.html">Pritom Bhowmik</a>
             </div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+            <button class="menu-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <div class="nav-links">
-                <a href="index.html" class="home-btn"><i class="fas fa-home"></i> Home</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#projects">Projects</a>
-                <a href="https://linkedin.com/in/bhowmikpritom" class="contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
+            <div class="navbar-menu">
+                <ul class="navbar-nav">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="assets/resume.pdf" class="btn btn-outline" target="_blank">Resume</a></li>
+                </ul>
             </div>
         </div>
     </nav>
 
-    <main class="project-detail">
-        <div class="container">
-            <div class="project-header">
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="project-container">
+            <div class="project-header" data-aos="fade-up">
                 <h1>Last Mile Delivery Optimization Platform with Weather-Adaptive Route Intelligence</h1>
-                <div class="project-meta">
-                    <div class="project-stats">
-                        <span class="stat"><i class="fas fa-route"></i> 32% Route Optimization</span>
-                        <span class="stat"><i class="fas fa-clock"></i> 28% Time Saved</span>
-                        <span class="stat"><i class="fas fa-truck"></i> 25% Cost Reduction</span>
+                <p class="lead">ML-powered platform for optimizing delivery routes considering real-time data like traffic and weather conditions.</p>
+                
+                <div class="project-tools">
+                    <span class="project-tool">Machine Learning</span>
+                    <span class="project-tool">Route Optimization</span>
+                    <span class="project-tool">Python</span>
+                    <span class="project-tool">Weather Analytics</span>
+                    <span class="project-tool">Logistics</span>
+                </div>
+            
+                <div class="project-stats">
+                    <div class="project-stat" data-aos="fade-up" data-aos-delay="100">
+                        <div class="value">32%</div>
+                        <div class="label">Route Optimization</div>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">Route Optimization</span>
-                        <span class="tech-tag">Weather Analytics</span>
-                        <span class="tech-tag">Python</span>
+                    <div class="project-stat" data-aos="fade-up" data-aos-delay="200">
+                        <div class="value">25%</div>
+                        <div class="label">Cost Reduction</div>
+                    </div>
+                    <div class="project-stat" data-aos="fade-up" data-aos-delay="300">
+                        <div class="value">28%</div>
+                        <div class="label">Time Saved</div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="project-content">
-                <div class="project-slider">
-                    <div class="slider-container">
-                        <button class="slider-button prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="slider-button next">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                        <img src="assets/project4/Screenshot (2).png" alt="Route Optimization Dashboard" class="slider-image active">
-                        <img src="assets/project4/Screenshot (3).png" alt="Weather Impact Analysis" class="slider-image">
-                        <img src="assets/project4/Screenshot (4).png" alt="Delivery Performance Metrics" class="slider-image">
-                        <img src="assets/project4/Screenshot (5).png" alt="Route Planning Interface" class="slider-image">
-                        <img src="assets/project4/Screenshot (6).png" alt="Weather Forecast Integration" class="slider-image">
-                        <img src="assets/project4/Screenshot (7).png" alt="Real-time Route Tracking" class="slider-image">
-                        <img src="assets/project4/Screenshot (8).png" alt="Analytics Dashboard" class="slider-image">
-                        <img src="assets/project4/Screenshot (9).png" alt="Performance Overview" class="slider-image">
-                        <img src="assets/project4/Screenshot (10).png" alt="System Architecture" class="slider-image">
+    <!-- Project Content -->
+    <section>
+        <div class="project-container">
+            <div class="project-body">
+                <!-- Project Slider -->
+                <div class="swiper" data-aos="fade-up">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="assets/project4/Screenshot (2).png" alt="Last Mile Delivery Platform - Dashboard">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project4/Screenshot (3).png" alt="Last Mile Delivery Platform - Route Planning">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project4/Screenshot (4).png" alt="Last Mile Delivery Platform - Weather Data">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project4/Screenshot (5).png" alt="Last Mile Delivery Platform - Analytics">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project4/Screenshot (6).png" alt="Last Mile Delivery Platform - Performance">
+                        </div>
                     </div>
-                    <div class="slider-nav">
-                        <div class="slider-dot active"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
 
-                <div class="project-description">
-                    <h2>Project Overview</h2>
-                    <p>Last-mile delivery is a critical yet challenging aspect of the supply chain, often disrupted by traffic congestion, unpredictable weather, inefficient resource use, and fluctuating demand. Our platform combines cutting-edge technology and data-driven insights to transform these complex supply chain delivery problems into opportunities for efficiency and growth.</p>
+                <div class="project-content">
+                    <!-- Project Metadata -->
+                    <div class="project-meta" data-aos="fade-up">
+                        <div class="meta-item">
+                            <h3>Client</h3>
+                            <p>E-Commerce Logistics Provider</p>
+                            <p>Regional Operations, 500+ Vehicles</p>
+                        </div>
+                        <div class="meta-item">
+                            <h3>Duration</h3>
+                            <p>4 Months Development</p>
+                            <p>3 Months Implementation</p>
+                        </div>
+                        <div class="meta-item">
+                            <h3>Role</h3>
+                            <p>Lead Data Scientist</p>
+                            <p>Logistics Optimization Specialist</p>
+                        </div>
+                        <div class="meta-item">
+                            <h3>Technologies</h3>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">Weather API</span>
+                                <span class="tech-tag">Google Maps API</span>
+                                <span class="tech-tag">Flask</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="feature-grid">
+                    <h2 class="section-heading">Project Overview</h2>
+                    <p>Last-mile delivery is a critical yet challenging aspect of the supply chain, often disrupted by traffic congestion, unpredictable weather, inefficient resource use, and fluctuating demand. Our platform combines cutting-edge technology and data-driven insights to transform these complex supply chain delivery problems into opportunities for efficiency and growth.</p>
+                    
+                    <div class="highlight-box">
+                        <p>The last mile represents up to 53% of total shipping costs and is often the most inefficient part of the supply chain. Traditional route planning systems fail to adapt to real-time conditions, resulting in delays, increased costs, and customer dissatisfaction.</p>
+                    </div>
+
+                    <h2 class="section-heading">Key Features</h2>
+                    <div class="feature-grid" data-aos="fade-up">
                         <div class="feature-card">
                             <div class="feature-icon"><i class="fas fa-route"></i></div>
                             <h3>Dynamic Route Optimization</h3>
-                            <p>Machine learning algorithms analyze real-time traffic data and historical patterns to generate efficient routes dynamically.</p>
+                            <p>Machine learning algorithms analyze real-time traffic data and historical patterns to generate efficient routes dynamically, reducing delivery times by 28%.</p>
                         </div>
+                        
                         <div class="feature-card">
                             <div class="feature-icon"><i class="fas fa-cloud-sun-rain"></i></div>
                             <h3>Weather-Adaptive Routing</h3>
-                            <p>Real-time weather data integration with predictive analytics for proactive route adjustments.</p>
+                            <p>Real-time weather data integration with predictive analytics for proactive route adjustments, reducing weather-related delays by 45%.</p>
                         </div>
+                        
                         <div class="feature-card">
                             <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
                             <h3>Predictive Analytics</h3>
-                            <p>Advanced analytics for proactive planning and resource optimization.</p>
+                            <p>Advanced analytics for proactive planning and resource optimization, enabling more efficient allocation of vehicles and personnel.</p>
                         </div>
                     </div>
 
-                    <h2>Key Solutions</h2>
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-truck"></i></div>
-                            <h3>Resource Allocation</h3>
-                            <p>Big data analytics optimizes vehicle and driver allocation based on order volume and geographic demand.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
-                            <h3>Real-Time Tracking</h3>
-                            <p>Continuous monitoring enables instant route adjustments to maintain delivery efficiency.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-expand-arrows-alt"></i></div>
-                            <h3>Scalable Operations</h3>
-                            <p>Platform scales seamlessly with growing supply chains without compromising performance.</p>
-                        </div>
+                    <h2 class="section-heading">Technical Implementation</h2>
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                    
+                    <p>Our platform leverages a sophisticated technical architecture that combines multiple data sources with advanced machine learning algorithms:</p>
+                    
+                    <div data-aos="fade-up">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Component</th>
+                                    <th>Technology</th>
+                                    <th>Function</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Route Optimization Engine</td>
+                                    <td>Custom ML algorithms, Google OR-Tools</td>
+                                    <td>Dynamic route generation considering multiple constraints</td>
+                                </tr>
+                                <tr>
+                                    <td>Weather Integration</td>
+                                    <td>Weather API, Predictive Models</td>
+                                    <td>Real-time and forecast weather data processing</td>
+                                </tr>
+                                <tr>
+                                    <td>Traffic Analysis</td>
+                                    <td>Google Maps API, Historical Data</td>
+                                    <td>Traffic pattern prediction and congestion avoidance</td>
+                                </tr>
+                                <tr>
+                                    <td>Resource Allocation</td>
+                                    <td>Genetic Algorithms, Linear Programming</td>
+                                    <td>Optimal vehicle and driver assignment</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <h2>Technical Implementation</h2>
-                    <div class="tech-stack">
-                        <div class="tech-category">
-                            <h4>Core Technologies</h4>
-                            <ul>
-                                <li>Machine Learning Algorithms</li>
-                                <li>Real-time Weather API</li>
-                                <li>Traffic Data Integration</li>
-                                <li>Predictive Analytics</li>
-                            </ul>
-                        </div>
-                        <div class="tech-category">
-                            <h4>Data Processing</h4>
-                            <ul>
-                                <li>Big Data Analytics</li>
-                                <li>Dynamic Route Generation</li>
-                                <li>Resource Optimization</li>
-                                <li>Historical Pattern Analysis</li>
-                            </ul>
-                        </div>
-                        <div class="tech-category">
-                            <h4>System Features</h4>
-                            <ul>
-                                <li>Real-time Monitoring</li>
-                                <li>Seamless Integration</li>
-                                <li>Scalable Architecture</li>
-                                <li>Automated Adjustments</li>
-                            </ul>
-                        </div>
+                    <h2 class="section-heading">Problem-Solution Analysis</h2>
+                    
+                    <div class="highlight-box">
+                        <h3>Traffic Congestion</h3>
+                        <p>Traditional systems use static routes that don't adapt to changing traffic conditions.</p>
+                        <p><strong>Our Solution:</strong> Machine learning algorithms analyze real-time traffic data to generate alternative routes during peak hours, reducing travel time by up to 32%.</p>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h3>Weather Disruptions</h3>
+                        <p>Unexpected weather events cause delivery delays and increase operational risks.</p>
+                        <p><strong>Our Solution:</strong> Predictive weather analytics enable proactive route adjustments to avoid affected areas, reducing weather-related delays by 45%.</p>
                     </div>
 
-                    <h2>Key Benefits & Impact</h2>
-                    <ul>
-                        <li>32% improvement in route optimization through dynamic routing and real-time adjustments</li>
-                        <li>28% reduction in delivery times using weather-adaptive routing strategies</li>
-                        <li>25% decrease in operational costs through efficient resource allocation</li>
-                        <li>45% reduction in weather-related delays via predictive analytics</li>
-                        <li>35% increase in customer satisfaction through reliable delivery performance</li>
-                        <li>Seamless integration with existing supply chain management systems</li>
-                        <li>Enhanced supply chain resilience against disruptions</li>
-                    </ul>
+                    <div class="highlight-box">
+                        <h3>Resource Utilization</h3>
+                        <p>Inefficient allocation of vehicles and drivers leads to increased operational costs.</p>
+                        <p><strong>Our Solution:</strong> Dynamic resource allocation adapts to varying order volumes and geographic demand patterns, reducing operational costs by 25%.</p>
+                    </div>
 
-                    <h2>Problem-Solution Analysis</h2>
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-traffic-light"></i></div>
-                            <h3>Traffic Congestion</h3>
-                            <p>Machine learning algorithms analyze real-time traffic data to generate alternative routes during peak hours.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
-                            <h3>Weather Disruptions</h3>
-                            <p>Predictive weather analytics enable proactive route adjustments to avoid affected areas.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-boxes"></i></div>
-                            <h3>Demand Fluctuations</h3>
-                            <p>Dynamic resource allocation adapts to varying order volumes and geographic demand patterns.</p>
-                        </div>
+                    <h2 class="section-heading">Implementation Results</h2>
+                    <div class="chart-container">
+                        <canvas id="resultsChart"></canvas>
+                    </div>
+
+                    <div class="conclusion" data-aos="fade-up">
+                        <h2>Business Impact</h2>
+                        <p>The Last Mile Delivery Optimization Platform has delivered substantial business value:</p>
+                        <ul>
+                            <li><strong>Operational Efficiency:</strong> 32% improvement in route optimization through dynamic routing and real-time adjustments</li>
+                            <li><strong>Cost Savings:</strong> 25% decrease in operational costs through efficient resource allocation</li>
+                            <li><strong>Time Efficiency:</strong> 28% reduction in delivery times using weather-adaptive routing strategies</li>
+                            <li><strong>Customer Satisfaction:</strong> 35% increase through reliable delivery performance and accurate ETAs</li>
+                            <li><strong>Environmental Impact:</strong> 22% reduction in carbon emissions through optimized routes and reduced idle time</li>
+                        </ul>
+                        <p>The platform has been successfully implemented across the client's entire fleet, with plans for expansion to additional markets and integration with their warehouse management systems.</p>
+                    </div>
+
+                    <div class="project-navigation">
+                        <a href="project_three.html" class="nav-project">
+                            <div class="nav-icon"><i class="fas fa-chevron-left"></i></div>
+                            <div>
+                                <span class="nav-direction">Previous Project</span>
+                                <h4 class="nav-title">IntelliStock: Demand Forecasting Platform</h4>
+                            </div>
+                        </a>
+                        <a href="index.html" class="nav-project">
+                            <div>
+                                <span class="nav-direction">Home</span>
+                                <h4 class="nav-title">Back to All Projects</h4>
+                            </div>
+                            <div class="nav-icon"><i class="fas fa-home"></i></div>
+                        </a>
                     </div>
                 </div>
             </div>
-
-            <div class="project-navigation">
-                <a href="project_three.html" class="button">
-                    <i class="fas fa-arrow-left"></i> Previous Project
-                </a>
-                <a href="index.html#projects" class="button">
-                    Back to Projects <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
         </div>
-    </main>
+    </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Pritom Bhowmik. All rights reserved.</p>
+            <p>&copy; 2025 Pritom Bhowmik. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom Scripts -->
     <script>
-        // Mobile menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                });
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // Initialize Swiper slider
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             }
-            
-            // Close mobile menu when clicking on a link
-            const navItems = document.querySelectorAll('.nav-links a');
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
-                });
+        });
+        
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Performance Chart
+            const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+            const performanceChart = new Chart(performanceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Route Optimization', 'Cost Reduction', 'Time Efficiency', 'Weather Adaptation', 'Customer Satisfaction'],
+                    datasets: [{
+                        label: 'Improvement (%)',
+                        data: [32, 25, 28, 45, 35],
+                        backgroundColor: [
+                            'rgba(67, 97, 238, 0.7)',
+                            'rgba(114, 9, 183, 0.7)',
+                            'rgba(67, 97, 238, 0.7)',
+                            'rgba(114, 9, 183, 0.7)',
+                            'rgba(67, 97, 238, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(67, 97, 238, 1)',
+                            'rgba(114, 9, 183, 1)',
+                            'rgba(67, 97, 238, 1)',
+                            'rgba(114, 9, 183, 1)',
+                            'rgba(67, 97, 238, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
             });
             
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
+            // Results Chart
+            const resultsCtx = document.getElementById('resultsChart').getContext('2d');
+            const resultsChart = new Chart(resultsCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        'Route Efficiency',
+                        'Weather Adaptation',
+                        'Resource Utilization',
+                        'Delivery Speed',
+                        'Cost Efficiency',
+                        'Customer Satisfaction'
+                    ],
+                    datasets: [{
+                        label: 'Traditional Systems',
+                        data: [40, 30, 45, 55, 50, 45],
+                        fill: true,
+                        backgroundColor: 'rgba(114, 9, 183, 0.2)',
+                        borderColor: 'rgba(114, 9, 183, 0.8)',
+                        pointBackgroundColor: 'rgba(114, 9, 183, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(114, 9, 183, 1)'
+                    }, {
+                        label: 'Our Platform',
+                        data: [85, 90, 82, 88, 92, 87],
+                        fill: true,
+                        backgroundColor: 'rgba(67, 97, 238, 0.2)',
+                        borderColor: 'rgba(67, 97, 238, 0.8)',
+                        pointBackgroundColor: 'rgba(67, 97, 238, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(67, 97, 238, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: {
+                            borderWidth: 2
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                color: 'rgba(0, 0, 0, 0.1)',
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)',
+                            },
+                            pointLabels: {
+                                font: {
+                                    size: 12
+                                }
+                            },
+                            ticks: {
+                                backdropColor: 'rgba(0, 0, 0, 0)',
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        }
+                    }
                 }
             });
         });
-
-        // Slider functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.slider-image');
-            const dots = document.querySelectorAll('.slider-dot');
-            const prevButton = document.querySelector('.slider-button.prev');
-            const nextButton = document.querySelector('.slider-button.next');
-            let currentIndex = 0;
-            const interval = 4000; // 4 seconds
-            let slideInterval;
-
-            function showImage(index) {
-                images.forEach(img => img.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                images[index].classList.add('active');
-                dots[index].classList.add('active');
-                currentIndex = index;
-            }
-
-            function nextImage() {
-                currentIndex = (currentIndex + 1) % images.length;
-                showImage(currentIndex);
-            }
-
-            function prevImage() {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                showImage(currentIndex);
-            }
-
-            function startSlideshow() {
-                slideInterval = setInterval(nextImage, interval);
-            }
-
-            function stopSlideshow() {
-                clearInterval(slideInterval);
-            }
-
-            // Event listeners for dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showImage(index);
-                    stopSlideshow();
-                    startSlideshow();
-                });
-            });
-
-            // Event listeners for buttons
-            prevButton.addEventListener('click', () => {
-                prevImage();
-                stopSlideshow();
-                startSlideshow();
-            });
-
-            nextButton.addEventListener('click', () => {
-                nextImage();
-                stopSlideshow();
-                startSlideshow();
-            });
-
-            // Pause on hover
-            const sliderContainer = document.querySelector('.slider-container');
-            sliderContainer.addEventListener('mouseenter', stopSlideshow);
-            sliderContainer.addEventListener('mouseleave', startSlideshow);
-
-            // Start the slideshow
-            startSlideshow();
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbarMenu = document.querySelector('.navbar-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            navbarMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
     </script>
 </body>

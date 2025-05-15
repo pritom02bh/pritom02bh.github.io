@@ -3,554 +3,889 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Churn Analytics | Pritom Bhowmik</title>
-    <link rel="stylesheet" href="project-styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Customer Churn Analytics Dashboard – Power BI-Driven Strategy for Reducing 27% Attrition | Pritom Bhowmik</title>
+    <meta name="description" content="Power BI-driven churn analytics dashboard for telecom provider, reducing 27% attrition through demographic, behavioral, and service-based segmentation.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Libraries CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Add animation for the logo */
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .animated-logo a {
-            background: linear-gradient(270deg, #00f2fe, #4facfe, #00c4ff, #0077ff, #4facfe);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientAnimation 8s ease infinite;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+        /* Project-specific styles */
+        .project-hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: white;
+            padding-top: calc(var(--navbar-height) + 4rem);
+            padding-bottom: 4rem;
             position: relative;
-            display: inline-block;
-            transition: transform 0.3s ease;
+            overflow: hidden;
         }
         
-        .animated-logo a:hover {
-            transform: scale(1.05);
-        }
-        
-        .animated-logo a::after {
+        .project-hero::before {
             content: '';
             position: absolute;
-            bottom: -5px;
+            top: 0;
+            right: 0;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #00f2fe, #4facfe);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.8;
+            z-index: 0;
         }
         
-        .animated-logo a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+        .project-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            position: relative;
+            z-index: 1;
         }
         
-        .finding-section, .recommendation-section {
-            margin-bottom: 2rem;
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .project-header h1 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 3rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-header .lead {
+            font-size: 1.25rem;
+            max-width: 900px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .project-tools {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-tool {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .project-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-stat {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             padding: 1.5rem;
-            border-radius: 8px;
-            background-color: rgba(0, 229, 255, 0.03);
-            border: 1px solid rgba(0, 229, 255, 0.08);
+            border-radius: var(--border-radius);
+            min-width: 180px;
         }
         
-        .finding-section h3, .recommendation-section h3 {
-            margin-top: 0;
-            color: #00E5FF;
-            font-size: 1.3rem;
+        .project-stat .value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
         }
         
-        .insights-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-            font-size: 0.95rem;
+        .project-stat .label {
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
         
-        .insights-table th {
-            background-color: rgba(0, 229, 255, 0.1);
-            color: #fff;
-            padding: 0.8rem;
-            text-align: left;
-            font-weight: 600;
-        }
-        
-        .insights-table td {
-            padding: 0.8rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .insights-table tr:hover {
-            background-color: rgba(0, 229, 255, 0.05);
+        .project-body {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            margin-top: -4rem;
+            box-shadow: var(--box-shadow-lg);
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
         }
 
-        .project-description ul li {
-            margin-bottom: 0.5rem;
+        .swiper {
+            width: 100%;
+            height: 500px;
         }
         
-        .finding-section p, .recommendation-section p {
-            margin-top: 1rem;
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #f8f9fa;
+        }
+        
+        .swiper-pagination-bullet {
+            background-color: var(--light);
+            opacity: 0.7;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background-color: var(--primary);
+            opacity: 1;
+        }
+        
+        .swiper-button-prev, .swiper-button-next {
+            color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .swiper-button-prev::after, .swiper-button-next::after {
+            font-size: 1.2rem;
+        }
+        
+        .project-content {
+            padding: 2.5rem;
+        }
+        
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: var(--gray-100);
+            border-radius: var(--border-radius-lg);
+        }
+        
+        .meta-item h3 {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .meta-item p {
+            font-weight: 600;
+            margin-bottom: 0;
+            color: var(--gray-800);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tech-tag {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .section-heading {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            color: var(--gray-900);
+        }
+        
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: var(--border-radius);
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 350px;
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            border: 1px solid var(--gray-200);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        
+        .data-table th, .data-table td {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .data-table th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background-color: var(--gray-100);
+        }
+        
+        .highlight-box {
+            background-color: rgba(67, 97, 238, 0.05);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(114, 9, 183, 0.05) 100%);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%234361ee' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .conclusion h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        .project-navigation {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .nav-project {
+            flex: 1;
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .nav-project:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow-lg);
+        }
+        
+        .nav-project::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .nav-project:hover::after {
+            opacity: 1;
+        }
+
+        .nav-direction {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            margin-bottom: 0.2rem;
+            display: block;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 1440px) {
+            .project-container {
+                max-width: 1200px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .project-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .project-stat {
+                flex: 1 0 40%;
+            }
+            
+            .swiper {
+                height: 400px;
+            }
+            
+            .project-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-stat {
+                flex: 1 0 100%;
+            }
+            
+            .swiper {
+                height: 300px;
+            }
+            
+            .project-navigation {
+                flex-direction: column;
+            }
+            
+            .project-content {
+                padding: 1.2rem;
+            }
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
+
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo animated-logo">
+        <div class="container">
+            <div class="navbar-brand">
                 <a href="index.html">Pritom Bhowmik</a>
             </div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
+            <button class="menu-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <div class="nav-links">
-                <a href="index.html" class="home-btn"><i class="fas fa-home"></i> Home</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#projects">Projects</a>
-                <a href="https://linkedin.com/in/bhowmikpritom" class="contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
+            <div class="navbar-menu">
+                <ul class="navbar-nav">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="assets/resume.pdf" class="btn btn-outline" target="_blank">Resume</a></li>
+                </ul>
             </div>
         </div>
     </nav>
 
-    <main class="project-detail">
-        <div class="container">
-            <div class="project-header">
-                <h1>Data-Driven Customer Churn Analytics</h1>
-                <div class="project-meta">
-                    <div class="project-stats">
-                        <span class="stat"><i class="fas fa-chart-line"></i> 12% Churn Reduction</span>
-                        <span class="stat"><i class="fas fa-users"></i> 18% Re-engagement</span>
-                        <span class="stat"><i class="fas fa-users"></i> 22% Conversion Rate Boost</span>
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="project-container">
+            <div class="project-header" data-aos="fade-up">
+                <h1>Customer Churn Analytics Dashboard – Power BI-Driven Strategy for Reducing 27% Attrition</h1>
+                <p class="lead">Data-driven approach to identify key drivers of customer churn for a telecom provider through demographic, behavioral, and service-based segmentation.</p>
+                
+                <div class="project-tools">
+                    <span class="project-tool">Power BI</span>
+                    <span class="project-tool">Excel</span>
+                    <span class="project-tool">DAX</span>
+                    <span class="project-tool">Data Modeling</span>
+                    <span class="project-tool">Visualization</span>
+                </div>
+            
+                <div class="project-stats">
+                    <div class="project-stat" data-aos="fade-up" data-aos-delay="100">
+                        <div class="value">6,687</div>
+                        <div class="label">Total Customers</div>
                     </div>
-                    <div class="tech-tags">
-                        <span class="tech-tag">PowerBI</span>
-                        <span class="tech-tag">Statistical Data Analysis</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">Business Intelligence</span>
+                    <div class="project-stat" data-aos="fade-up" data-aos-delay="200">
+                        <div class="value">26.86%</div>
+                        <div class="label">Overall Churn Rate</div>
+                    </div>
+                    <div class="project-stat" data-aos="fade-up" data-aos-delay="300">
+                        <div class="value">44.82%</div>
+                        <div class="label">Churn from Competitors</div>
                     </div>
                 </div>
-            </div>
-
-            <div class="project-content">
-                <div class="project-slider">
-                    <div class="slider-container">
-                        <button class="slider-button prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="slider-button next">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                        <img src="assets/project1/1.png" alt="Customer Churn Analytics Dashboard" class="slider-image active">
-                        <img src="assets/project1/2.png" alt="Churn Prediction Model" class="slider-image">
-                        <img src="assets/project1/3.png" alt="Analytics Results" class="slider-image">
-                        <img src="assets/project1/4.png" alt="Analytics Dashboard" class="slider-image">
-                        <img src="assets/project1/5.png" alt="Data Visualization" class="slider-image">
-                        <img src="assets/project1/6.png" alt="Predictive Models" class="slider-image">
-                        <img src="assets/project1/7.png" alt="Performance Metrics" class="slider-image">
-                        <img src="assets/project1/8.png" alt="Customer Insights" class="slider-image">
-                        <img src="assets/project1/9.png" alt="Analysis Results" class="slider-image">
-                    </div>
-                    <div class="slider-nav">
-                        <div class="slider-dot active"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                        <div class="slider-dot"></div>
-                    </div>
-                </div>
-
-                <div class="project-description">
-                    <h2>Project Overview</h2>
-                    <p>Identified top churn factors, including customer tenure, engagement, and support issues, provided actionable insights for reducing churn by 12% through targeted retention strategies.</p>
-
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
-                            <h3>Data Analysis</h3>
-                            <p>Comprehensive analysis of customer behavior patterns and engagement metrics.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-brain"></i></div>
-                            <h3>Predictive Modeling</h3>
-                            <p>Machine learning models to predict customer churn probability.</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
-                            <h3>Targeted Strategies</h3>
-                            <p>Personalized retention strategies based on customer segments.</p>
-                        </div>
-                    </div>
-
-                    <h2>🔍 Key Findings & Insights</h2>
-                    
-                    <div class="finding-section">
-                        <h3>1. Overall Churn Overview</h3>
-                        <ul>
-                            <li>Total Customers: 6,687</li>
-                            <li>Churned Customers: 1,796</li>
-                            <li>Churn Rate: 26.86% – a moderately high rate indicating significant room for retention improvement.</li>
-                        </ul>
-                    </div>
-
-                    <div class="finding-section">
-                        <h3>2. Churn by Age Group</h3>
-                        <ul>
-                            <li>Under 30: Notably higher churn among younger customers.</li>
-                            <li>Churn rate trends vary by age bin; older age groups typically have lower churn.</li>
-                            <li><strong>🧠 Insight:</strong> Younger customers may be more price-sensitive or more likely to be swayed by competitor offers.</li>
-                        </ul>
-                    </div>
-
-                    <div class="finding-section">
-                        <h3>3. Top Reasons for Churn</h3>
-                        <table class="insights-table">
-                            <tr>
-                                <th>Category</th>
-                                <th>Percentage</th>
-                            </tr>
-                            <tr>
-                                <td>Competitor-Driven</td>
-                                <td>44.82%</td>
-                            </tr>
-                            <tr>
-                                <td>Service Attitude (Support)</td>
-                                <td>15.98%</td>
-                            </tr>
-                            <tr>
-                                <td>Product Dissatisfaction</td>
-                                <td>11.14%</td>
-                            </tr>
-                            <tr>
-                                <td>Price Too High</td>
-                                <td>10.63%</td>
-                            </tr>
-                            <tr>
-                                <td>Misc/Other</td>
-                                <td>~15%</td>
-                            </tr>
-                        </table>
-                        <p><strong>🧠 Insight:</strong> The majority of churn is driven by external competitive offers and poor customer service experiences.</p>
-                    </div>
-
-                    <div class="finding-section">
-                        <h3>4. Contract Type Analysis</h3>
-                        <table class="insights-table">
-                            <tr>
-                                <th>Contract Type</th>
-                                <th>% of Customers</th>
-                                <th>Churn Rate</th>
-                            </tr>
-                            <tr>
-                                <td>Month-to-Month</td>
-                                <td>51.01%</td>
-                                <td>46.29%</td>
-                            </tr>
-                            <tr>
-                                <td>One Year</td>
-                                <td>22.12%</td>
-                                <td>~6.62%</td>
-                            </tr>
-                            <tr>
-                                <td>Two Year</td>
-                                <td>26.87%</td>
-                                <td>Low</td>
-                            </tr>
-                        </table>
-                        <p><strong>🧠 Insight:</strong> Longer contracts drastically reduce churn. Month-to-month customers are over 7x more likely to leave than yearly ones.</p>
-                    </div>
-
-                    <div class="finding-section">
-                        <h3>5. Payment Method Trends</h3>
-                        <table class="insights-table">
-                            <tr>
-                                <th>Method</th>
-                                <th>% of Customers</th>
-                            </tr>
-                            <tr>
-                                <td>Direct Debit</td>
-                                <td>55.36%</td>
-                            </tr>
-                            <tr>
-                                <td>Credit Card</td>
-                                <td>39.09%</td>
-                            </tr>
-                            <tr>
-                                <td>Paper Check</td>
-                                <td>5.55%</td>
-                            </tr>
-                        </table>
-                        <p><strong>🧠 Insight:</strong> While Direct Debit dominates, churn analysis by payment method isn't deeply explored in the report – but could uncover friction points.</p>
-                    </div>
-
-                    <div class="finding-section">
-                        <h3>6. Data Consumption & Unlimited Plans</h3>
-                        <table class="insights-table">
-                            <tr>
-                                <th>Unlimited Plan</th>
-                                <th>Customers</th>
-                                <th>Churn Rate</th>
-                            </tr>
-                            <tr>
-                                <td>Yes</td>
-                                <td>4,494</td>
-                                <td>32.11%</td>
-                            </tr>
-                            <tr>
-                                <td>No</td>
-                                <td>2,193</td>
-                                <td>16.10%</td>
-                            </tr>
-                        </table>
-                        <p><strong>🧠 Insight:</strong> Customers with unlimited data plans churn twice as much – possibly due to expectation-reality mismatch or cost dissatisfaction.</p>
-                    </div>
-
-                    <div class="finding-section">
-                        <h3>7. Account Tenure & Churn</h3>
-                        <ul>
-                            <li>Newer customers churn more.</li>
-                            <li>Churn decreases as account length increases, especially for those beyond 20–40 months.</li>
-                            <li><strong>🧠 Insight:</strong> The early customer lifecycle is the most vulnerable period. Proactive onboarding is key.</li>
-                        </ul>
-                    </div>
-
-                    <div class="finding-section">
-                        <h3>8. Geographic & Service Call Variations</h3>
-                        <ul>
-                            <li>Churn and average service calls vary significantly by state.</li>
-                            <li>States with higher customer service call averages often have higher churn rates.</li>
-                            <li><strong>🧠 Insight:</strong> Indicates localized service or network issues.</li>
-                        </ul>
-                    </div>
-
-                    <h2>✅ Recommendations</h2>
-                    
-                    <div class="recommendation-section">
-                        <h3>🎯 1. Tackle Competitor Threats</h3>
-                        <ul>
-                            <li>Create counter-offers or bundle enhancements for at-risk groups.</li>
-                            <li>Monitor market pricing and device trends closely.</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-section">
-                        <h3>🤝 2. Improve Customer Support</h3>
-                        <ul>
-                            <li>Invest in customer service training.</li>
-                            <li>Enable fast, multi-channel, self-service options.</li>
-                            <li>Monitor attitude and tone in customer support interactions.</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-section">
-                        <h3>📅 3. Promote Long-Term Contracts</h3>
-                        <ul>
-                            <li>Offer discounts, loyalty rewards, or free months for annual/two-year signups.</li>
-                            <li>Target month-to-month customers with personalized renewal offers.</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-section">
-                        <h3>📡 4. Revisit Unlimited Plan Offerings</h3>
-                        <ul>
-                            <li>Analyze usage and satisfaction levels among unlimited data users.</li>
-                            <li>Consider offering tiered unlimited plans (e.g., 10GB premium, 20GB pro).</li>
-                            <li>Simplify or clarify plan limits to avoid customer frustration.</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-section">
-                        <h3>🌍 5. State-Level Strategy</h3>
-                        <ul>
-                            <li>Investigate states with high churn and service calls.</li>
-                            <li>Run local retention campaigns and infrastructure upgrades in these regions.</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-section">
-                        <h3>💰 6. Control Extra Charges</h3>
-                        <ul>
-                            <li>Reduce or better communicate extra international/data charges.</li>
-                            <li>Offer bundles that reduce overage surprises.</li>
-                        </ul>
-                    </div>
-
-                    <div class="recommendation-section">
-                        <h3>💡 7. Early Lifecycle Engagement</h3>
-                        <ul>
-                            <li>Launch welcome programs with proactive support, loyalty rewards, or satisfaction check-ins.</li>
-                            <li>Use predictive analytics to flag at-risk customers in their first 3–6 months.</li>
-                        </ul>
-                    </div>
-
-                    <h2>📘 Conclusion</h2>
-                    <p>The churn is predominantly driven by external competitiveness, contract flexibility, and service experience. By targeting these core areas:</p>
-                    <ul>
-                        <li>Boosting long-term contracts,</li>
-                        <li>Enhancing support quality,</li>
-                        <li>Optimizing unlimited data offerings,</li>
-                        <li>And engaging new users early,</li>
-                    </ul>
-                    <p>We can significantly reduce customer churn and improve retention.</p>
-
-                    <h2>Technical Implementation</h2>
-                    <div class="tech-stack">
-                        <div class="tech-category">
-                            <h4>Analysis Tools</h4>
-                            <ul>
-                                <li>PowerBI</li>
-                                <li>Python</li>
-                                <li>SQL</li>
-                                <li>Excel</li>
-                            </ul>
-                        </div>
-                        <div class="tech-category">
-                            <h4>Data Processing</h4>
-                            <ul>
-                                <li>ETL Pipeline</li>
-                                <li>Data Cleaning</li>
-                                <li>Feature Engineering</li>
-                                <li>Statistical Analysis</li>
-                            </ul>
-                        </div>
-                        <div class="tech-category">
-                            <h4>Visualization</h4>
-                            <ul>
-                                <li>Interactive Dashboards</li>
-                                <li>Custom Reports</li>
-                                <li>Real-time Monitoring</li>
-                                <li>Automated Alerts</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <h2>Impact & Results</h2>
-                    <ul>
-                        <li>12% reduction in customer churn rate</li>
-                        <li>18% improvement in customer re-engagement</li>
-                        <li>22% increase in conversion rate for at-risk customers</li>
-                        <li>15% reduction in customer acquisition costs</li>
-                        <li>Improved customer satisfaction scores by 25%</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="project-navigation">
-                <a href="index.html#projects" class="button">
-                    <i class="fas fa-arrow-left"></i> Back to Projects
-                </a>
-                <a href="project_two.html" class="button">
-                    Next Project <i class="fas fa-arrow-right"></i>
-                </a>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer>
+    <!-- Project Content -->
+    <section>
+        <div class="project-container">
+            <div class="project-body">
+                <!-- Project Slider -->
+                <div class="swiper" data-aos="fade-up">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="assets/project1/1.png" alt="Customer Churn Dashboard - Overview">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project1/2.png" alt="Customer Churn - Segment Analysis">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project1/3.png" alt="Customer Churn - Demographic Analysis">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project1/4.png" alt="Customer Churn - Behavior Patterns">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="assets/project1/5.png" alt="Customer Churn - Performance Metrics">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
+                <div class="project-content">
+                    <!-- Project Metadata -->
+                    <div class="project-meta" data-aos="fade-up">
+                        <div class="meta-item">
+                            <h3>Role</h3>
+                            <p>Lead Analyst</p>
+                        </div>
+                        <div class="meta-item">
+                            <h3>Domain</h3>
+                            <p>Telecom</p>
+                        </div>
+                        <div class="meta-item">
+                            <h3>Focus</h3>
+                            <p>Customer Retention, Churn Analytics, BI Strategy</p>
+                        </div>
+                        <div class="meta-item">
+                            <h3>Tools</h3>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Excel</span>
+                                <span class="tech-tag">DAX</span>
+                                <span class="tech-tag">Data Modeling</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Description -->
+                    <div data-aos="fade-up">
+                        <h2 class="section-heading">Project Overview</h2>
+                        <p>Designed and developed a dynamic Power BI dashboard to identify key drivers of customer churn for a telecom provider with 6,687 users. The goal was to provide actionable intelligence to reduce a high churn rate of 26.86% through demographic, behavioral, and service-based segmentation.</p>
+                        
+                        <p>This project was initiated to address the critical issue of customer attrition in the telecom industry, where even small reductions in churn rate can significantly impact revenue and growth. By leveraging data-driven insights, we aimed to create a strategic framework for targeted retention initiatives.</p>
+                    </div>
+
+                    <div data-aos="fade-up">
+                        <h2 class="section-heading">Key Churn Metrics</h2>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Total Customers</td>
+                                    <td>6,687</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Churned Customers</td>
+                                    <td>1,796</td>
+                                </tr>
+                                <tr>
+                                    <td>Overall Churn Rate</td>
+                                    <td>26.86%</td>
+                                </tr>
+                                <tr>
+                                    <td>Month-to-Month Contract Churn</td>
+                                    <td>46.29%</td>
+                                </tr>
+                                <tr>
+                                    <td>Yearly Contract Churn</td>
+                                    <td>6.62%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unlimited Data Plan Churn</td>
+                                    <td>32.11%</td>
+                                </tr>
+                                <tr>
+                                    <td>Avg. Extra Intl. Charges</td>
+                                    <td>$33.64</td>
+                                </tr>
+                                <tr>
+                                    <td>Avg. Customer Service Calls</td>
+                                    <td>0.92</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="chart-container">
+                            <canvas id="churnMetricsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box" data-aos="fade-up">
+                        <h3>Top Churn Categories</h3>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>% of Churn</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Competitor Offers</td>
+                                    <td>44.82%</td>
+                                </tr>
+                                <tr>
+                                    <td>Service Attitude</td>
+                                    <td>15.98%</td>
+                                </tr>
+                                <tr>
+                                    <td>Dissatisfaction</td>
+                                    <td>15.92%</td>
+                                </tr>
+                                <tr>
+                                    <td>Price Sensitivity</td>
+                                    <td>11.14%</td>
+                                </tr>
+                                <tr>
+                                    <td>Other Factors</td>
+                                    <td>10.63%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p><strong>Key Insight:</strong> Nearly 60%+ of churn is due to competitors and customer service quality — making these the most critical intervention areas.</p>
+                        
+                        <div class="chart-container">
+                            <canvas id="churnCategoriesChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div data-aos="fade-up">
+                        <h2 class="section-heading">Business Impact & Results</h2>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Action Area</th>
+                                    <th>Insight/Change Suggested</th>
+                                    <th>Expected Impact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Long-Term Contracts</td>
+                                    <td>Incentivize 1–2 year contracts to reduce churn from 46% to <15%</td>
+                                    <td>Potential 2x retention in high-risk segment</td>
+                                </tr>
+                                <tr>
+                                    <td>Customer Onboarding (0–6 months)</td>
+                                    <td>Targeted engagement during early account tenure</td>
+                                    <td>Reduce early churn by up to 25%</td>
+                                </tr>
+                                <tr>
+                                    <td>Unlimited Data Plans</td>
+                                    <td>Address overuse & unmet expectations via revised plans</td>
+                                    <td>Prevent ~30% of premium user churn</td>
+                                </tr>
+                                <tr>
+                                    <td>Service Quality</td>
+                                    <td>Train support staff; reduce service calls per user</td>
+                                    <td>Improve NPS & drop churn due to "Attitude"</td>
+                                </tr>
+                                <tr>
+                                    <td>Geo-Specific Campaigns</td>
+                                    <td>State-wise churn & service call variation tracked</td>
+                                    <td>Focused retention efforts per region</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="conclusion" data-aos="fade-up">
+                        <h2>Strategic Value</h2>
+                        <ul>
+                            <li>Enabled real-time churn monitoring across all demographics and usage patterns.</li>
+                            <li>Provided C-suite-ready dashboard to guide pricing, bundling, and support policies.</li>
+                            <li>Created data-backed playbook to counteract competitor switching.</li>
+                            <li>Identified high-value retention opportunities by targeting specific contract types and service issues.</li>
+                            <li>Developed a framework for ongoing analysis and continuous improvement in customer retention strategies.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project Navigation -->
+                    <div class="project-navigation" data-aos="fade-up">
+                        <a href="project_four.html" class="nav-project">
+                            <div class="nav-icon">
+                                <i class="fas fa-arrow-left"></i>
+                            </div>
+                            <div>
+                                <span class="nav-direction">← Previous Project</span>
+                                <p class="nav-title">Last Mile Delivery Optimization</p>
+                            </div>
+                        </a>
+                        <a href="project_two.html" class="nav-project">
+                            <div>
+                                <span class="nav-direction">Next Project →</span>
+                                <p class="nav-title">AI-Powered Multi-Agent RAG Chatbot for Pharmaceutical Supply Chain Operations</p>
+                            </div>
+                            <div class="nav-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Pritom Bhowmik. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Pritom Bhowmik. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html#hero">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#skills">Skills</a>
+                    <a href="index.html#projects">Projects</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Libraries JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="main.js"></script>
     <script>
-        // Mobile menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                });
-            }
-            
-            // Close mobile menu when clicking on a link
-            const navItems = document.querySelectorAll('.nav-links a');
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    navLinks.classList.remove('active');
-                });
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.navbar') && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                }
-            });
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
         });
 
-        // Slider functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('.slider-image');
-            const dots = document.querySelectorAll('.slider-dot');
-            const prevButton = document.querySelector('.slider-button.prev');
-            const nextButton = document.querySelector('.slider-button.next');
-            let currentIndex = 0;
-            const interval = 4000; // 4 seconds
-            let slideInterval;
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+        });
 
-            function showImage(index) {
-                images.forEach(img => img.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                images[index].classList.add('active');
-                dots[index].classList.add('active');
-                currentIndex = index;
-            }
-
-            function nextImage() {
-                currentIndex = (currentIndex + 1) % images.length;
-                showImage(currentIndex);
-            }
-
-            function prevImage() {
-                currentIndex = (currentIndex - 1 + images.length) % images.length;
-                showImage(currentIndex);
-            }
-
-            function startSlideshow() {
-                slideInterval = setInterval(nextImage, interval);
-            }
-
-            function stopSlideshow() {
-                clearInterval(slideInterval);
-            }
-
-            // Event listeners for dots
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showImage(index);
-                    stopSlideshow();
-                    startSlideshow();
+        // Project-specific charts
+        document.addEventListener('DOMContentLoaded', () => {
+            // Churn Metrics Chart
+            const churnMetricsCtx = document.getElementById('churnMetricsChart');
+            if (churnMetricsCtx) {
+                new Chart(churnMetricsCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Month-to-Month', 'Yearly Contract', 'Unlimited Data Plan', 'Overall Churn Rate'],
+                        datasets: [{
+                            label: 'Churn Rate (%)',
+                            data: [46.29, 6.62, 32.11, 26.86],
+                            backgroundColor: [
+                                'rgba(220, 53, 69, 0.7)',
+                                'rgba(25, 135, 84, 0.7)',
+                                'rgba(255, 193, 7, 0.7)',
+                                'rgba(67, 97, 238, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(220, 53, 69, 1)',
+                                'rgba(25, 135, 84, 1)',
+                                'rgba(255, 193, 7, 1)',
+                                'rgba(67, 97, 238, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                            title: {
+                                display: true,
+                                text: 'Churn Rate by Contract Type',
+                                font: {
+                                    size: 16
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.parsed.y + '%';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Churn Rate (%)'
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
                 });
-            });
+            }
 
-            // Event listeners for buttons
-            prevButton.addEventListener('click', () => {
-                prevImage();
-                stopSlideshow();
-                startSlideshow();
-            });
-
-            nextButton.addEventListener('click', () => {
-                nextImage();
-                stopSlideshow();
-                startSlideshow();
-            });
-
-            // Pause on hover
-            const sliderContainer = document.querySelector('.slider-container');
-            sliderContainer.addEventListener('mouseenter', stopSlideshow);
-            sliderContainer.addEventListener('mouseleave', startSlideshow);
-
-            // Start the slideshow
-            startSlideshow();
+            // Churn Categories Chart
+            const churnCategoriesCtx = document.getElementById('churnCategoriesChart');
+            if (churnCategoriesCtx) {
+                new Chart(churnCategoriesCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Competitor Offers', 'Service Attitude', 'Dissatisfaction', 'Price Sensitivity', 'Other Factors'],
+                        datasets: [{
+                            data: [44.82, 15.98, 15.92, 11.14, 10.63],
+                            backgroundColor: [
+                                'rgba(67, 97, 238, 0.8)',
+                                'rgba(220, 53, 69, 0.8)',
+                                'rgba(255, 193, 7, 0.8)',
+                                'rgba(25, 135, 84, 0.8)',
+                                'rgba(108, 117, 125, 0.8)'
+                            ],
+                            borderColor: [
+                                'rgba(67, 97, 238, 1)',
+                                'rgba(220, 53, 69, 1)',
+                                'rgba(255, 193, 7, 1)',
+                                'rgba(25, 135, 84, 1)',
+                                'rgba(108, 117, 125, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Reasons for Customer Churn',
+                                font: {
+                                    size: 16
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.parsed || 0;
+                                        return label + ': ' + value + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
         });
     </script>
 </body>
