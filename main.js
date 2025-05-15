@@ -1,21 +1,56 @@
 // ======= NAVIGATION MENU =======
 const menuToggle = document.querySelector('.menu-toggle');
 const navbarMenu = document.querySelector('.navbar-menu');
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const navLinks = document.querySelector('.nav-links');
 
-if (menuToggle) {
+// Mobile menu toggle for main site
+if (menuToggle && navbarMenu) {
   menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
     navbarMenu.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+  });
+}
+
+// Mobile menu toggle for project pages
+if (mobileMenuBtn && navLinks) {
+  mobileMenuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
   });
 }
 
 // Close menu when clicking on a nav link
-const navLinks = document.querySelectorAll('.navbar-nav a');
-navLinks.forEach(link => {
+document.querySelectorAll('.navbar-nav a, .nav-links a').forEach(link => {
   link.addEventListener('click', () => {
+    if (menuToggle && navbarMenu) {
+      menuToggle.classList.remove('active');
+      navbarMenu.classList.remove('active');
+    }
+    if (navLinks) {
+      navLinks.classList.remove('active');
+    }
+    document.body.classList.remove('menu-open');
+  });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (navbarMenu && navbarMenu.classList.contains('active') && 
+      !navbarMenu.contains(e.target) && 
+      !menuToggle.contains(e.target)) {
     menuToggle.classList.remove('active');
     navbarMenu.classList.remove('active');
-  });
+    document.body.classList.remove('menu-open');
+  }
+  
+  if (navLinks && navLinks.classList.contains('active') && 
+      !navLinks.contains(e.target) && 
+      mobileMenuBtn && !mobileMenuBtn.contains(e.target)) {
+    navLinks.classList.remove('active');
+    document.body.classList.remove('menu-open');
+  }
 });
 
 // ======= HERO CHART =======

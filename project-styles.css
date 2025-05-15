@@ -965,11 +965,11 @@ img {
 
 @media (max-width: 480px) {
     .project-slider {
-        height: 300px;
+        height: 250px;
     }
     
     .slider-image {
-        max-height: 260px;
+        max-height: 220px;
     }
     
     .feature-card {
@@ -1009,7 +1009,7 @@ img {
     }
     
     .project-content {
-        margin-bottom: 1.5rem;
+        margin: 0 0.5rem 1.5rem;
     }
     
     .finding-section h3, .recommendation-section h3 {
@@ -1022,6 +1022,8 @@ img {
     
     .project-stats {
         gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     .stat {
@@ -1031,11 +1033,16 @@ img {
     
     .tech-tags {
         gap: 0.5rem;
+        flex-wrap: wrap;
     }
     
     .tech-tag {
         font-size: 0.75rem;
         padding: 0.3rem 0.6rem;
+    }
+    
+    .project-meta {
+        padding: 1rem;
     }
 }
 
@@ -1046,15 +1053,21 @@ img {
     
     .project-meta {
         max-width: 100%;
+        padding: 1rem;
     }
     
     .tech-tags {
         gap: 0.5rem;
+        flex-wrap: wrap;
     }
     
     .stat {
         font-size: 0.85rem;
         padding: 0.5rem 0.75rem;
+    }
+    
+    .project-content::before {
+        display: none;
     }
 }
 
@@ -1093,75 +1106,257 @@ img {
     color: var(--accent-primary);
 }
 
-/* Mobile menu functionality */
+/* Mobile menu button styles */
 .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
-    color: var(--text-primary);
-    font-size: 1.5rem;
+    width: 32px;
+    height: 32px;
+    position: relative;
     cursor: pointer;
-    padding: 0.5rem;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    border-radius: 5px;
+    z-index: 1001;
 }
 
-.mobile-menu-btn:hover {
-    background-color: var(--hover-bg);
+.mobile-menu-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-primary);
+    border-radius: 3px;
+    margin: 6px 0;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-btn:hover span {
+    background-color: var(--accent);
 }
 
 @media (max-width: 768px) {
     .mobile-menu-btn {
-        display: flex;
+        display: block;
     }
     
     .nav-links {
         position: fixed;
-        top: 59px;
-        left: 0;
-        width: 100%;
+        top: 0;
+        right: -100%;
+        width: 75%;
+        max-width: 300px;
+        height: 100vh;
         background-color: var(--bg-primary);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
         flex-direction: column;
-        align-items: center;
-        padding: 1rem;
-        gap: 1rem;
-        box-shadow: 0 5px 10px var(--shadow-color);
-        transform: translateY(-100%);
-        opacity: 0;
-        transition: all 0.3s ease;
-        pointer-events: none;
-        border-bottom: 1px solid var(--border-color);
-        z-index: 999;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        background-color: rgba(255, 250, 243, 0.95);
+        align-items: flex-start;
+        padding: 5rem 2rem 2rem;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        gap: 1.5rem;
+        overflow-y: auto;
     }
     
     .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: all;
+        right: 0;
     }
     
     .nav-links a {
         width: 100%;
         padding: 0.75rem 0;
-        text-align: center;
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
     .home-btn, .contact-btn {
-        width: 80%;
-        margin: 0 auto;
-        justify-content: center;
+        margin-top: 0.5rem;
+        width: 100%;
+        text-align: center;
     }
     
     .nav-links a:not(.contact-btn):after {
+        bottom: 0;
+    }
+    
+    .navbar {
+        padding: 0.6rem 0;
+    }
+    
+    .nav-content {
+        padding: 0 1rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-links {
+        gap: 1.5rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+    
+    .contact-btn {
+        padding: 0.4rem 0.8rem;
+    }
+    
+    /* Additional responsive fixes */
+    .project-content {
+        padding: 1rem 1rem 1.5rem;
+        border-radius: 12px;
+        margin: 0 0.5rem;
+    }
+    
+    .project-header {
+        padding: 1.5rem 1rem 0.5rem;
+    }
+    
+    .project-header h1 {
+        font-size: 1.6rem;
+        max-width: 100%;
+        line-height: 1.3;
+    }
+    
+    .project-description h2 {
+        font-size: 1.5rem;
+    }
+    
+    .feature-card, .tech-category, .stat-card {
+        padding: 1.2rem;
+    }
+    
+    .feature-grid, .tech-stack, .stats-container {
+        gap: 1rem;
+        margin: 1.2rem 0;
+        grid-template-columns: 1fr;
+    }
+    
+    .finding-section, .recommendation-section {
+        padding: 1rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .stat-card {
+        max-width: 95%;
+        margin: 0 auto;
+    }
+    
+    .stat-card .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+    }
+    
+    .slider-image {
+        max-height: 300px;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-slider {
+        height: 250px;
+    }
+    
+    .slider-image {
+        max-height: 220px;
+        object-fit: contain;
+    }
+    
+    .feature-card {
+        min-height: 160px;
+        padding: 1rem;
+    }
+    
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .project-header h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .project-description h2 {
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+    }
+    
+    .project-description h3 {
+        font-size: 1.1rem;
+    }
+    
+    .slider-button, .slider-button.prev, .slider-button.next {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+    
+    .project-slider {
+        margin-bottom: 1.5rem;
+    }
+    
+    .project-content {
+        margin: 0 0.5rem 1.5rem;
+    }
+    
+    .finding-section h3, .recommendation-section h3 {
+        font-size: 1.1rem;
+    }
+    
+    .tech-category h4 {
+        font-size: 1rem;
+    }
+    
+    .project-stats {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .stat {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .tech-tags {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .tech-tag {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+    
+    .project-meta {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .nav-links a:not(.contact-btn) {
+        display: none;
+    }
+    
+    .project-meta {
+        max-width: 100%;
+        padding: 1rem;
+    }
+    
+    .tech-tags {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .stat {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .project-content::before {
         display: none;
     }
 }
@@ -1262,5 +1457,44 @@ button, .slider-button, .mobile-menu-btn, .nav-links a {
     button.slider-button, .slider-button.prev, .slider-button.next {
         min-height: 28px;
         min-width: 28px;
+    }
+}
+
+/* Prevent scrolling when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Fix image display on mobile */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Improve touch targets on mobile */
+button, .slider-button, .mobile-menu-btn, .nav-links a {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 768px) {
+    button.slider-button, .slider-button.prev, .slider-button.next {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    button.slider-button, .slider-button.prev, .slider-button.next {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 360px) {
+    button.slider-button, .slider-button.prev, .slider-button.next {
+        width: 30px;
+        height: 30px;
     }
 } 
