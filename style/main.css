@@ -82,38 +82,23 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-primary);
   transition: var(--transition-medium);
-  cursor: none;
+  cursor: auto;
 }
 
-/* Hide default cursor on desktop */
+/* Keep default cursor on all devices */
 @media (min-width: 768px) {
   * {
-    cursor: none !important;
+    cursor: auto !important;
   }
 }
 
-/* Custom Cursor */
+/* Custom Cursor - Disabled */
 .cursor {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--primary-color);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.1s ease;
-  mix-blend-mode: difference;
+  display: none;
 }
 
 .cursor-follower {
-  width: 8px;
-  height: 8px;
-  background-color: var(--primary-color);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transition: transform 0.15s ease;
+  display: none;
 }
 
 /* Custom cursor hover effects */

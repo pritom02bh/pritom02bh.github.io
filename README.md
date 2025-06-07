@@ -202,9 +202,11 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 📧 Contact
 
 **Pritom Bhowmik**
+- Location: Parsippany, New Jersey
+- Phone: 862-399-9031
 - Website: [https://pritom02bh.github.io](https://pritom02bh.github.io)
-- Email: pritom02bh@gmail.com
-- LinkedIn: [linkedin.com/in/pritom-bhowmik](https://linkedin.com/in/pritom-bhowmik)
+- Email: bhowmik01dev@gmail.com
+- LinkedIn: [linkedin.com/in/bhowmikpritom](https://linkedin.com/in/bhowmikpritom)
 - GitHub: [github.com/pritom02bh](https://github.com/pritom02bh)
 
 ---
