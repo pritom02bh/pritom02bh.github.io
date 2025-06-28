@@ -14,7 +14,7 @@ function initializeApp() {
     // Initialize components
     initCustomCursor();
     initDarkMode();
-    initTypingAnimation();
+    // initTypingAnimation(); // Disabled - using static title
     initScrollAnimations();
     initNavigation();
     initProjectFilters();
@@ -116,7 +116,8 @@ function disableDarkMode() {
     isDarkMode = false;
 }
 
-// ===== TYPING ANIMATION =====
+// ===== TYPING ANIMATION ===== (DISABLED - USING STATIC TITLE)
+/*
 function initTypingAnimation() {
     const typingElement = document.querySelector('.typing-text');
     if (!typingElement) return;
@@ -160,6 +161,7 @@ function initTypingAnimation() {
     // Start typing animation
     typeRole();
 }
+*/
 
 // ===== PROJECT IMAGE CAROUSELS =====
 function initProjectCarousels() {
