@@ -201,12 +201,12 @@ function initProjectCarousels() {
                 showSlide(index);
                 // Restart auto-rotation after manual click
                 clearInterval(carouselIntervals[cardIndex]);
-                carouselIntervals[cardIndex] = setInterval(nextSlide, 2000);
+                carouselIntervals[cardIndex] = setInterval(nextSlide, 3500);
             });
         });
         
-        // Start auto-rotation
-        carouselIntervals[cardIndex] = setInterval(nextSlide, 2000);
+        // Start auto-rotation (slower for readability)
+        carouselIntervals[cardIndex] = setInterval(nextSlide, 3500);
         
         // Pause auto-rotation on hover
         carousel.addEventListener('mouseenter', () => {
@@ -215,8 +215,31 @@ function initProjectCarousels() {
         
         // Resume auto-rotation when mouse leaves
         carousel.addEventListener('mouseleave', () => {
-            carouselIntervals[cardIndex] = setInterval(nextSlide, 2000);
+            carouselIntervals[cardIndex] = setInterval(nextSlide, 3500);
         });
+
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            clearInterval(carouselIntervals[cardIndex]);
+        }, { passive: true });
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchEndX - touchStartX;
+            if (Math.abs(diff) > 40) {
+                if (diff < 0) {
+                    // swipe left => next
+                    nextSlide();
+                } else {
+                    // swipe right => prev
+                    const prevIndex = (currentSlide - 1 + images.length) % images.length;
+                    showSlide(prevIndex);
+                }
+            }
+            carouselIntervals[cardIndex] = setInterval(nextSlide, 3500);
+        }, { passive: true });
     });
 }
 
@@ -283,6 +306,19 @@ function initNavigation() {
     
     // Update active nav link on scroll
     window.addEventListener('scroll', updateActiveNavLink);
+
+    // Add scrolled class to navbar
+    const navbar = document.querySelector('.navbar');
+    const applyScrolled = () => {
+        if (!navbar) return;
+        if (window.scrollY > 10) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    };
+    applyScrolled();
+    window.addEventListener('scroll', throttle(applyScrolled, 50));
 }
 
 function updateActiveNavLink() {
