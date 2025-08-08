@@ -140,6 +140,15 @@
   transition: var(--transition-medium);
 }
 
+@media (max-width: 768px) {
+  .project-header .project-header-content {
+    gap: var(--spacing-2xl);
+  }
+  .gallery-item img {
+    height: 220px;
+  }
+}
+
 .gallery-overlay {
   position: absolute;
   top: 0;
