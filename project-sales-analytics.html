@@ -17,44 +17,51 @@
     <title>Sales Analytics Dashboard - Pritom Bhowmik</title>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="style/main.css?v=1">
-    <link rel="stylesheet" href="style/project-page.css">
+    <link rel="stylesheet" href="style/main.css?v=3">
+    <link rel="stylesheet" href="style/project-page.css?v=3">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <div class="bg-mesh" aria-hidden="true">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
+        <div class="mesh-blob blob-4"></div>
+    </div>
+
+    <a href="index.html" class="back-home-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html" aria-label="Go to home"><h2>Pritom Bhowmik</h2></a>
-            </div>
-            <div class="nav-menu">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">PB</span>
+                <span class="logo-full">Pritom Bhowmik</span>
+            </a>
+            <div class="nav-menu" id="navMenu">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#projects" class="nav-link">Projects</a>
-                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#experience" class="nav-link">Experience</a>
+                <a href="index.html#projects" class="nav-link active">Projects</a>
                 <a href="index.html#skills" class="nav-link">Skills</a>
+                <a href="index.html#education" class="nav-link">Education</a>
                 <a href="index.html#contact" class="nav-link">Contact</a>
                 <button class="dark-mode-toggle" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
-            <div class="hamburger">
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -485,31 +492,31 @@
 
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
+        <i class="fas fa-arrow-up"></i>
     </button>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Pritom Bhowmik. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://github.com/pritom02bh" target="_blank" rel="noopener" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                                    <a href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="mailto:bhowmik01dev@gmail.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
+                <div class="footer-left">
+                    <span class="footer-logo">Pritom Bhowmik</span>
+                    <p>Data Science & AI Professional</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-social">
+                        <a href="https://github.com/pritom02bh" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:bhowmik01dev@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <p>&copy; 2026 Pritom Bhowmik. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=3"></script>
     <script src="js/project-page.js"></script>
 </body>
 </html> 

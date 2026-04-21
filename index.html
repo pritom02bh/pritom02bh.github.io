@@ -3,62 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pritom Bhowmik — Data Science, Data Analytics & Product Management portfolio. Predictive modeling, analytics engineering, BI dashboards, A/B testing, and data-driven product strategy.">
-    <meta name="keywords" content="Data Science, Data Analytics, Product Management, Python, SQL, Power BI, Machine Learning, A/B Testing, Roadmap, Agile">
+    <meta name="description" content="Pritom Bhowmik — Data Science & AI professional. Machine learning, NLP, RAG systems, predictive modeling, and data-driven analytics.">
+    <meta name="keywords" content="Data Science, AI, Machine Learning, NLP, RAG, Python, SQL, Analytics, Predictive Modeling">
     <meta name="author" content="Pritom Bhowmik">
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Pritom Bhowmik — Data Science, Analytics & Product Management">
-    <meta property="og:description" content="Predictive modeling, analytics engineering, BI dashboards, and data-driven product strategy">
+    <meta property="og:title" content="Pritom Bhowmik — Data Science & AI">
+    <meta property="og:description" content="Data Science and Analytics professional specializing in AI research, machine learning, and data-driven solutions.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pritom02bh.github.io">
     <meta property="og:image" content="https://pritom02bh.github.io/assets/pritom.png">
     
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pritom Bhowmik — Data Science, Analytics & Product Management">
-    <meta name="twitter:description" content="Predictive modeling, analytics engineering, BI dashboards, and data-driven product strategy">
+    <meta name="twitter:title" content="Pritom Bhowmik — Data Science & AI">
+    <meta name="twitter:description" content="Data Science and Analytics professional specializing in AI research, machine learning, and data-driven solutions.">
     
-    <title>Pritom Bhowmik — Data Science, Analytics & Product Management</title>
+    <title>Pritom Bhowmik — Data Science & AI</title>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="style/main.css?v=1">
-    
-    <!-- Favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style/main.css?v=3">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <!-- Animated Background -->
+    <div class="bg-mesh" aria-hidden="true">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
+        <div class="mesh-blob blob-4"></div>
+    </div>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="#home" aria-label="Go to home"><h2>Pritom Bhowmik</h2></a>
-            </div>
-            <div class="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
+            <a href="#home" class="nav-logo" aria-label="Go to home">
+                <span class="logo-text">PB</span>
+                <span class="logo-full">Pritom Bhowmik</span>
+            </a>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#experience" class="nav-link">Experience</a>
                 <a href="#projects" class="nav-link">Projects</a>
-                <a href="#about" class="nav-link">About</a>
                 <a href="#skills" class="nav-link">Skills</a>
+                <a href="#education" class="nav-link">Education</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <button class="dark-mode-toggle" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
-            <div class="hamburger">
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -67,60 +64,173 @@
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">
-                        Hi, I'm <span class="highlight">Pritom Bhowmik</span>
-                    </h1>
-                    <div class="hero-subtitle">
-                        <span class="static-title">Data Science | Data Analytics | Product Management | Artificial Intelligence</span>
+                    <p class="hero-greeting">Hello, I'm</p>
+                    <h1 class="hero-title">Pritom Bhowmik</h1>
+                    <div class="hero-role">
+                        <span class="role-prefix">I work in</span>
+                        <span class="typing-text" id="typingText"></span>
+                        <span class="typing-cursor">|</span>
                     </div>
-                    <div class="hero-highlights">
-                        <ul class="achievement-list">
-                            <li>
-                                <span class="emoji-icon">🎓</span>
-                                <div class="highlight-content">
-                                    <span class="highlight-title">MS in Data Science (GPA 3.97)</span>
-                                    <span class="highlight-description">Expert in statistical analysis, predictive modeling, and data-driven decision-making with deep proficiency in uncovering user behavior patterns and identifying growth opportunities.</span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="emoji-icon">📊</span>
-                                <div class="highlight-content">
-                                    <span class="highlight-title">Data Analytics & Experimentation</span>
-                                    <span class="highlight-description">A/B testing, funnel analytics, cohort analysis, KPI design, and instrumentation to guide product decisions and growth.</span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="emoji-icon">🧠</span>
-                                <div class="highlight-content">
-                                    <span class="highlight-title">Data Science & ML</span>
-                                    <span class="highlight-description">Predictive modeling, time series forecasting, feature engineering, and model evaluation for business impact.</span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="emoji-icon">🚀</span>
-                                <div class="highlight-content">
-                                    <span class="highlight-title">Product Management</span>
-                                    <span class="highlight-description">User research, roadmap planning, Agile delivery, and post-launch analytics to ship features that move metrics.</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
+                    <p class="hero-description">
+                        Data Science and Analytics professional with experience in teaching, applied AI research, 
+                        product strategy, and data-driven problem solving. Strong foundation in Python, SQL, 
+                        machine learning, and data visualization.
+                    </p>
                     <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View Projects</a>
-                        <a href="assets/resume/Resume.pdf" target="_blank" rel="noopener" class="btn btn-secondary">Download Resume</a>
+                        <a href="#projects" class="btn btn-primary">
+                            <span>View Projects</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="assets/resume/Resume.pdf" target="_blank" rel="noopener" class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            <span>Resume</span>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost">
+                            <span>Let's Talk</span>
+                        </a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://github.com/pritom02bh" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:bhowmik01dev@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="image-container">
-                                                 <img src="assets/pritom.png" alt="Pritom Bhowmik" class="profile-img" loading="eager" fetchpriority="high" decoding="async">
-                        <div class="image-bg"></div>
+                <div class="hero-visual">
+                    <div class="profile-wrapper">
+                        <div class="profile-ring"></div>
+                        <div class="profile-ring ring-2"></div>
+                        <img src="assets/pritom.png" alt="Pritom Bhowmik" class="profile-img" loading="eager" fetchpriority="high" decoding="async">
+                        <div class="floating-badge badge-1">
+                            <i class="fas fa-brain"></i>
+                            <span>ML & AI</span>
+                        </div>
+                        <div class="floating-badge badge-2">
+                            <i class="fas fa-database"></i>
+                            <span>Data Science</span>
+                        </div>
+                        <div class="floating-badge badge-3">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow">
-                <i class="fas fa-chevron-down"></i>
+        <div class="scroll-indicator" aria-hidden="true">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="4" data-suffix="+">0</div>
+                    <div class="stat-label">Years of Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100" data-suffix="+">0</div>
+                    <div class="stat-label">Students Taught per Semester</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="15" data-suffix="%">0</div>
+                    <div class="stat-label">Feature Delivery Improvement</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Career</span>
+                <h2 class="section-title">Work Experience</h2>
+                <p class="section-subtitle">Building solutions across academia, AI startups, and research labs</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <h3>University Lecturer</h3>
+                                <span class="timeline-company">Monroe University</span>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> New Rochelle, NY</span>
+                                <span class="timeline-date"><i class="fas fa-calendar"></i> Sep 2025 – Present</span>
+                            </div>
+                        </div>
+                        <p class="timeline-role">Computer Science & IT</p>
+                        <ul class="timeline-details">
+                            <li>Delivered undergraduate and graduate courses in data science, programming, and database systems for 100+ students per semester with a focus on real-world data applications</li>
+                            <li>Designed and implemented hands-on labs and projects using Python and SQL to strengthen student skills in data analysis and problem solving</li>
+                            <li>Evaluated student performance and provided structured feedback to improve analytical thinking, technical understanding, and academic outcomes</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>Python</span><span>SQL</span><span>Data Science</span><span>Teaching</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <h3>Product Manager Intern</h3>
+                                <span class="timeline-company">Sentari AI</span>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> New York, NY</span>
+                                <span class="timeline-date"><i class="fas fa-calendar"></i> Jun 2025 – Dec 2025</span>
+                            </div>
+                        </div>
+                        <p class="timeline-role">Data & AI</p>
+                        <ul class="timeline-details">
+                            <li>Defined data-driven product requirements and translated business needs into actionable technical specifications for AI-based solutions</li>
+                            <li>Collaborated with engineering teams to support development of data-focused features, ensuring alignment with product goals and timelines</li>
+                            <li>Optimized workflow and backlog processes, contributing to a 15% improvement in feature delivery efficiency</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>Product Management</span><span>AI</span><span>Agile</span><span>Data Strategy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <h3>Researcher – Data Science & AI</h3>
+                                <span class="timeline-company">Data Science Lab, Montclair State University</span>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="timeline-location"><i class="fas fa-map-marker-alt"></i> Montclair, NJ</span>
+                                <span class="timeline-date"><i class="fas fa-calendar"></i> Jan 2024 – May 2025</span>
+                            </div>
+                        </div>
+                        <p class="timeline-role">Applied AI Research</p>
+                        <ul class="timeline-details">
+                            <li>Developed a multi-agent RAG chatbot for pharmaceutical inventory systems using LLM-based retrieval and query optimization techniques</li>
+                            <li>Improved retrieval accuracy to 99% through embedding optimization, prompt engineering, and systematic evaluation</li>
+                            <li>Applied machine learning and NLP techniques to design scalable solutions for domain-specific data problems</li>
+                        </ul>
+                        <div class="timeline-tags">
+                            <span>RAG</span><span>LLM</span><span>NLP</span><span>Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -129,40 +239,32 @@
     <section id="projects" class="projects-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">My Projects</h2>
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Real-world applications of data science, analytics, and AI</p>
             </div>
             
-            <!-- Project Filters -->
             <div class="project-filters">
-                <div class="filter-container">
-                    <h3>Filter by Category:</h3>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="all">All Projects</button>
-                        <button class="filter-btn" data-filter="agile">Agile</button>
-                        <button class="filter-btn" data-filter="business-analysis">Business Analysis</button>
-                        <button class="filter-btn" data-filter="data-analytics">Data Analytics</button>
-                        <button class="filter-btn" data-filter="power-bi">Power BI</button>
-                        <button class="filter-btn" data-filter="statistical-analysis">Statistical Analysis</button>
-                        <button class="filter-btn" data-filter="ai">AI</button>
-                        <button class="filter-btn" data-filter="healthcare">Healthcare</button>
-                        <button class="filter-btn" data-filter="supply-chain">Supply Chain</button>
-                        <button class="filter-btn" data-filter="it-project">IT Project</button>
-                    </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="ai">AI / ML</button>
+                    <button class="filter-btn" data-filter="data-analytics">Analytics</button>
+                    <button class="filter-btn" data-filter="supply-chain">Supply Chain</button>
+                    <button class="filter-btn" data-filter="agile">Product Mgmt</button>
                 </div>
             </div>
 
-            <!-- Projects Grid -->
             <div class="projects-grid">
-                <!-- Project 1: Sales Forecasting & Workforce Scheduling Platform (Agile Based) -->
+                <!-- Project 1 -->
                 <div class="project-card" data-category="agile business-analysis it-project">
                     <div class="project-image-carousel">
                         <div class="carousel-container">
                             <img src="assets/Agile Project/1.png" alt="Agile Project - Overview" class="carousel-image active" loading="lazy" decoding="async">
-                            <img src="assets/Agile Project/2.png" alt="Agile Project - Process Analysis" class="carousel-image">
-                            <img src="assets/Agile Project/3.png" alt="Agile Project - Requirements Documentation" class="carousel-image">
-                            <img src="assets/Agile Project/4.png" alt="Agile Project - System Design" class="carousel-image">
-                            <img src="assets/Agile Project/5.png" alt="Agile Project - Implementation" class="carousel-image">
-                            <img src="assets/Agile Project/6.png" alt="Agile Project - Results" class="carousel-image">
+                            <img src="assets/Agile Project/2.png" alt="Agile Project - Process" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/Agile Project/3.png" alt="Agile Project - Requirements" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/Agile Project/4.png" alt="Agile Project - Design" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/Agile Project/5.png" alt="Agile Project - Implementation" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/Agile Project/6.png" alt="Agile Project - Results" class="carousel-image" loading="lazy" decoding="async">
                         </div>
                         <div class="carousel-indicators">
                             <span class="indicator active" data-slide="0"></span>
@@ -174,60 +276,36 @@
                         </div>
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="project-agile.html" class="project-link" title="View Project Details">
-                                    <i class="fas fa-eye"></i>
-                                    <span>View Project</span>
-                                </a>
-                                <a href="https://github.com/pritom02bh/weekly_sales_forecasting" target="_blank" rel="noopener" class="project-link" title="View GitHub">
-                                    <i class="fab fa-github"></i>
-                                    <span>GitHub</span>
-                                </a>
+                                <a href="project-agile.html" class="project-link"><i class="fas fa-eye"></i> View Details</a>
+                                <a href="https://github.com/pritom02bh/weekly_sales_forecasting" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Sales Forecasting & Workforce Scheduling Platform (Product Management)</h3>
-                        <p class="project-description">
-                            Led end-to-end product management of new internal features for Sales Forecasting and Workforce Scheduling platform. 
-                            Managed complete product lifecycle from user research and analytics through feature development, launch strategy, 
-                            and post-launch performance optimization, resulting in 40% improved operational efficiency for 500+ internal users.
-                        </p>
-                        <div class="project-responsibilities">
-                            <h4><i class="fas fa-tasks"></i>Product Management Responsibilities</h4>
-                            <ul class="responsibilities-list">
-                                <li>Conducted user analytics and research across 5 departments to identify feature requirements and pain points</li>
-                                <li>Defined product roadmap and prioritized feature backlog based on user impact and business value</li>
-                                <li>Led cross-functional product development teams through Agile methodology and sprint planning</li>
-                                <li>Designed user experience workflows and collaborated with UX/UI teams on interface design</li>
-                                <li>Managed product launch strategy including user training, change management, and rollout phases</li>
-                                <li>Implemented post-launch analytics tracking user adoption, engagement metrics, and feature performance</li>
-                            </ul>
-                        </div>
-                        <div class="project-tech">
-                            <span class="tech-tag">Product Management</span>
-                            <span class="tech-tag">User Analytics</span>
-                            <span class="tech-tag">Product Roadmap</span>
-                            <span class="tech-tag">Agile/Scrum</span>
-                            <span class="tech-tag">Launch Strategy</span>
-                            <span class="tech-tag">Performance Analytics</span>
-                        </div>
                         <div class="project-tags">
                             <span class="category-tag agile">Product Management</span>
                             <span class="category-tag business-analysis">User Analytics</span>
-                            <span class="category-tag it-project">Internal Platform</span>
+                        </div>
+                        <h3 class="project-title">Sales Forecasting & Workforce Scheduling Platform</h3>
+                        <p class="project-description">Led end-to-end product management of internal features for Sales Forecasting and Workforce Scheduling, resulting in 40% improved operational efficiency for 500+ users.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Product Management</span>
+                            <span class="tech-tag">Agile/Scrum</span>
+                            <span class="tech-tag">User Analytics</span>
+                            <span class="tech-tag">Launch Strategy</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2: Sales Analytics Dashboard -->
+                <!-- Project 2 -->
                 <div class="project-card" data-category="data-analytics power-bi statistical-analysis">
                     <div class="project-image-carousel">
                         <div class="carousel-container">
-                                                         <img src="assets/sales analytics/dashboard-images-0.jpg" alt="Sales Analytics - Main Dashboard" class="carousel-image active" loading="lazy" decoding="async">
-                            <img src="assets/sales analytics/dashboard-images-1.jpg" alt="Sales Analytics - Revenue Analysis" class="carousel-image">
-                            <img src="assets/sales analytics/dashboard-images-2.jpg" alt="Sales Analytics - Product Performance" class="carousel-image">
-                            <img src="assets/sales analytics/dashboard-images-3.jpg" alt="Sales Analytics - Customer Insights" class="carousel-image">
-                            <img src="assets/sales analytics/dashboard-images-4.jpg" alt="Sales Analytics - Market Trends" class="carousel-image">
+                            <img src="assets/sales analytics/dashboard-images-0.jpg" alt="Sales Analytics Dashboard" class="carousel-image active" loading="lazy" decoding="async">
+                            <img src="assets/sales analytics/dashboard-images-1.jpg" alt="Revenue Analysis" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/sales analytics/dashboard-images-2.jpg" alt="Product Performance" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/sales analytics/dashboard-images-3.jpg" alt="Customer Insights" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/sales analytics/dashboard-images-4.jpg" alt="Market Trends" class="carousel-image" loading="lazy" decoding="async">
                         </div>
                         <div class="carousel-indicators">
                             <span class="indicator active" data-slide="0"></span>
@@ -238,55 +316,35 @@
                         </div>
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="project-sales-analytics.html" class="project-link" title="View Project Details">
-                                    <i class="fas fa-eye"></i>
-                                    <span>View Project</span>
-                                </a>
+                                <a href="project-sales-analytics.html" class="project-link"><i class="fas fa-eye"></i> View Details</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Sales Analytics Dashboard (SQL & Power BI)</h3>
-                        <p class="project-description">
-                            Comprehensive sales analytics platform providing deep insights into revenue performance, customer behavior, 
-                            and market trends. Features interactive dashboards, predictive forecasting, and automated reporting 
-                            capabilities that drive strategic business decisions.
-                        </p>
-                        <div class="project-responsibilities">
-                            <h4><i class="fas fa-tasks"></i>Key Responsibilities</h4>
-                            <ul class="responsibilities-list">
-                                <li>Designed and developed 5 interactive Power BI dashboards covering revenue, customer, and market analytics</li>
-                                <li>Built automated ETL pipelines using SQL Server Integration Services for data processing</li>
-                                <li>Implemented advanced DAX calculations for KPI tracking and trend analysis</li>
-                                <li>Created predictive models for sales forecasting using Python and statistical analysis</li>
-                                <li>Established data governance framework ensuring 98% data accuracy and consistency</li>
-                                <li>Trained 15+ stakeholders on dashboard usage and data-driven decision making</li>
-                            </ul>
+                        <div class="project-tags">
+                            <span class="category-tag data-analytics">Data Analytics</span>
+                            <span class="category-tag power-bi">Power BI</span>
                         </div>
+                        <h3 class="project-title">Sales Analytics Dashboard (SQL & Power BI)</h3>
+                        <p class="project-description">Comprehensive sales analytics platform with 5 interactive dashboards covering revenue, customer, and market analytics with predictive forecasting capabilities.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Power BI</span>
                             <span class="tech-tag">SQL Server</span>
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Advanced Analytics</span>
-                            <span class="tech-tag">Data Visualization</span>
-                        </div>
-                        <div class="project-tags">
-                            <span class="category-tag data-analytics">Data Analytics</span>
-                            <span class="category-tag power-bi">Power BI</span>
-                            <span class="category-tag statistical-analysis">Statistical Analysis</span>
+                            <span class="tech-tag">DAX</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3: AI-Powered Multi-Agent RAG Chatbot -->
+                <!-- Project 3 -->
                 <div class="project-card" data-category="data-analytics ai supply-chain">
                     <div class="project-image-carousel">
                         <div class="carousel-container">
-                                                         <img src="assets/agnetic rag/p2_first.png" alt="Multi-Agentic RAG System - Main Dashboard" class="carousel-image active" loading="lazy" decoding="async">
-                            <img src="assets/agnetic rag/p2_second.png" alt="Multi-Agentic RAG System - Agent Architecture" class="carousel-image">
-                            <img src="assets/agnetic rag/p2_third.png" alt="Multi-Agentic RAG System - Query Processing" class="carousel-image">
-                            <img src="assets/agnetic rag/p2_forth.png" alt="Multi-Agentic RAG System - Analytics" class="carousel-image">
-                            <img src="assets/agnetic rag/p2_fifth.png" alt="Multi-Agentic RAG System - Integration" class="carousel-image">
+                            <img src="assets/agnetic rag/p2_first.png" alt="RAG System Dashboard" class="carousel-image active" loading="lazy" decoding="async">
+                            <img src="assets/agnetic rag/p2_second.png" alt="Agent Architecture" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/agnetic rag/p2_third.png" alt="Query Processing" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/agnetic rag/p2_forth.png" alt="Analytics Dashboard" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/agnetic rag/p2_fifth.png" alt="Integration View" class="carousel-image" loading="lazy" decoding="async">
                         </div>
                         <div class="carousel-indicators">
                             <span class="indicator active" data-slide="0"></span>
@@ -297,59 +355,36 @@
                         </div>
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="project-supply-chain.html" class="project-link" title="View Project Details">
-                                    <i class="fas fa-eye"></i>
-                                    <span>View Project</span>
-                                </a>
-                                <a href="https://github.com/pritom02bh/pharma_ai_multi_agentic_rag_system" target="_blank" rel="noopener" class="project-link" title="View GitHub">
-                                    <i class="fab fa-github"></i>
-                                    <span>GitHub</span>
-                                </a>
+                                <a href="project-supply-chain.html" class="project-link"><i class="fas fa-eye"></i> View Details</a>
+                                <a href="https://github.com/pritom02bh/pharma_ai_multi_agentic_rag_system" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">AI-Powered Multi-Agent RAG Chatbot for Pharmaceutical Supply Chain Operations</h3>
-                        <p class="project-description">
-                            Engineered a groundbreaking multi-agent RAG chatbot integrating six specialized AI agents for pharmaceutical supply chain operations. 
-                            Achieved 97% retrieval accuracy and 95% web integration success, improving decision-making efficiency by 40-60% for non-technical users.
-                        </p>
-                        <div class="project-responsibilities">
-                            <h4><i class="fas fa-tasks"></i>Key Responsibilities</h4>
-                            <ul class="responsibilities-list">
-                                <li>Architected and developed 6 specialized AI agents using LangChain and LangGraph frameworks</li>
-                                <li>Implemented advanced RAG pipeline with vector database integration for pharmaceutical data retrieval</li>
-                                <li>Built real-time web integration capabilities using API orchestration and data synchronization</li>
-                                <li>Designed conversational AI interface with context-aware response generation using OpenAI models</li>
-                                <li>Established automated testing framework achieving 97% retrieval accuracy across agent interactions</li>
-                                <li>Created comprehensive documentation and training materials for non-technical users</li>
-                            </ul>
+                        <div class="project-tags">
+                            <span class="category-tag ai">AI</span>
+                            <span class="category-tag supply-chain">Supply Chain</span>
                         </div>
+                        <h3 class="project-title">Multi-Agent RAG Chatbot for Pharma Supply Chain</h3>
+                        <p class="project-description">Engineered a multi-agent RAG chatbot with six specialized AI agents, achieving 97% retrieval accuracy and improving decision-making efficiency by 40-60%.</p>
                         <div class="project-tech">
                             <span class="tech-tag">RAG</span>
                             <span class="tech-tag">LangChain</span>
                             <span class="tech-tag">OpenAI</span>
-                            <span class="tech-tag">LangGraph</span>
-                            <span class="tech-tag">Vector Database</span>
-                            <span class="tech-tag">Flask</span>
-                        </div>
-                        <div class="project-tags">
-                            <span class="category-tag data-analytics">Data Analytics</span>
-                            <span class="category-tag ai">AI</span>
-                            <span class="category-tag supply-chain">Supply Chain</span>
+                            <span class="tech-tag">Vector DB</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 4: IntelliStock: Intelligent Demand Forecasting & Inventory Optimization -->
+                <!-- Project 4 -->
                 <div class="project-card" data-category="data-analytics supply-chain statistical-analysis">
                     <div class="project-image-carousel">
                         <div class="carousel-container">
-                                                         <img src="assets/demand forecasting and inventory optimization/1.png" alt="IntelliStock - Dashboard Overview" class="carousel-image active" loading="lazy" decoding="async">
-                            <img src="assets/demand forecasting and inventory optimization/2.png" alt="IntelliStock - Demand Forecasting Models" class="carousel-image">
-                            <img src="assets/demand forecasting and inventory optimization/3.png" alt="IntelliStock - Inventory Analytics" class="carousel-image">
-                            <img src="assets/demand forecasting and inventory optimization/4.png" alt="IntelliStock - EOQ Optimization" class="carousel-image">
-                            <img src="assets/demand forecasting and inventory optimization/5.png" alt="IntelliStock - Performance Metrics" class="carousel-image">
+                            <img src="assets/demand forecasting and inventory optimization/1.png" alt="IntelliStock Dashboard" class="carousel-image active" loading="lazy" decoding="async">
+                            <img src="assets/demand forecasting and inventory optimization/2.png" alt="Forecasting Models" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/demand forecasting and inventory optimization/3.png" alt="Inventory Analytics" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/demand forecasting and inventory optimization/4.png" alt="EOQ Optimization" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/demand forecasting and inventory optimization/5.png" alt="Performance Metrics" class="carousel-image" loading="lazy" decoding="async">
                         </div>
                         <div class="carousel-indicators">
                             <span class="indicator active" data-slide="0"></span>
@@ -360,60 +395,36 @@
                         </div>
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="project-intellistock.html" class="project-link" title="View Project Details">
-                                    <i class="fas fa-eye"></i>
-                                    <span>View Project</span>
-                                </a>
-                                <a href="https://github.com/pritom02bh/intelligent-demand-forecasting-inventory-optimization" target="_blank" rel="noopener" class="project-link" title="View GitHub">
-                                    <i class="fab fa-github"></i>
-                                    <span>GitHub</span>
-                                </a>
+                                <a href="project-intellistock.html" class="project-link"><i class="fas fa-eye"></i> View Details</a>
+                                <a href="https://github.com/pritom02bh/intelligent-demand-forecasting-inventory-optimization" target="_blank" rel="noopener" class="project-link"><i class="fab fa-github"></i> Code</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">IntelliStock: Intelligent Demand Forecasting & Inventory Optimization Platform</h3>
-                        <p class="project-description">
-                            Advanced inventory optimization platform leveraging machine learning to improve demand forecasting accuracy 
-                            and reduce inventory costs. Achieved 9.2% MAPE accuracy and 15% cost reduction through ensemble ML models, 
-                            EOQ optimization, and automated retraining pipelines for a Fortune 1000 retail organization.
-                        </p>
-                        <div class="project-responsibilities">
-                            <h4><i class="fas fa-tasks"></i>Key Responsibilities</h4>
-                            <ul class="responsibilities-list">
-                                <li>Developed ensemble machine learning models using Prophet, ARIMA, and XGBoost for demand forecasting</li>
-                                <li>Implemented Economic Order Quantity (EOQ) optimization algorithms reducing inventory costs by 15%</li>
-                                <li>Built automated model retraining pipeline with performance monitoring and alerting systems</li>
-                                <li>Designed interactive Streamlit dashboard for real-time inventory insights and decision support</li>
-                                <li>Conducted time series analysis on 2+ years of historical sales data across 500+ SKUs</li>
-                                <li>Collaborated with supply chain teams to validate model outputs and refine business logic</li>
-                            </ul>
+                        <div class="project-tags">
+                            <span class="category-tag data-analytics">Analytics</span>
+                            <span class="category-tag supply-chain">Supply Chain</span>
                         </div>
+                        <h3 class="project-title">IntelliStock: Demand Forecasting & Inventory Optimization</h3>
+                        <p class="project-description">Advanced inventory optimization platform with 9.2% MAPE accuracy and 15% cost reduction through ensemble ML models and EOQ optimization.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
                             <span class="tech-tag">Prophet</span>
                             <span class="tech-tag">ARIMA</span>
                             <span class="tech-tag">XGBoost</span>
-                            <span class="tech-tag">Time Series Analysis</span>
                             <span class="tech-tag">Streamlit</span>
-                        </div>
-                        <div class="project-tags">
-                            <span class="category-tag data-analytics">Data Analytics</span>
-                            <span class="category-tag supply-chain">Supply Chain</span>
-                            <span class="category-tag statistical-analysis">Statistical Analysis</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 5: Last Mile Delivery Optimization Platform -->
+                <!-- Project 5 -->
                 <div class="project-card" data-category="data-analytics supply-chain statistical-analysis">
                     <div class="project-image-carousel">
                         <div class="carousel-container">
-                                                         <img src="assets/Last Mile Delivery/Screenshot (2).png" alt="Last Mile Delivery - Performance Dashboard" class="carousel-image active" loading="lazy" decoding="async">
-                            <img src="assets/Last Mile Delivery/Screenshot (3).png" alt="Last Mile Delivery - Main Dashboard" class="carousel-image">
-                            <img src="assets/Last Mile Delivery/Screenshot (4).png" alt="Last Mile Delivery - Route Planning" class="carousel-image">
-                            <img src="assets/Last Mile Delivery/Screenshot (5).png" alt="Last Mile Delivery - Weather Analytics" class="carousel-image">
-                            <img src="assets/Last Mile Delivery/Screenshot (6).png" alt="Last Mile Delivery - Analytics Overview" class="carousel-image">
+                            <img src="assets/Last Mile Delivery/Screenshot (2).png" alt="Delivery Dashboard" class="carousel-image active" loading="lazy" decoding="async">
+                            <img src="assets/Last Mile Delivery/Screenshot (3).png" alt="Route Planning" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/Last Mile Delivery/Screenshot (4).png" alt="Route Optimization" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/Last Mile Delivery/Screenshot (5).png" alt="Weather Analytics" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/Last Mile Delivery/Screenshot (6).png" alt="Overview" class="carousel-image" loading="lazy" decoding="async">
                         </div>
                         <div class="carousel-indicators">
                             <span class="indicator active" data-slide="0"></span>
@@ -424,60 +435,39 @@
                         </div>
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="project-last-mile-delivery.html" class="project-link" title="View Project Details">
-                                    <i class="fas fa-eye"></i>
-                                    <span>View Project</span>
-                                </a>
+                                <a href="project-last-mile-delivery.html" class="project-link"><i class="fas fa-eye"></i> View Details</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Last Mile Delivery Optimization Platform with Weather-Adaptive Route Intelligence</h3>
-                        <p class="project-description">
-                            ML-powered platform for optimizing delivery routes considering real-time data like traffic and weather conditions. 
-                            Achieved 32% route optimization improvement, 25% cost reduction, and 28% time savings through dynamic routing 
-                            and weather-adaptive intelligence for an e-commerce logistics provider.
-                        </p>
-                        <div class="project-responsibilities">
-                            <h4><i class="fas fa-tasks"></i>Key Responsibilities</h4>
-                            <ul class="responsibilities-list">
-                                <li>Developed ML-powered route optimization algorithms using TensorFlow and graph theory principles</li>
-                                <li>Integrated Google Maps API and Weather API for real-time traffic and weather data processing</li>
-                                <li>Built dynamic routing engine capable of adapting to changing conditions affecting 500+ vehicles</li>
-                                <li>Created React-based dashboard for fleet managers with real-time route monitoring and analytics</li>
-                                <li>Implemented A/B testing framework to validate optimization strategies and measure performance gains</li>
-                                <li>Collaborated with logistics teams to understand operational constraints and business requirements</li>
-                            </ul>
+                        <div class="project-tags">
+                            <span class="category-tag data-analytics">Analytics</span>
+                            <span class="category-tag supply-chain">Logistics</span>
                         </div>
+                        <h3 class="project-title">Last Mile Delivery Optimization with Weather Intelligence</h3>
+                        <p class="project-description">ML-powered route optimization achieving 32% improvement, 25% cost reduction, and 28% time savings through dynamic weather-adaptive routing.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
                             <span class="tech-tag">TensorFlow</span>
                             <span class="tech-tag">Google Maps API</span>
                             <span class="tech-tag">Weather API</span>
-                            <span class="tech-tag">Route Optimization</span>
                             <span class="tech-tag">React</span>
-                        </div>
-                        <div class="project-tags">
-                            <span class="category-tag data-analytics">Data Analytics</span>
-                            <span class="category-tag supply-chain">Supply Chain</span>
-                            <span class="category-tag statistical-analysis">Statistical Analysis</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 6: Customer Churn Analytics -->
+                <!-- Project 6 -->
                 <div class="project-card" data-category="data-analytics statistical-analysis">
                     <div class="project-image-carousel">
                         <div class="carousel-container">
-                                                         <img src="assets/customer churn/1.png" alt="Customer Churn - Main Dashboard" class="carousel-image active" loading="lazy" decoding="async">
-                            <img src="assets/customer churn/2.png" alt="Customer Churn - Analytics Overview" class="carousel-image">
-                            <img src="assets/customer churn/3.png" alt="Customer Churn - Predictive Models" class="carousel-image">
-                            <img src="assets/customer churn/4.png" alt="Customer Churn - Risk Assessment" class="carousel-image">
-                            <img src="assets/customer churn/5.png" alt="Customer Churn - Customer Segmentation" class="carousel-image">
-                            <img src="assets/customer churn/6.png" alt="Customer Churn - Retention Strategies" class="carousel-image">
-                            <img src="assets/customer churn/7.png" alt="Customer Churn - Performance Metrics" class="carousel-image">
-                            <img src="assets/customer churn/8.png" alt="Customer Churn - Feature Analysis" class="carousel-image">
-                            <img src="assets/customer churn/9.png" alt="Customer Churn - Business Impact" class="carousel-image">
+                            <img src="assets/customer churn/1.png" alt="Churn Dashboard" class="carousel-image active" loading="lazy" decoding="async">
+                            <img src="assets/customer churn/2.png" alt="Analytics Overview" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/customer churn/3.png" alt="Predictive Models" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/customer churn/4.png" alt="Risk Assessment" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/customer churn/5.png" alt="Segmentation" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/customer churn/6.png" alt="Retention" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/customer churn/7.png" alt="Metrics" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/customer churn/8.png" alt="Features" class="carousel-image" loading="lazy" decoding="async">
+                            <img src="assets/customer churn/9.png" alt="Impact" class="carousel-image" loading="lazy" decoding="async">
                         </div>
                         <div class="carousel-indicators">
                             <span class="indicator active" data-slide="0"></span>
@@ -492,103 +482,23 @@
                         </div>
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="project-customer-churn.html" class="project-link" title="View Project Details">
-                                    <i class="fas fa-eye"></i>
-                                    <span>View Project</span>
-                                </a>
+                                <a href="project-customer-churn.html" class="project-link"><i class="fas fa-eye"></i> View Details</a>
                             </div>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Customer Churn Analytics: Service Call Data Analysis & Issue Resolution</h3>
-                        <p class="project-description">
-                            Comprehensive analysis of customer service call data to identify and resolve recurring issues driving customer churn. 
-                            Detailed examination of competitive pressures, service quality, contract terms, and unlimited data plan challenges 
-                            delivers targeted strategies for enhancing customer retention and satisfaction in telecommunications.
-                        </p>
-                        <div class="project-responsibilities">
-                            <h4><i class="fas fa-tasks"></i>Key Responsibilities</h4>
-                            <ul class="responsibilities-list">
-                                <li>Analyzed 50,000+ customer service call records to identify primary churn drivers and patterns</li>
-                                <li>Conducted statistical analysis of service quality issues, contract terms, and competitive factors</li>
-                                <li>Developed comprehensive data visualizations using Python, Matplotlib, and Seaborn libraries</li>
-                                <li>Created interactive Power BI dashboards for stakeholder reporting and decision support</li>
-                                <li>Identified 4 primary churn categories and developed 8 strategic retention recommendations</li>
-                                <li>Presented findings to executive leadership resulting in implementation of targeted retention programs</li>
-                            </ul>
+                        <div class="project-tags">
+                            <span class="category-tag data-analytics">Analytics</span>
+                            <span class="category-tag statistical-analysis">Statistics</span>
                         </div>
+                        <h3 class="project-title">Customer Churn Analytics & Issue Resolution</h3>
+                        <p class="project-description">Analysis of 50,000+ service records to identify churn drivers, developing 8 strategic retention recommendations resulting in targeted retention programs.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Data Analysis</span>
-                            <span class="tech-tag">Customer Analytics</span>
-                            <span class="tech-tag">Service Quality</span>
                             <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Matplotlib</span>
+                            <span class="tech-tag">Seaborn</span>
                         </div>
-                        <div class="project-tags">
-                            <span class="category-tag data-analytics">Data Analytics</span>
-                            <span class="category-tag statistical-analysis">Statistical Analysis</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-                <p class="section-subtitle">Expertise in Data Science, Data Analytics & Product Management</p>
-            </div>
-            <div class="about-content">
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Data Science</h3>
-                    <p>
-                        I build predictive models and decision systems that drive measurable outcomes: time series forecasting,
-                        classification/regression, feature engineering, and rigorous model evaluation. Proficient with Python and R
-                        and strong foundations in statistics and experimentation.
-                    </p>
-                    <div class="skills-tags">
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Forecasting</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">Statistics</span>
-                    </div>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Data Analytics</h3>
-                    <p>
-                        I turn raw data into actionable insights: SQL analytics engineering, BI dashboards, KPI frameworks,
-                        and story-driven visualizations that enable fast, confident decisions across teams.
-                    </p>
-                    <div class="skills-tags">
-                        <span class="tag">SQL</span>
-                        <span class="tag">Power BI</span>
-                        <span class="tag">Tableau</span>
-                        <span class="tag">Data Visualization</span>
-                    </div>
-                </div>
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Product Management</h3>
-                    <p>
-                        I ship data-informed products end-to-end: user research, roadmap prioritization, Agile delivery,
-                        experimentation (A/B testing), and post-launch analytics to ensure features move business metrics.
-                    </p>
-                    <div class="skills-tags">
-                        <span class="tag">Roadmapping</span>
-                        <span class="tag">A/B Testing</span>
-                        <span class="tag">Agile/Scrum</span>
-                        <span class="tag">Stakeholder Alignment</span>
                     </div>
                 </div>
             </div>
@@ -596,98 +506,91 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <section id="skills" class="skills-section">
         <div class="container">
             <div class="section-header">
+                <span class="section-tag">Expertise</span>
                 <h2 class="section-title">Skills & Technologies</h2>
-                <p class="section-subtitle">Tools and technologies I use to deliver exceptional results</p>
+                <p class="section-subtitle">Tools and technologies powering my work</p>
             </div>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Data Science</h3>
+                    <div class="skill-category-icon"><i class="fas fa-code"></i></div>
+                    <h3>Programming & Querying</h3>
                     <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>ML Ops (Basics)</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-brain"></i>
-                            <span>Machine Learning</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-wave-square"></i>
-                            <span>Time Series</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-flask"></i>
-                            <span>Statistics</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-r-project"></i>
-                            <span>R</span>
-                        </div>
+                        <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
+                        <div class="skill-item"><i class="fas fa-database"></i><span>SQL</span></div>
+                        <div class="skill-item"><i class="fas fa-laptop-code"></i><span>C++</span></div>
+                        <div class="skill-item"><i class="fas fa-server"></i><span>PostgreSQL</span></div>
+                        <div class="skill-item"><i class="fas fa-database"></i><span>Oracle SQL</span></div>
+                        <div class="skill-item"><i class="fas fa-book-open"></i><span>Jupyter</span></div>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Data Analytics</h3>
+                    <div class="skill-category-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>Data Analysis & Visualization</h3>
                     <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>SQL</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Power BI</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-table"></i>
-                            <span>Tableau</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-bullseye"></i>
-                            <span>KPI Design</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-vial"></i>
-                            <span>Experimentation</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-diagram-project"></i>
-                            <span>Analytics Engineering</span>
-                        </div>
+                        <div class="skill-item"><i class="fas fa-table"></i><span>Pandas</span></div>
+                        <div class="skill-item"><i class="fas fa-calculator"></i><span>NumPy</span></div>
+                        <div class="skill-item"><i class="fas fa-search"></i><span>EDA</span></div>
+                        <div class="skill-item"><i class="fas fa-bullseye"></i><span>KPI Reporting</span></div>
+                        <div class="skill-item"><i class="fas fa-palette"></i><span>Matplotlib</span></div>
+                        <div class="skill-item"><i class="fas fa-chart-area"></i><span>Seaborn</span></div>
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3>Product Management</h3>
+                    <div class="skill-category-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Machine Learning & AI</h3>
                     <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fas fa-project-diagram"></i>
-                            <span>Agile/Scrum</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-road"></i>
-                            <span>Roadmapping</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-users"></i>
-                            <span>Stakeholder Mgmt</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-vials"></i>
-                            <span>A/B Testing</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Post‑Launch Analytics</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-plug"></i>
-                            <span>API / Integration</span>
-                        </div>
+                        <div class="skill-item"><i class="fas fa-project-diagram"></i><span>Predictive Modeling</span></div>
+                        <div class="skill-item"><i class="fas fa-language"></i><span>NLP</span></div>
+                        <div class="skill-item"><i class="fas fa-robot"></i><span>RAG</span></div>
+                        <div class="skill-item"><i class="fas fa-cogs"></i><span>LLM Workflows</span></div>
+                        <div class="skill-item"><i class="fas fa-check-double"></i><span>Model Evaluation</span></div>
+                        <div class="skill-item"><i class="fas fa-diagram-project"></i><span>Dashboard Design</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Tools & Professional</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+                        <div class="skill-item"><i class="fab fa-github"></i><span>GitHub</span></div>
+                        <div class="skill-item"><i class="fas fa-code"></i><span>VS Code</span></div>
+                        <div class="skill-item"><i class="fas fa-file-excel"></i><span>Excel</span></div>
+                        <div class="skill-item"><i class="fas fa-comments"></i><span>Communication</span></div>
+                        <div class="skill-item"><i class="fas fa-microscope"></i><span>Research</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Academic</span>
+                <h2 class="section-title">Education</h2>
+                <p class="section-subtitle">Foundation in data science and computer science</p>
+            </div>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="edu-content">
+                        <h3>M.S. in Data Science</h3>
+                        <span class="edu-school">Montclair State University</span>
+                        <span class="edu-meta">GPA: 3.97 / 4.0</span>
+                        <p class="edu-description">Focused on statistical analysis, predictive modeling, machine learning, NLP, and data-driven decision-making.</p>
+                    </div>
+                </div>
+                <div class="education-card">
+                    <div class="edu-icon"><i class="fas fa-university"></i></div>
+                    <div class="edu-content">
+                        <h3>B.Sc. in Computer Science & Engineering</h3>
+                        <span class="edu-school">International University of Business Agriculture and Technology</span>
+                        <span class="edu-meta">Dhaka, Bangladesh</span>
+                        <p class="edu-description">Core curriculum in algorithms, data structures, software engineering, databases, and computer networks.</p>
                     </div>
                 </div>
             </div>
@@ -695,65 +598,73 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-header">
+                <span class="section-tag">Reach Out</span>
                 <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Ready to collaborate on your next project</p>
+                <p class="section-subtitle">Open for opportunities, collaborations, and interesting conversations</p>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Parsippany, New Jersey</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>862-399-9031</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>bhowmik01dev@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <a href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener">LinkedIn Profile</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-github"></i>
-                        <a href="https://github.com/pritom02bh" target="_blank" rel="noopener">GitHub Profile</a>
-                    </div>
+            <div class="contact-grid">
+                <a href="mailto:bhowmik01dev@gmail.com" class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h3>Email</h3>
+                    <span>bhowmik01dev@gmail.com</span>
+                </a>
+                <a href="tel:862-399-9031" class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <h3>Phone</h3>
+                    <span>862-399-9031</span>
+                </a>
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Location</h3>
+                    <span>Lake Hiawatha, NJ 07034</span>
                 </div>
+                <a href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener" class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                    <h3>LinkedIn</h3>
+                    <span>bhowmikpritom</span>
+                </a>
+                <a href="https://github.com/pritom02bh" target="_blank" rel="noopener" class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-github"></i></div>
+                    <h3>GitHub</h3>
+                    <span>pritom02bh</span>
+                </a>
+                <a href="https://pritom02bh.github.io" class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Website</h3>
+                    <span>pritom02bh.github.io</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">
-        <i class="fas fa-chevron-up"></i>
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
     </button>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Pritom Bhowmik. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://github.com/pritom02bh" target="_blank" rel="noopener" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="mailto:bhowmik01dev@gmail.com" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                <div class="footer-left">
+                    <span class="footer-logo">Pritom Bhowmik</span>
+                    <p>Data Science & AI Professional</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-social">
+                        <a href="https://github.com/pritom02bh" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:bhowmik01dev@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    <p>&copy; 2026 Pritom Bhowmik. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=3"></script>
 </body>
-</html> 
+</html>
