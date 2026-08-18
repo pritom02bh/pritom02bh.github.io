@@ -1,404 +1,301 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Pritom Bhowmik — Data Science & AI professional. Machine learning, NLP, RAG systems, predictive modeling, and data-driven analytics." />
-  <meta name="keywords" content="Data Science, AI, Machine Learning, NLP, RAG, Python, SQL, Analytics, Predictive Modeling" />
-  <meta name="author" content="Pritom Bhowmik" />
-
-  <meta property="og:title" content="Pritom Bhowmik — Data Science & AI" />
-  <meta property="og:description" content="Data Science and Analytics professional specializing in AI research, machine learning, and data-driven solutions." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://pritom02bh.github.io" />
-  <meta property="og:image" content="https://pritom02bh.github.io/assets/pritom.png" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Pritom Bhowmik — Data Science & AI" />
-  <meta name="twitter:description" content="Data Science and Analytics professional specializing in AI research, machine learning, and data-driven solutions." />
-
-  <title>Pritom Bhowmik — Data Science & AI</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style/main.css?v=4" />
-  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<meta charset="UTF-8">
+<title>Pritom Bhowmik</title>
+<meta name="description" content="Research and applied work by Pritom Bhowmik — data science, applied AI/RAG systems, forecasting analytics, teaching, and research notes.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230e6b60'/%3E%3Cstop offset='1' stop-color='%233f63c9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='15' fill='%23ffffff' text-anchor='middle'%3EPB%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Ambient background -->
-  <div class="ambient" aria-hidden="true">
-    <div class="grid-overlay"></div>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-  </div>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Top Bar -->
-  <header class="topbar">
-    <a href="#" class="brand" aria-label="Pritom Bhowmik">
-      <span class="brand-mark">PB</span>
-      <span class="brand-meta">
-        <span class="brand-name">Pritom Bhowmik</span>
-        <span class="brand-sub">Data Science · AI</span>
-      </span>
-    </a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#hero" class="logo-name" aria-label="Pritom Bhowmik, home">Pritom Bhowmik</a>
 
-    <nav class="topnav" aria-label="Section">
-      <button class="topnav-link active" data-tab="experience"><i class="fas fa-briefcase"></i><span>Experience</span></button>
-      <button class="topnav-link" data-tab="projects"><i class="fas fa-folder-open"></i><span>Projects</span></button>
-      <button class="topnav-link" data-tab="skills"><i class="fas fa-microchip"></i><span>Skills</span></button>
-      <button class="topnav-link" data-tab="education"><i class="fas fa-graduation-cap"></i><span>Education</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
 
-    <div class="topbar-actions">
-      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
-      <a href="assets/resume/Resume.pdf" target="_blank" rel="noopener" class="btn-pill">
-        <i class="fas fa-arrow-down"></i><span>Resume</span>
-      </a>
+    <div class="header-actions">
+      <button class="icon-btn nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="shell">
-    <!-- ============== HERO / BENTO ============== -->
-    <section class="hero" aria-label="Introduction">
-      <div class="bento">
-        <!-- Identity card -->
-        <article class="cell cell-identity">
-          <div class="status">
-            <span class="dot"></span>
-            <span>Open to opportunities · NYC / NJ</span>
-          </div>
-          <h1 class="display">
-            Turning data into<br/>
-            <span class="accent">decisions, products,</span><br/>
-            and intelligent systems.
-          </h1>
-          <p class="lede">
-            Data Science &amp; Analytics professional with 4+ years across teaching, applied AI research, and
-            product strategy. I build with Python, SQL, ML and modern LLM/RAG workflows.
-          </p>
-          <div class="cta-row">
-            <a href="#workspace" class="btn-primary"><span>Explore work</span><i class="fas fa-arrow-right"></i></a>
-            <a href="mailto:bhowmik01dev@gmail.com" class="btn-ghost"><i class="fas fa-envelope"></i><span>Let's talk</span></a>
-          </div>
-          <div class="social-row">
-            <a href="https://github.com/pritom02bh" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="mailto:bhowmik01dev@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="tel:862-399-9031" aria-label="Phone"><i class="fas fa-phone"></i></a>
-          </div>
-        </article>
+<main id="main">
 
-        <!-- Portrait card -->
-        <article class="cell cell-portrait">
-          <div class="portrait-frame">
-            <img src="assets/pritom.png" alt="Pritom Bhowmik" loading="eager" fetchpriority="high" decoding="async" />
-            <div class="portrait-badge">
-              <span class="mono">Currently</span>
-              <strong>Lecturer @ Monroe University</strong>
-            </div>
-          </div>
-        </article>
-
-        <!-- Now / Focus -->
-        <article class="cell cell-now">
-          <span class="cell-tag mono">// now</span>
-          <h3>Teaching, building, researching.</h3>
-          <ul class="now-list">
-            <li><i class="fas fa-chalkboard-user"></i> Teaching CS &amp; data courses to 100+ students/sem</li>
-            <li><i class="fas fa-robot"></i> Multi-agent RAG &amp; LLM workflows</li>
-            <li><i class="fas fa-chart-line"></i> Forecasting · inventory · churn analytics</li>
-          </ul>
-        </article>
-
-        <!-- Stats trio -->
-        <article class="cell cell-stat">
-          <span class="cell-tag mono">// experience</span>
-          <div class="stat-num"><span data-count="4">0</span><em>+</em></div>
-          <div class="stat-label">Years across data &amp; AI</div>
-        </article>
-        <article class="cell cell-stat">
-          <span class="cell-tag mono">// teaching</span>
-          <div class="stat-num"><span data-count="100">0</span><em>+</em></div>
-          <div class="stat-label">Students per semester</div>
-        </article>
-        <article class="cell cell-stat">
-          <span class="cell-tag mono">// retrieval</span>
-          <div class="stat-num"><span data-count="99">0</span><em>%</em></div>
-          <div class="stat-label">RAG retrieval accuracy</div>
-        </article>
-
-        <!-- Stack marquee -->
-        <article class="cell cell-stack">
-          <span class="cell-tag mono">// stack</span>
-          <div class="stack-row">
-            <span>Python</span><span>SQL</span><span>PostgreSQL</span><span>Pandas</span><span>NumPy</span>
-            <span>Scikit-learn</span><span>XGBoost</span><span>Prophet</span><span>ARIMA</span>
-            <span>LangChain</span><span>OpenAI</span><span>Vector DBs</span><span>Power BI</span>
-            <span>Streamlit</span><span>Git</span>
-          </div>
-        </article>
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-inner">
+        <h1 class="hero-name">Pritom Bhowmik</h1>
+        <p class="hero-role">University Lecturer &amp; Applied AI Researcher</p>
+        <p class="hero-tagline">Researching Multi-Agent Architectures and How Agents Behave Under Adversarial Pressure — Memory Poisoning, Retrieval Attacks, and What the Defenses Cost in Accuracy and Compute.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#research">View research &amp; projects</a>
+          <a class="btn btn-ghost" href="assets/resume/Resume.pdf" download>Download CV</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+        <div class="hero-links">
+          <a class="hero-link-chip" href="mailto:bhowmik01dev@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            Email
+          </a>
+          <a class="hero-link-chip" href="https://scholar.google.com/citations?hl=en&amp;user=rEI6U-EAAAAJ&amp;view_op=list_works" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.24 14.978 9.5 12 9.5c-2.977 0-5.548 1.74-6.758 4.269ZM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"/></svg>
+            Google Scholar
+          </a>
+          <a class="hero-link-chip" href="https://orcid.org/0000-0003-4585-6024" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0ZM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947-.525 0-.946-.422-.946-.947 0-.516.421-.947.946-.947Zm-.722 3.038h1.444v10.041H6.647V7.416Zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416Zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222Z"/></svg>
+            ORCID
+          </a>
+          <a class="hero-link-chip" href="https://github.com/pritom02bh" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            GitHub
+          </a>
+          <a class="hero-link-chip" href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+            LinkedIn
+          </a>
+        </div>
       </div>
-    </section>
 
-    <!-- ============== WORKSPACE (TABBED) ============== -->
-    <section id="workspace" class="workspace" aria-label="Workspace">
-      <div class="workspace-head">
+      <div class="avatar-ring">
+        <div class="avatar">
+          <span class="avatar-fallback" aria-hidden="true">PB</span>
+          <img src="assets/img/profile.jpg" alt="Portrait of Pritom Bhowmik" onerror="this.style.display='none';">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index mono">01</span>
         <div>
-          <span class="mono small">// workspace</span>
-          <h2>Everything in one place.</h2>
-        </div>
-        <div class="tabs" role="tablist">
-          <button class="tab active" data-tab="experience" role="tab" aria-selected="true">
-            <i class="fas fa-briefcase"></i><span>Experience</span>
-          </button>
-          <button class="tab" data-tab="projects" role="tab">
-            <i class="fas fa-folder-open"></i><span>Projects</span>
-          </button>
-          <button class="tab" data-tab="skills" role="tab">
-            <i class="fas fa-microchip"></i><span>Skills</span>
-          </button>
-          <button class="tab" data-tab="education" role="tab">
-            <i class="fas fa-graduation-cap"></i><span>Education</span>
-          </button>
+          <span class="section-eyebrow">About</span>
+          <h2 class="section-title">Research Background</h2>
         </div>
       </div>
 
-      <!-- ============ EXPERIENCE ============ -->
-      <div class="panel active" data-panel="experience" role="tabpanel">
-        <div class="exp-grid">
-          <article class="exp-card">
-            <header>
-              <span class="exp-when mono">Sep 2025 — Present</span>
-              <h3>University Lecturer</h3>
-              <p class="exp-where">Monroe University · New Rochelle, NY</p>
-            </header>
-            <p>Computer Science &amp; IT — undergraduate and graduate data science, programming and database systems for 100+ students per semester. Designed hands-on Python &amp; SQL labs and structured assessments to strengthen analytical thinking.</p>
-            <div class="chips">
-              <span>Python</span><span>SQL</span><span>Data Science</span><span>Teaching</span>
-            </div>
-          </article>
+      <div class="about-grid">
+        <p class="about-body">I research memory in LLM agent systems — how persistent memory behaves under adversarial pressure, and what defending it costs in accuracy and compute. I lectured in computer science and data science at <strong>Monroe University</strong>, 2025–2026.<br><br>I hold an M.S. in Data Science from <strong>Montclair State University</strong>, New Jersey, USA, and worked as an AI researcher in its Data Science Lab, focused on multi-agent AI, RAG, and graph &amp; vector databases.</p>
 
-          <article class="exp-card">
-            <header>
-              <span class="exp-when mono">Jun 2025 — Dec 2025</span>
-              <h3>Product Manager Intern</h3>
-              <p class="exp-where">Sentari AI · New York, NY</p>
-            </header>
-            <p>Translated business needs into technical specs for AI-based features, partnered with engineering on data-focused delivery, and tightened backlog &amp; workflow processes — improving feature delivery efficiency by 15%.</p>
-            <div class="chips">
-              <span>Product</span><span>AI</span><span>Agile</span><span>Data Strategy</span>
-            </div>
-          </article>
+        <div class="focus-list">
+          <div class="focus-item">
+            <h3>Agent memory &amp; adversarial robustness</h3>
+            <p>Memory poisoning, defense composition, and the accuracy and compute cost of defending agent memory.</p>
+          </div>
+          <div class="focus-item">
+            <h3>Retrieval &amp; multi-agent systems</h3>
+            <p>Hybrid search, agent orchestration, and evaluation design for high-stakes domains.</p>
+          </div>
+          <div class="focus-item">
+            <h3>Teaching &amp; mentorship</h3>
+            <p>Mentored undergraduate and graduate students in computer science and data science at Monroe University, 2025–2026.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <article class="exp-card">
-            <header>
-              <span class="exp-when mono">Jan 2024 — May 2025</span>
-              <h3>Researcher — Data Science &amp; AI</h3>
-              <p class="exp-where">Data Science Lab, Montclair State University · NJ</p>
-            </header>
-            <p>Built a multi-agent RAG chatbot for pharmaceutical inventory systems. Pushed retrieval accuracy to 99% via embedding optimization, prompt engineering, and systematic evaluation of LLM workflows.</p>
-            <div class="chips">
-              <span>RAG</span><span>LLM</span><span>NLP</span><span>Machine Learning</span>
-            </div>
-          </article>
+  <!-- RESEARCH (publications) -->
+  <section id="research" class="section section-featured">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index mono">02</span>
+        <div>
+          <span class="section-eyebrow">Publications</span>
+          <h2 class="section-title">Research</h2>
         </div>
       </div>
 
-      <!-- ============ PROJECTS ============ -->
-      <div class="panel" data-panel="projects" role="tabpanel">
-        <div class="filter-bar">
-          <button class="filter active" data-filter="all">All</button>
-          <button class="filter" data-filter="ai">AI / ML</button>
-          <button class="filter" data-filter="analytics">Analytics</button>
-          <button class="filter" data-filter="supply-chain">Supply Chain</button>
-          <button class="filter" data-filter="product">Product</button>
-        </div>
+      <div class="entry-list" id="papers-list"></div>
+    </div>
+  </section>
 
-        <div class="proj-grid">
-          <article class="proj" data-cat="product analytics">
-            <div class="proj-thumb"><img src="assets/Agile Project/1.png" alt="" loading="lazy" /></div>
-            <div class="proj-body">
-              <span class="proj-tag mono">Product Management</span>
-              <h3>Sales Forecasting &amp; Workforce Scheduling</h3>
-              <p>End-to-end PM of forecasting &amp; scheduling features — 40% operational lift for 500+ users.</p>
-              <div class="proj-foot">
-                <a class="proj-link" href="project-agile.html"><i class="fas fa-arrow-up-right-from-square"></i> Case study</a>
-                <a class="proj-link" href="https://github.com/pritom02bh/weekly_sales_forecasting" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="proj" data-cat="analytics">
-            <div class="proj-thumb"><img src="assets/sales analytics/dashboard-images-0.jpg" alt="" loading="lazy" /></div>
-            <div class="proj-body">
-              <span class="proj-tag mono">Analytics · Power BI</span>
-              <h3>Sales Analytics Dashboard (SQL &amp; Power BI)</h3>
-              <p>5 interactive dashboards covering revenue, customer and market analytics with predictive forecasting.</p>
-              <div class="proj-foot">
-                <a class="proj-link" href="project-sales-analytics.html"><i class="fas fa-arrow-up-right-from-square"></i> Case study</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="proj" data-cat="ai supply-chain">
-            <div class="proj-thumb"><img src="assets/agnetic rag/p2_first.png" alt="" loading="lazy" /></div>
-            <div class="proj-body">
-              <span class="proj-tag mono">AI · Supply Chain</span>
-              <h3>Multi-Agent RAG Chatbot for Pharma</h3>
-              <p>Six specialized agents · 97% retrieval accuracy · 40–60% faster decisions across the pharma supply chain.</p>
-              <div class="proj-foot">
-                <a class="proj-link" href="project-supply-chain.html"><i class="fas fa-arrow-up-right-from-square"></i> Case study</a>
-                <a class="proj-link" href="https://github.com/pritom02bh/pharma_ai_multi_agentic_rag_system" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="proj" data-cat="analytics supply-chain">
-            <div class="proj-thumb"><img src="assets/demand forecasting and inventory optimization/1.png" alt="" loading="lazy" /></div>
-            <div class="proj-body">
-              <span class="proj-tag mono">Analytics · Supply Chain</span>
-              <h3>IntelliStock — Demand Forecasting</h3>
-              <p>Ensemble ML + EOQ optimization · 9.2% MAPE · 15% inventory cost reduction.</p>
-              <div class="proj-foot">
-                <a class="proj-link" href="project-intellistock.html"><i class="fas fa-arrow-up-right-from-square"></i> Case study</a>
-                <a class="proj-link" href="https://github.com/pritom02bh/intelligent-demand-forecasting-inventory-optimization" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="proj" data-cat="analytics supply-chain ai">
-            <div class="proj-thumb"><img src="assets/Last Mile Delivery/Screenshot (2).png" alt="" loading="lazy" /></div>
-            <div class="proj-body">
-              <span class="proj-tag mono">ML · Logistics</span>
-              <h3>Last Mile Delivery + Weather Intelligence</h3>
-              <p>Weather-adaptive routing — 32% route improvement, 25% cost down, 28% time saved.</p>
-              <div class="proj-foot">
-                <a class="proj-link" href="project-last-mile-delivery.html"><i class="fas fa-arrow-up-right-from-square"></i> Case study</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="proj" data-cat="analytics">
-            <div class="proj-thumb"><img src="assets/customer churn/1.png" alt="" loading="lazy" /></div>
-            <div class="proj-body">
-              <span class="proj-tag mono">Analytics · Statistics</span>
-              <h3>Customer Churn Analytics</h3>
-              <p>Analyzed 50,000+ service records to surface churn drivers and 8 strategic retention plays.</p>
-              <div class="proj-foot">
-                <a class="proj-link" href="project-customer-churn.html"><i class="fas fa-arrow-up-right-from-square"></i> Case study</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="proj" data-cat="ai analytics">
-            <div class="proj-thumb"><img src="assets/healthcare analytics/1.png" onerror="this.parentElement.classList.add('thumb-fallback'); this.remove();" alt="" loading="lazy" /></div>
-            <div class="proj-body">
-              <span class="proj-tag mono">Healthcare · Analytics</span>
-              <h3>Healthcare Analytics</h3>
-              <p>Operational and clinical KPI analytics across hospital workflows with actionable dashboards.</p>
-              <div class="proj-foot">
-                <a class="proj-link" href="project-healthcare-analytics.html"><i class="fas fa-arrow-up-right-from-square"></i> Case study</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="proj" data-cat="ai analytics">
-            <div class="proj-thumb"><img src="assets/predictive healthcare/1.png" onerror="this.parentElement.classList.add('thumb-fallback'); this.remove();" alt="" loading="lazy" /></div>
-            <div class="proj-body">
-              <span class="proj-tag mono">ML · Healthcare</span>
-              <h3>Predictive Healthcare</h3>
-              <p>Predictive models for patient outcomes &amp; risk stratification using clinical features.</p>
-              <div class="proj-foot">
-                <a class="proj-link" href="project-predictive-healthcare.html"><i class="fas fa-arrow-up-right-from-square"></i> Case study</a>
-              </div>
-            </div>
-          </article>
+  <!-- PROJECTS (applied case studies) -->
+  <section id="projects" class="section section-featured">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index mono">03</span>
+        <div>
+          <span class="section-eyebrow">Selected work</span>
+          <h2 class="section-title">Projects</h2>
+          <p class="section-lede">Applied AI, forecasting, and analytics case studies.</p>
         </div>
       </div>
 
-      <!-- ============ SKILLS ============ -->
-      <div class="panel" data-panel="skills" role="tabpanel">
-        <div class="skill-grid">
-          <article class="skill-block">
-            <div class="skill-head"><i class="fas fa-code"></i><h3>Programming &amp; Querying</h3></div>
-            <div class="skill-tags">
-              <span><i class="fab fa-python"></i>Python</span><span><i class="fas fa-database"></i>SQL</span>
-              <span><i class="fas fa-laptop-code"></i>C++</span><span><i class="fas fa-server"></i>PostgreSQL</span>
-              <span><i class="fas fa-database"></i>Oracle SQL</span><span><i class="fas fa-book-open"></i>Jupyter</span>
-            </div>
-          </article>
-          <article class="skill-block">
-            <div class="skill-head"><i class="fas fa-chart-bar"></i><h3>Data Analysis &amp; Viz</h3></div>
-            <div class="skill-tags">
-              <span><i class="fas fa-table"></i>Pandas</span><span><i class="fas fa-calculator"></i>NumPy</span>
-              <span><i class="fas fa-search"></i>EDA</span><span><i class="fas fa-bullseye"></i>KPI Reporting</span>
-              <span><i class="fas fa-palette"></i>Matplotlib</span><span><i class="fas fa-chart-area"></i>Seaborn</span>
-            </div>
-          </article>
-          <article class="skill-block">
-            <div class="skill-head"><i class="fas fa-brain"></i><h3>Machine Learning &amp; AI</h3></div>
-            <div class="skill-tags">
-              <span><i class="fas fa-project-diagram"></i>Predictive Modeling</span>
-              <span><i class="fas fa-language"></i>NLP</span><span><i class="fas fa-robot"></i>RAG</span>
-              <span><i class="fas fa-cogs"></i>LLM Workflows</span><span><i class="fas fa-check-double"></i>Model Eval</span>
-              <span><i class="fas fa-diagram-project"></i>Dashboards</span>
-            </div>
-          </article>
-          <article class="skill-block">
-            <div class="skill-head"><i class="fas fa-tools"></i><h3>Tools &amp; Professional</h3></div>
-            <div class="skill-tags">
-              <span><i class="fab fa-git-alt"></i>Git</span><span><i class="fab fa-github"></i>GitHub</span>
-              <span><i class="fas fa-code"></i>VS Code</span><span><i class="fas fa-file-excel"></i>Excel</span>
-              <span><i class="fas fa-comments"></i>Communication</span><span><i class="fas fa-microscope"></i>Research</span>
-            </div>
-          </article>
+      <div class="entry-list" id="project-list"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index mono">04</span>
+        <div>
+          <span class="section-eyebrow">Experience</span>
+          <h2 class="section-title">Roles &amp; positions</h2>
         </div>
       </div>
 
-      <!-- ============ EDUCATION ============ -->
-      <div class="panel" data-panel="education" role="tabpanel">
-        <div class="edu-grid">
-          <article class="edu">
-            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+      <div class="exp-list">
+        <article class="exp-card">
+          <div class="exp-head">
             <div>
-              <h3>M.S. in Data Science</h3>
-              <p class="edu-where">Montclair State University</p>
-              <p class="edu-meta mono">GPA 3.97 / 4.0</p>
-              <p>Statistical analysis, predictive modeling, machine learning, NLP and data-driven decision-making.</p>
+              <h3 class="exp-role">University Lecturer</h3>
+              <p class="exp-org">Monroe University, New Rochelle, NY, USA</p>
             </div>
-          </article>
-          <article class="edu">
-            <div class="edu-icon"><i class="fas fa-university"></i></div>
+            <p class="exp-dates mono">Sep 2025 — Jul 2026</p>
+          </div>
+          <p class="exp-desc">Teaching undergraduate and graduate courses in computer science, data science, and database systems. Designed Python and SQL lab curricula for 100+ students per semester.</p>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-head">
             <div>
-              <h3>B.Tech. in Computer Science</h3>
-              <p class="edu-where">Institute of Engineering and Management, Kolkata</p>
-              <p class="edu-meta mono">Aug 2016 — Jul 2020</p>
-              <p>Algorithms, data structures, software engineering, databases and computer networks.</p>
+              <h3 class="exp-role">Product Manager Intern</h3>
+              <p class="exp-org">Sentari AI, New York, NY</p>
             </div>
-          </article>
+            <p class="exp-dates mono">Jun 2025 — Dec 2025</p>
+          </div>
+          <p class="exp-desc">Translated business requirements into technical specifications for an AI product team; contributed to a 15% improvement in feature-delivery velocity.</p>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-head">
+            <div>
+              <h3 class="exp-role">Researcher — Data Science &amp; AI</h3>
+              <p class="exp-org">Data Science Lab, Montclair State University, New Jersey</p>
+            </div>
+            <p class="exp-dates mono">Jan 2024 — May 2025</p>
+          </div>
+          <p class="exp-desc">Built a multi-agent RAG chatbot for pharmaceutical inventory and compliance decision-support, reaching 97–99% retrieval accuracy in evaluation.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index mono">05</span>
+        <div>
+          <span class="section-eyebrow">Education</span>
+          <h2 class="section-title">Education</h2>
         </div>
       </div>
-    </section>
 
-    <!-- ============== CONTACT STRIP ============== -->
-    <section class="contact-strip" id="contact" aria-label="Contact">
-      <div>
-        <span class="mono small">// let's connect</span>
-        <h2>Have a project, role, or idea worth building?</h2>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <h3 class="edu-degree">M.S. in Data Science <span class="gpa-badge mono">GPA 3.97/4.0</span></h3>
+          <p class="edu-inst">Montclair State University, New Jersey</p>
+          <p class="edu-focus">Focus: multi-agent retrieval architectures and tool calling.</p>
+        </div>
+        <div class="edu-card">
+          <h3 class="edu-degree">B.Tech. in Computer Science</h3>
+          <p class="edu-inst">Institute of Engineering and Management, Kolkata</p>
+          <p class="edu-dates mono">AUG 2016 — JUL 2020</p>
+          <p class="edu-focus">Focus: algorithms, data structures, software engineering, databases, and networks.</p>
+        </div>
       </div>
-      <div class="contact-actions">
-        <a href="mailto:bhowmik01dev@gmail.com" class="btn-primary"><i class="fas fa-envelope"></i><span>bhowmik01dev@gmail.com</span></a>
-        <a href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener" class="btn-ghost"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
-        <a href="https://github.com/pritom02bh" target="_blank" rel="noopener" class="btn-ghost"><i class="fab fa-github"></i><span>GitHub</span></a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section section-featured">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index mono">06</span>
+        <div>
+          <span class="section-eyebrow">Contact</span>
+          <h2 class="section-title">Let's work together</h2>
+        </div>
       </div>
-    </section>
 
-    <footer class="foot">
-      <span>&copy; 2026 Pritom Bhowmik</span>
-      <span class="mono">Lake Hiawatha, NJ · 862-399-9031</span>
-    </footer>
-  </main>
+      <div class="contact-panel">
+        <p class="contact-lead">Best way to reach me</p>
 
-  <script src="js/main.js?v=4"></script>
+        <a class="contact-email-btn" href="mailto:bhowmik01dev@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          bhowmik01dev@gmail.com
+        </a>
+        <button class="copy-btn" id="copy-email" type="button">Copy email</button>
+
+        <div class="contact-links">
+          <a class="contact-link-card" href="https://github.com/pritom02bh" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a class="contact-link-card" href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a class="contact-link-card" href="https://scholar.google.com/citations?hl=en&amp;user=rEI6U-EAAAAJ&amp;view_op=list_works" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.24 14.978 9.5 12 9.5c-2.977 0-5.548 1.74-6.758 4.269ZM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"/></svg>
+            <span>Scholar</span>
+          </a>
+          <a class="contact-link-card" href="https://orcid.org/0000-0003-4585-6024" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0ZM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947-.525 0-.946-.422-.946-.947 0-.516.421-.947.946-.947Zm-.722 3.038h1.444v10.041H6.647V7.416Zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416Zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222Z"/></svg>
+            <span>ORCID</span>
+          </a>
+          <a class="contact-link-card" href="tel:862-399-9031">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Phone</span>
+          </a>
+          <a class="contact-link-card" href="assets/resume/Resume.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>CV (PDF)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Pritom Bhowmik</span>
+  </div>
+</footer>
+
+<button class="to-top icon-btn" id="to-top" aria-label="Back to top" type="button">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<div class="toast mono" id="toast" role="status" aria-live="polite"></div>
+
+<!-- SHARED MODAL: project case studies + research notes -->
+<div class="modal" id="detail-modal" aria-hidden="true">
+  <div class="modal-overlay" data-close-modal></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title" id="modal-panel">
+    <button class="icon-btn modal-close" data-close-modal aria-label="Close" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
