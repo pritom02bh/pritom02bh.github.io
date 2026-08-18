@@ -56,6 +56,16 @@
   });
 
   /* ------------------------------------------------------------------
+     Logo — scroll to top without leaving a "#hero" hash in the URL
+  ------------------------------------------------------------------ */
+  const logoHome = document.getElementById("logo-home");
+  logoHome.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    history.pushState(null, "", "/");
+  });
+
+  /* ------------------------------------------------------------------
      Toast helper
   ------------------------------------------------------------------ */
   const toast = document.getElementById("toast");
