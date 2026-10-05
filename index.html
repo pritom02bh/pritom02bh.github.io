@@ -1,301 +1,481 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Pritom Bhowmik</title>
-<meta name="description" content="Research and applied work by Pritom Bhowmik — data science, applied AI/RAG systems, forecasting analytics, teaching, and research notes.">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="color-scheme" content="light">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230e6b60'/%3E%3Cstop offset='1' stop-color='%233f63c9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='15' fill='%23ffffff' text-anchor='middle'%3EPB%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="css/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pritom Bhowmik — AI Security Researcher</title>
+<meta name="description" content="Pritom Bhowmik studies the security of memory in LLM agent systems: how stored memories are poisoned, how attacks enter at retrieval time, and what defending agent memory costs in accuracy and compute.">
+<meta name="author" content="Pritom Bhowmik">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pritom Bhowmik — AI Security Researcher">
+<meta property="og:description" content="Research on the security of memory in LLM agent systems: memory poisoning, retrieval-time attacks, and the cost of defending agent memory.">
+<meta property="og:url" content="https://pritom02bh.github.io/">
+<meta property="og:image" content="https://pritom02bh.github.io/assets/img/profile.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231e3a8a'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='15' fill='%23ffffff' text-anchor='middle'%3EPB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #ffffff;
+  --soft: #f7f8fa;
+  --line: #e5e7eb;
+  --line-2: #d1d5db;
+  --text: #0b1220;
+  --body: #1f2937;
+  --muted: #374151;
+  --dim: #4b5563;
+  --accent: #1e40af;
+  --accent-soft: #eef2ff;
+  --good: #047857;
+  --cost: #b45309;
+  --sans: "Geist", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --serif: "Fraunces", "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--body);
+  font: 400 17px/1.7 var(--sans);
+  letter-spacing: -.003em;
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(90deg, #0f766e, #1e40af 50%, #6d28d9) 1;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+h1, h2 { font-family: var(--serif); color: var(--text); font-weight: 500; margin: 0; letter-spacing: -.02em; line-height: 1.15; }
+h3 { font-family: var(--sans); color: var(--text); font-weight: 600; font-size: 1.02rem; margin: 0; letter-spacing: -.01em; line-height: 1.4; }
+p { margin: 0 0 .9rem; text-wrap: pretty; }
+strong, b { color: var(--text); font-weight: 600; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--text); color: #fff; padding: 8px 12px; border-radius: 6px; z-index: 100; }
+.skip:focus { left: 8px; }
+
+/* Nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 54px; gap: 16px; }
+.brand { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; color: var(--text); white-space: nowrap; letter-spacing: -.02em; }
+.brand:hover { text-decoration: none; }
+.nav ul { display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav li a { color: var(--muted); font-size: .92rem; font-weight: 500; white-space: nowrap; }
+.nav li a:hover { color: var(--accent); text-decoration: none; }
+
+/* Intro */
+.intro { padding: 52px 0 8px; }
+.intro .grid { display: grid; grid-template-columns: 1fr 184px; gap: 40px; align-items: start; }
+.intro h1 { font-size: clamp(2.4rem, 5.4vw, 3.3rem); }
+.role { font-size: 1.05rem; color: var(--muted); margin: 8px 0 18px; }
+.role span { color: var(--line-2); margin: 0 6px; }
+.statement { font-family: var(--serif); font-size: clamp(1.2rem, 2.2vw, 1.38rem); line-height: 1.5; color: var(--text); margin: 0 0 20px; letter-spacing: -.01em; }
+.statement em { font-style: italic; color: var(--accent); }
+.links { font-size: .97rem; line-height: 2; }
+.links a { font-weight: 500; }
+.links .sep { color: var(--line-2); margin: 0 9px; }
+.links .mail { font-family: var(--mono); font-size: .9rem; color: var(--text); }
+.photo { width: 184px; height: 184px; object-fit: cover; border-radius: 8px; display: block; border: 1px solid var(--line); }
+
+/* At a glance */
+.glance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 36px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.glance > div { padding: 18px 20px 18px 0; }
+.glance > div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.glance .lab { font: 500 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--accent); }
+.glance h3 { margin: 8px 0 2px; }
+.glance .org { color: var(--body); font-size: .95rem; }
+.glance .dt { font: .8rem/1.7 var(--mono); color: var(--dim); }
+.glance p { font-size: .9rem; color: var(--muted); margin: 6px 0 0; line-height: 1.55; }
+
+/* Sections */
+section { padding: 44px 0 8px; }
+.sh { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.sh h2 { font-size: 1.75rem; }
+.sh .n { font: 500 .8rem/1 var(--mono); color: var(--dim); }
+
+/* Research */
+.themes { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 6px 0 18px; }
+.theme { border-left: 3px solid var(--accent); padding: 2px 0 2px 16px; }
+.theme:nth-child(2) { border-left-color: #6d28d9; }
+.theme p { margin: 6px 0 6px; color: var(--body); }
+.theme .rel { font-size: .9rem; }
+.interests { color: var(--muted); font-size: .97rem; }
+.interests b { color: var(--text); }
+
+/* Publications */
+.pg { font: 500 .74rem/1 var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--dim); margin: 22px 0 6px; }
+.pg:first-of-type { margin-top: 4px; }
+.pubs li { display: grid; grid-template-columns: 58px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.pubs li:last-child { border-bottom: 0; }
+.pubs .yr { font: 500 .88rem/1.7 var(--mono); color: var(--dim); }
+.pubs .sel { background: linear-gradient(90deg, var(--accent-soft), transparent 85%); margin: 0 -14px; padding: 14px; border-radius: 6px; border-bottom-color: transparent; }
+.pubs .sel .yr { color: var(--accent); }
+.pubs .ti { font-weight: 600; color: var(--text); line-height: 1.45; }
+.pubs .au { color: var(--body); font-size: .95rem; }
+.pubs .ve { font-style: italic; color: var(--muted); font-size: .95rem; }
+.pubs .st { font: 500 .74rem/1 var(--mono); font-style: normal; color: var(--cost); background: #fff7ed; border: 1px solid #fed7aa; padding: 3px 6px; border-radius: 4px; margin-left: 4px; white-space: nowrap; }
+.pubs .ln { font-size: .9rem; margin-top: 3px; }
+.pubs .ln a { margin-right: 10px; font-weight: 500; }
+
+/* Current work */
+.paper-title { font-family: var(--serif); font-size: 1.35rem; font-weight: 500; color: var(--text); line-height: 1.3; letter-spacing: -.015em; margin: 0 0 6px; }
+.meta { font-size: .92rem; color: var(--muted); margin-bottom: 14px; }
+figure { margin: 22px 0; padding: 22px 22px 14px; background: var(--soft); border: 1px solid var(--line); border-radius: 8px; }
+figcaption { font-size: .88rem; color: var(--muted); margin-top: 14px; line-height: 1.55; }
+figcaption b { color: var(--text); }
+.pipe { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; }
+.node { background: #fff; border: 1px solid var(--line-2); border-radius: 6px; padding: 12px 10px; text-align: center; font-weight: 600; color: var(--text); font-size: .92rem; line-height: 1.3; }
+.node small { display: block; font: 400 .74rem/1.4 var(--mono); color: var(--dim); margin-top: 3px; }
+.node.mem { border-color: #fca5a5; }
+.node.mem small { color: #b91c1c; }
+.gate { text-align: center; padding: 0 10px; min-width: 150px; }
+.gate .g { font: 500 .72rem/1.3 var(--mono); color: var(--dim); text-transform: uppercase; letter-spacing: .05em; }
+.gate .arr { position: relative; height: 2px; background: var(--good); margin: 8px 0; }
+.gate .arr::after { content: ""; position: absolute; right: -1px; top: -4px; border: 5px solid transparent; border-left: 7px solid var(--good); }
+.gate .r { font: 500 .78rem/1.3 var(--mono); color: var(--good); }
+.gate.c .arr { background: var(--cost); }
+.gate.c .arr::after { border-left-color: var(--cost); }
+.gate.c .r { color: var(--cost); }
+
+table { width: 100%; border-collapse: collapse; font-size: .94rem; margin: 6px 0 16px; }
+caption { text-align: left; font-size: .88rem; color: var(--muted); padding-bottom: 8px; }
+caption b { color: var(--text); }
+th, td { text-align: left; padding: 9px 12px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font: 500 .74rem/1.3 var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--dim); border-bottom: 1.5px solid var(--text); }
+tbody tr:last-child td { border-bottom: 1.5px solid var(--text); }
+td.num { font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+td.good { color: var(--good); } td.bad { color: var(--cost); }
+
+.setup { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: 8px; margin: 0 0 18px; }
+.setup div { padding: 12px 16px; }
+.setup > div + div { border-left: 1px solid var(--line); }
+.setup .k { font: 500 .72rem/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--dim); padding: 0; }
+.setup .v { font-family: var(--serif); font-size: 1.35rem; color: var(--text); margin-top: 6px; line-height: 1.1; padding: 0; }
+.setup .d { font-size: .84rem; color: var(--muted); margin-top: 3px; padding: 0; }
+.methods { font-size: .93rem; color: var(--muted); }
+.btnrow { margin: 14px 0 0; font-size: .95rem; }
+.btnrow a { display: inline-block; padding: 6px 12px; border: 1px solid var(--accent); border-radius: 6px; margin: 0 8px 8px 0; font-weight: 500; }
+.btnrow a:hover { background: var(--accent); color: #fff; text-decoration: none; }
+
+.sub { margin-top: 28px; }
+.sub h3 { font-size: 1.08rem; margin-bottom: 6px; }
+.qs { list-style: decimal; padding-left: 22px; color: var(--body); }
+.qs li { padding: 2px 0; }
+
+/* Experience */
+.prior h3 { font-size: 1.08rem; }
+.prior p { margin-bottom: 8px; }
+.kv { font-size: .93rem; color: var(--muted); margin-bottom: 22px; }
+.kv b { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+.tl li { display: grid; grid-template-columns: 170px 1fr; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.tl li:last-child { border-bottom: 0; }
+.tl .d { font: .85rem/1.7 var(--mono); color: var(--dim); }
+.tl .o { color: var(--muted); font-size: .94rem; }
+
+footer { margin-top: 48px; border-top: 1px solid var(--line); padding: 20px 0 36px; font-size: .88rem; color: var(--dim); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+/* Responsive */
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 16px; }
+  .brand { display: none; }
+  .nav ul { gap: 18px; }
+  .intro { padding-top: 30px; }
+  .intro .grid { grid-template-columns: 1fr; gap: 18px; }
+  .photo { width: 120px; height: 120px; order: -1; }
+  .glance { grid-template-columns: 1fr; }
+  .glance > div, .glance > div + div { padding: 14px 0; border-left: 0; }
+  .glance > div + div { border-top: 1px solid var(--line); }
+  .themes { grid-template-columns: 1fr; gap: 18px; }
+  .pubs li { grid-template-columns: 1fr; gap: 2px; }
+  .pipe { grid-template-columns: 1fr; }
+  .gate { min-width: 0; padding: 6px 0; }
+  .gate .arr { width: 2px; height: 16px; margin: 6px auto; }
+  .gate .arr::after { right: -4px; top: auto; bottom: -8px; border: 5px solid transparent; border-top: 7px solid var(--good); }
+  .gate.c .arr::after { border-top-color: var(--cost); border-left-color: transparent; }
+  .setup { grid-template-columns: 1fr; }
+  .setup > div + div { border-left: 0; border-top: 1px solid var(--line); }
+  .tl li { grid-template-columns: 1fr; gap: 0; }
+  th, td { padding-right: 8px; }
+}
+
+/* ---------- Refinements ---------- */
+body {
+  background:
+    radial-gradient(900px 420px at 88% -60px, rgba(109,40,217,.07), transparent 70%),
+    radial-gradient(800px 420px at 8% 0, rgba(15,118,110,.07), transparent 70%),
+    radial-gradient(1000px 500px at 50% 100%, rgba(30,64,175,.05), transparent 70%),
+    #fff;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.nav { background: rgba(255,255,255,.8); }
+.glance { background: rgba(255,255,255,.6); }
+.lead { font-size: 1.05rem; color: var(--body); max-width: 72ch; margin: 0; }
+section { padding-top: 40px; }
+.pubs li { padding: 13px 0; }
+.cw { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.cw article { background: rgba(255,255,255,.75); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+.cw .tag { font: 500 .76rem/1.4 var(--mono); color: var(--dim); margin: 0 0 6px; }
+.cw h3 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; letter-spacing: -.015em; margin-bottom: 8px; }
+.pts { list-style: none; padding: 0; }
+.pts li { position: relative; padding: 3px 0 3px 16px; font-size: .96rem; line-height: 1.55; }
+.pts li::before { content: ""; position: absolute; left: 0; top: .78em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.pts b.good { color: var(--good); } .pts b.bad { color: var(--cost); }
+.cw .ln { font-size: .9rem; margin: 10px 0 0; }
+.cw .ln a { margin-right: 10px; font-weight: 500; }
+.tl { margin-bottom: 8px; }
+@media (max-width: 760px) { .cw { grid-template-columns: 1fr; } }
+.statement { font-family: var(--sans); font-size: 1rem; line-height: 1.7; color: var(--body); letter-spacing: -.003em; max-width: 60ch; margin: 0 0 16px; }
+.hon { line-height: 2.1; margin-top: 8px; }
+.hon span { font-size: .86rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 4px; }
+.glance { grid-template-columns: 1fr 1fr; }
+.hon span { white-space: nowrap; }
+@media (max-width: 760px) { .glance { grid-template-columns: 1fr; } }
+.areas { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 6px; margin: 0 0 18px; max-width: 62ch; }
+.areas .al { font-weight: 600; color: var(--text); font-size: .95rem; margin-right: 4px; }
+.areas .kw { font-size: .86rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); border: 1px solid #dbe3fb; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+/* Header gradient band */
+.intro {
+  padding-bottom: 36px;
+  background:
+    radial-gradient(520px 300px at 85% 10%, rgba(124,58,237,.10), transparent 70%),
+    radial-gradient(560px 320px at 10% 0%, rgba(13,148,136,.10), transparent 70%),
+    radial-gradient(700px 300px at 50% 100%, rgba(37,99,235,.06), transparent 70%),
+    linear-gradient(180deg, #f6f9ff 0%, #fbfaff 70%, #ffffff 100%);
+  border-bottom: 1px solid var(--line);
+}
+.intro .glance { background: rgba(255,255,255,.85); border: 1px solid var(--line); border-radius: 10px; padding: 0 20px; box-shadow: 0 6px 24px -14px rgba(30,64,175,.18); }
+.photo { box-shadow: 0 10px 30px -12px rgba(30,64,175,.35); }
+@media (max-width: 760px) { .intro .glance { padding: 0 16px; } }
+/* Experience */
+.xp { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.xcol { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 18px 22px; box-shadow: 0 4px 18px -12px rgba(30,64,175,.18); }
+.xh { font: 500 .74rem/1 var(--mono); text-transform: uppercase; letter-spacing: .12em; color: var(--accent); margin: 0 0 6px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.xl li { position: relative; padding: 14px 0 14px 18px; border-bottom: 1px solid var(--line); }
+.xl li:last-child { border-bottom: 0; padding-bottom: 2px; }
+.xl li::before { content: ""; position: absolute; left: 0; top: 22px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.xt { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.xt b { font-size: 1rem; }
+.xd { font: .8rem/1.4 var(--mono); color: var(--dim); white-space: nowrap; }
+.xo { color: var(--muted); font-size: .94rem; margin-top: 2px; }
+.xs { color: var(--muted); font-size: .9rem; margin-top: 6px; line-height: 1.55; }
+.edu { max-width: 640px; }
+.edu li { padding-top: 12px; padding-bottom: 12px; }
+.edu li::before { top: 20px; }
+.xt { flex-direction: column-reverse; align-items: flex-start; gap: 2px; }
+.xd { font-size: .78rem; color: var(--accent); }
+.xl li::before { top: 40px; }
+.edu li::before { top: 38px; }
+.edu.xp { max-width: none; }
+.edu.xp li { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 16px 22px 16px 36px; box-shadow: 0 4px 18px -12px rgba(30,64,175,.18); }
+.edu.xp li:last-child { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.edu.xp li::before { left: 20px; top: 40px; }
+@media (max-width: 760px) { .xp { grid-template-columns: 1fr; } .xcol { padding: 14px 16px; } }
+@media print {
+  body { border: 0; font-size: 10pt; }
+  .nav, .skip, .btnrow { display: none; }
+  a { color: #000; }
+  section { padding-top: 16px; }
+  figure, table, .pubs li, .glance { break-inside: avoid; }
+}
+</style>
 </head>
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="/" id="logo-home" class="logo-name" aria-label="Pritom Bhowmik, home">Pritom Bhowmik</a>
+<nav class="nav" aria-label="Primary">
+  <div class="wrap">
+    <a class="brand" href="#top">Pritom Bhowmik</a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#current-work">Current Research</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="assets/resume/Resume.pdf">CV</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <nav class="main-nav" id="main-nav" aria-label="Primary">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#research">Research</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <div class="header-actions">
-      <button class="icon-btn nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
+<header class="intro" id="top">
+  <div class="wrap">
+    <div class="grid" id="about">
+      <div>
+        <h1>Pritom Bhowmik</h1>
+        <p class="role">AI Security Researcher<span>/</span>LLM Agents &amp; Memory Security</p>
+        <p class="areas"><span class="al">Research Area:</span>
+          <span class="kw">LLM Agent Security</span><span class="kw">Memory Poisoning</span><span class="kw">Retrieval-Time Attacks</span><span class="kw">Defense Cost Evaluation</span><span class="kw">Multi-Agent Trust</span><span class="kw">Machine Learning</span></p>
+        <p class="links" id="contact">
+          <a class="mail" href="mailto:bhowmik01dev@gmail.com">bhowmik01dev@gmail.com</a><br>
+          <a href="assets/resume/Resume.pdf">CV</a><span class="sep">/</span><a href="https://scholar.google.com/citations?hl=en&amp;user=rEI6U-EAAAAJ">Google Scholar</a><span class="sep">/</span><a href="https://github.com/pritom02bh">GitHub</a><span class="sep">/</span><a href="https://linkedin.com/in/bhowmikpritom">LinkedIn</a><span class="sep">/</span><a href="https://orcid.org/0000-0003-4585-6024">ORCID</a>
+        </p>
+      </div>
+      <img class="photo" src="assets/img/profile.jpg" alt="Portrait of Pritom Bhowmik" width="184" height="184">
     </div>
+
   </div>
 </header>
 
 <main id="main">
 
-  <!-- HERO -->
-  <section id="hero" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-inner">
-        <h1 class="hero-name">Pritom Bhowmik</h1>
-        <p class="hero-role">University Lecturer &amp; Applied AI Researcher</p>
-        <p class="hero-tagline">Researching Multi-Agent Architectures and How Agents Behave Under Adversarial Pressure — Memory Poisoning, Retrieval Attacks, and What the Defenses Cost in Accuracy and Compute.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#research">View research &amp; projects</a>
-          <a class="btn btn-ghost" href="assets/resume/Resume.pdf" download>Download CV</a>
-          <a class="btn btn-ghost" href="#contact">Get in touch</a>
-        </div>
-        <div class="hero-links">
-          <a class="hero-link-chip" href="mailto:bhowmik01dev@gmail.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            Email
-          </a>
-          <a class="hero-link-chip" href="https://scholar.google.com/citations?hl=en&amp;user=rEI6U-EAAAAJ&amp;view_op=list_works" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.24 14.978 9.5 12 9.5c-2.977 0-5.548 1.74-6.758 4.269ZM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"/></svg>
-            Google Scholar
-          </a>
-          <a class="hero-link-chip" href="https://orcid.org/0000-0003-4585-6024" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0ZM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947-.525 0-.946-.422-.946-.947 0-.516.421-.947.946-.947Zm-.722 3.038h1.444v10.041H6.647V7.416Zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416Zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222Z"/></svg>
-            ORCID
-          </a>
-          <a class="hero-link-chip" href="https://github.com/pritom02bh" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-            GitHub
-          </a>
-          <a class="hero-link-chip" href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
-            LinkedIn
-          </a>
-        </div>
-      </div>
+<section id="research" aria-labelledby="research-h">
+  <div class="wrap">
+    <div class="sh"><span class="n">01</span><h2 id="research-h">Research</h2></div>
+    <p class="lead">I work on the security of memory in LLM agents: how memory gets poisoned, how attacks enter at retrieval time, and what defenses cost in accuracy and compute. More broadly, I study trustworthy multi-agent systems and the integrity of agent-to-agent communication.</p>
+  </div>
+</section>
 
-      <div class="avatar-ring">
-        <div class="avatar">
-          <span class="avatar-fallback" aria-hidden="true">PB</span>
-          <img src="assets/img/profile.jpg" alt="Portrait of Pritom Bhowmik" onerror="this.style.display='none';">
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="publications" aria-labelledby="pubs-h">
+  <div class="wrap">
+    <div class="sh"><span class="n">02</span><h2 id="pubs-h">Publications</h2></div>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-index mono">01</span>
+    <ol class="pubs">
+      <li id="pub-price-of-safety">
+        <div class="yr">2026</div>
         <div>
-          <span class="section-eyebrow">About</span>
-          <h2 class="section-title">Research Background</h2>
+          <div class="ti">The Price of Safety: Benign-Case Utility and Token Overhead of Memory-Poisoning Defenses in LLM Agents</div>
+          <div class="au"><b>Pritom Bhowmik</b></div>
+          <div class="ve">arXiv:2609.22818 [cs.CR], 2026. Under review, ARTMAN Workshop at ACSAC 2026.</div>
+          <div class="ln"><a href="https://arxiv.org/pdf/2609.22818">[PDF]</a><a href="https://arxiv.org/abs/2609.22818">[arXiv]</a><!-- [ADD: Code URL] --></div>
         </div>
-      </div>
-
-      <div class="about-grid">
-        <p class="about-body">I research memory in LLM agent systems — how persistent memory behaves under adversarial pressure, and what defending it costs in accuracy and compute. I lectured in computer science and data science at <strong>Monroe University</strong>, 2025–2026.<br><br>I hold an M.S. in Data Science from <strong>Montclair State University</strong>, New Jersey, USA, and worked as an AI researcher in its Data Science Lab, focused on multi-agent AI, RAG, and graph &amp; vector databases.</p>
-
-        <div class="focus-list">
-          <div class="focus-item">
-            <h3>Agent memory &amp; adversarial robustness</h3>
-            <p>Memory poisoning, defense composition, and the accuracy and compute cost of defending agent memory.</p>
-          </div>
-          <div class="focus-item">
-            <h3>Retrieval &amp; multi-agent systems</h3>
-            <p>Hybrid search, agent orchestration, and evaluation design for high-stakes domains.</p>
-          </div>
-          <div class="focus-item">
-            <h3>Teaching &amp; mentorship</h3>
-            <p>Mentored undergraduate and graduate students in computer science and data science at Monroe University, 2025–2026.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESEARCH (publications) -->
-  <section id="research" class="section section-featured">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-index mono">02</span>
+      </li>
+      <li id="pub-outcome-bound-trust">
+        <div class="yr">2026</div>
         <div>
-          <span class="section-eyebrow">Publications</span>
-          <h2 class="section-title">Research</h2>
+          <div class="ti">Outcome-Bound Trust: Falsifiable Claims as a Security Primitive for Memory in Agent-to-Agent AI Systems</div>
+          <div class="au"><b>Pritom Bhowmik</b></div>
+          <div class="ve">Manuscript in preparation, 2026.</div>
         </div>
-      </div>
-
-      <div class="entry-list" id="papers-list"></div>
-    </div>
-  </section>
-
-  <!-- PROJECTS (applied case studies) -->
-  <section id="projects" class="section section-featured">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-index mono">03</span>
+      </li>
+      <li id="pub-ml-production">
+        <div class="yr">2022</div>
         <div>
-          <span class="section-eyebrow">Selected work</span>
-          <h2 class="section-title">Projects</h2>
-          <p class="section-lede">Applied AI, forecasting, and analytics case studies.</p>
+          <div class="ti">Machine Learning in Production: From Experimented ML Model to System</div>
+          <div class="au"><b>Pritom Bhowmik</b></div>
+          <div class="ve">ScienceOpen Preprints, 2022.</div>
+          <div class="ln"><a href="https://www.opastpublishers.com/open-access-articles/machine-learning-in-production-from-experimented-ml-model-to-system.pdf">[PDF]</a><a href="https://doi.org/10.14293/S2199-1006.1.SOR-.PPKHXND.v1">[DOI]</a></div>
         </div>
-      </div>
-
-      <div class="entry-list" id="project-list"></div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-index mono">04</span>
+      </li>
+      <li id="pub-data-centric">
+        <div class="yr">2021</div>
         <div>
-          <span class="section-eyebrow">Experience</span>
-          <h2 class="section-title">Roles &amp; positions</h2>
+          <div class="ti">A Data-Centric Approach to Improve Machine Learning Model’s Performance in Production</div>
+          <div class="au"><b>Pritom Bhowmik</b></div>
+          <div class="ve">International Journal of Engineering and Advanced Technology (IJEAT), 2021.</div>
+          <div class="ln"><a href="https://www.ijeat.org/portfolio-item/a32011011121/">[Paper]</a><a href="https://doi.org/10.35940/ijeat.a3201.1011121">[DOI]</a></div>
         </div>
-      </div>
-
-      <div class="exp-list">
-        <article class="exp-card">
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-role">University Lecturer</h3>
-              <p class="exp-org">Monroe University, New Rochelle, NY, USA</p>
-            </div>
-            <p class="exp-dates mono">Sep 2025 — Jul 2026</p>
-          </div>
-          <p class="exp-desc">Teaching undergraduate and graduate courses in computer science, data science, and database systems. Designed Python and SQL lab curricula for 100+ students per semester.</p>
-        </article>
-
-        <article class="exp-card">
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-role">Product Manager Intern</h3>
-              <p class="exp-org">Sentari AI, New York, NY</p>
-            </div>
-            <p class="exp-dates mono">Jun 2025 — Dec 2025</p>
-          </div>
-          <p class="exp-desc">Translated business requirements into technical specifications for an AI product team; contributed to a 15% improvement in feature-delivery velocity.</p>
-        </article>
-
-        <article class="exp-card">
-          <div class="exp-head">
-            <div>
-              <h3 class="exp-role">Researcher — Data Science &amp; AI</h3>
-              <p class="exp-org">Data Science Lab, Montclair State University, New Jersey</p>
-            </div>
-            <p class="exp-dates mono">Jan 2024 — May 2025</p>
-          </div>
-          <p class="exp-desc">Built a multi-agent RAG chatbot for pharmaceutical inventory and compliance decision-support, reaching 97–99% retrieval accuracy in evaluation.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education" class="section">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-index mono">05</span>
+      </li>
+      <li id="pub-adversarial-cv">
+        <div class="yr">2021</div>
         <div>
-          <span class="section-eyebrow">Education</span>
-          <h2 class="section-title">Education</h2>
+          <div class="ti">Vulnerability of Neural Networks to Adversarial Attack and Defenses in Computer Vision</div>
+          <div class="au"><b>Pritom Bhowmik</b></div>
+          <div class="ve">IEEE Computer Society, Bangladesh Chapter, 2021. Abstract.</div>
         </div>
-      </div>
-
-      <div class="edu-grid">
-        <div class="edu-card">
-          <h3 class="edu-degree">M.S. in Data Science <span class="gpa-badge mono">GPA 3.97/4.0</span></h3>
-          <p class="edu-inst">Montclair State University, New Jersey</p>
-          <p class="edu-focus">Focus: multi-agent retrieval architectures and tool calling.</p>
-        </div>
-        <div class="edu-card">
-          <h3 class="edu-degree">B.Tech. in Computer Science</h3>
-          <p class="edu-inst">Institute of Engineering and Management, Kolkata</p>
-          <p class="edu-dates mono">AUG 2016 — JUL 2020</p>
-          <p class="edu-focus">Focus: algorithms, data structures, software engineering, databases, and networks.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section section-featured">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-index mono">06</span>
+      </li>
+      <li id="pub-ann-basics">
+        <div class="yr">2019</div>
         <div>
-          <span class="section-eyebrow">Contact</span>
-          <h2 class="section-title">Let's work together</h2>
+          <div class="ti">Research Study on Basic Understanding of Artificial Neural Networks</div>
+          <div class="au"><b>Pritom Bhowmik</b></div>
+          <div class="ve">Global Journal of Computer Science and Technology: D Neural &amp; Artificial Intelligence, 19(4), pp. 5–7, 2019.</div>
+          <div class="ln"><a href="https://globaljournals.org/GJCST_Volume19/E-Journal_GJCST_(D)_Vol_19_Issue_4.pdf">[PDF]</a><a href="https://computerresearch.org/index.php/computer/article/view/1885">[Paper]</a></div>
         </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="experience" aria-labelledby="exp-h">
+  <div class="wrap">
+    <div class="sh"><span class="n">03</span><h2 id="exp-h">Research &amp; Teaching Experience</h2></div>
+    <div class="xp">
+      <div class="xcol">
+        <h3 class="xh">Research</h3>
+        <ul class="xl">
+          <li>
+            <div class="xt"><b>Researcher, AI Security</b><span class="xd">Sep 2025 – Present</span></div>
+            <div class="xo">Memory Security in LLM Agent Systems</div>
+          </li>
+          <li>
+            <div class="xt"><b>Graduate Researcher, Data Science Lab</b><span class="xd">Jan 2024 – May 2025</span></div>
+            <div class="xo">Montclair State University · Advisor: Dr. Hao Liu</div>
+          </li>
+        </ul>
       </div>
-
-      <div class="contact-panel">
-        <p class="contact-lead">Best way to reach me</p>
-
-        <a class="contact-email-btn" href="mailto:bhowmik01dev@gmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          bhowmik01dev@gmail.com
-        </a>
-        <button class="copy-btn" id="copy-email" type="button">Copy email</button>
-
-        <div class="contact-links">
-          <a class="contact-link-card" href="https://github.com/pritom02bh" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-            <span>GitHub</span>
-          </a>
-          <a class="contact-link-card" href="https://linkedin.com/in/bhowmikpritom" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
-            <span>LinkedIn</span>
-          </a>
-          <a class="contact-link-card" href="https://scholar.google.com/citations?hl=en&amp;user=rEI6U-EAAAAJ&amp;view_op=list_works" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.24 14.978 9.5 12 9.5c-2.977 0-5.548 1.74-6.758 4.269ZM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"/></svg>
-            <span>Scholar</span>
-          </a>
-          <a class="contact-link-card" href="https://orcid.org/0000-0003-4585-6024" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0ZM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947-.525 0-.946-.422-.946-.947 0-.516.421-.947.946-.947Zm-.722 3.038h1.444v10.041H6.647V7.416Zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416Zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222Z"/></svg>
-            <span>ORCID</span>
-          </a>
-          <a class="contact-link-card" href="tel:862-399-9031">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span>Phone</span>
-          </a>
-          <a class="contact-link-card" href="assets/resume/Resume.pdf" download>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span>CV (PDF)</span>
-          </a>
-        </div>
+      <div class="xcol" id="teaching">
+        <h3 class="xh">Teaching</h3>
+        <ul class="xl">
+          <li>
+            <div class="xt"><b>Adjunct Instructor, Computer Science</b><span class="xd">Sep 2025 – Jul 2026</span></div>
+            <div class="xo">Monroe University, New Rochelle, NY</div>
+            <div class="xs">Undergraduate and graduate courses in computer science, data science, and database systems.</div>
+          </li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<section id="current-work" aria-labelledby="cw-h">
+  <div class="wrap">
+    <div class="sh"><span class="n">04</span><h2 id="cw-h">Current Research</h2></div>
+    <div class="cw">
+      <article>
+        <p class="tag">2026 · Under review, ARTMAN @ ACSAC 2026</p>
+        <h3>The Price of Safety</h3>
+        <ul class="pts">
+          <li>Measures what memory-poisoning defenses cost when no attack is present, across 4 LLM backbones and 2 blinded judges (κ ≥ 0.84).</li>
+          <li>Write-time defenses: <b class="good">no measurable cost</b>.</li>
+          <li>Read-time reranker: <b class="bad">−4.4 points</b> accuracy; quarantines legitimate memories on <b class="bad">33.6%</b> of items.</li>
+        </ul>
+        <p class="ln"><a href="https://arxiv.org/pdf/2609.22818">[PDF]</a><a href="https://arxiv.org/abs/2609.22818">[arXiv]</a></p>
+      </article>
+      <article>
+        <p class="tag">2026 · Manuscript in preparation</p>
+        <h3>Outcome-Bound Trust</h3>
+        <ul class="pts">
+          <li>Uses falsifiable claims as a security primitive for memory shared between agents.</li>
+          <li>Asks what a receiving agent should trust when another agent’s output becomes its memory.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section id="education" aria-labelledby="edu-h">
+  <div class="wrap">
+    <div class="sh"><span class="n">05</span><h2 id="edu-h">Education</h2></div>
+    <ul class="xl edu xp">
+      <li>
+        <div class="xt"><b>M.S., Data Science</b><span class="xd">May 2025</span></div>
+        <div class="xo">Montclair State University</div>
+        <p class="hon"><span>GPA 3.97 / 4.00</span><br><span>Alpha Epsilon Lambda Honor Society</span></p>
+      </li>
+      <li>
+        <div class="xt"><b>B.Tech., Computer Science</b><span class="xd">Jul 2020</span></div>
+        <div class="xo">Institute of Engineering and Management, Kolkata</div>
+      </li>
+    </ul>
+  </div>
+</section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <span>© <span id="year"></span> Pritom Bhowmik</span>
+<footer>
+  <div class="wrap">
+    <span>© Pritom Bhowmik · <a href="mailto:bhowmik01dev@gmail.com">bhowmik01dev@gmail.com</a></span>
+    <span>Last updated: October 2026</span>
   </div>
 </footer>
 
-<button class="to-top icon-btn" id="to-top" aria-label="Back to top" type="button">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
-<div class="toast mono" id="toast" role="status" aria-live="polite"></div>
-
-<!-- SHARED MODAL: project case studies + research notes -->
-<div class="modal" id="detail-modal" aria-hidden="true">
-  <div class="modal-overlay" data-close-modal></div>
-  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title" id="modal-panel">
-    <button class="icon-btn modal-close" data-close-modal aria-label="Close" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-    <div id="modal-body"></div>
-  </div>
-</div>
-
-<script src="js/data.js"></script>
-<script src="js/script.js"></script>
 </body>
 </html>
