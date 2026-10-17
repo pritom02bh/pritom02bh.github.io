@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pritom Bhowmik — AI Security Researcher</title>
-<meta name="description" content="Pritom Bhowmik studies the security of memory in LLM agent systems: how stored memories are poisoned, how attacks enter at retrieval time, and what defending agent memory costs in accuracy and compute.">
+<meta name="description" content="Pritom Bhowmik researches trustworthy AI agents and adversarial machine learning: memory and retrieval poisoning in LLM agents, the security–utility cost of defenses, and trust between agents in multi-agent systems.">
 <meta name="author" content="Pritom Bhowmik">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pritom Bhowmik — AI Security Researcher">
-<meta property="og:description" content="Research on the security of memory in LLM agent systems: memory poisoning, retrieval-time attacks, and the cost of defending agent memory.">
+<meta property="og:description" content="Research on trustworthy AI agents and adversarial machine learning: memory poisoning in LLM agents, the cost of defenses, and trust between agents.">
 <meta property="og:url" content="https://pritom02bh.github.io/">
-<meta property="og:image" content="https://pritom02bh.github.io/assets/img/profile.jpg">
+<meta property="og:image" content="https://pritom02bh.github.io/assets/img/profile.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231e3a8a'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='15' fill='%23ffffff' text-anchor='middle'%3EPB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,7 +70,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* Intro */
 .intro { padding: 52px 0 8px; }
-.intro .grid { display: grid; grid-template-columns: 1fr 184px; gap: 40px; align-items: start; }
+.intro .grid { display: grid; grid-template-columns: 1fr 230px; gap: 40px; align-items: start; }
 .intro h1 { font-size: clamp(2.4rem, 5.4vw, 3.3rem); }
 .role { font-size: 1.05rem; color: var(--muted); margin: 8px 0 18px; }
 .role span { color: var(--line-2); margin: 0 6px; }
@@ -80,7 +80,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .links a { font-weight: 500; }
 .links .sep { color: var(--line-2); margin: 0 9px; }
 .links .mail { font-family: var(--mono); font-size: .9rem; color: var(--text); }
-.photo { width: 184px; height: 184px; object-fit: cover; border-radius: 8px; display: block; border: 1px solid var(--line); }
+.photo { width: 230px; height: 230px; object-fit: cover; border-radius: 8px; display: block; border: 1px solid var(--line); }
 
 /* At a glance */
 .glance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 36px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -188,7 +188,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   .nav ul { gap: 18px; }
   .intro { padding-top: 30px; }
   .intro .grid { grid-template-columns: 1fr; gap: 18px; }
-  .photo { width: 120px; height: 120px; order: -1; }
+  .photo { width: 150px; height: 150px; order: -1; }
   .glance { grid-template-columns: 1fr; }
   .glance > div, .glance > div + div { padding: 14px 0; border-left: 0; }
   .glance > div + div { border-top: 1px solid var(--line); }
@@ -278,8 +278,35 @@ section { padding-top: 40px; }
 .edu.xp li:last-child { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
 .edu.xp li::before { left: 20px; top: 40px; }
 @media (max-width: 760px) { .xp { grid-template-columns: 1fr; } .xcol { padding: 14px 16px; } }
+/* Full-page gradient */
+html { background: #f7f9fe; }
+body {
+  background:
+    radial-gradient(900px 600px at 100% 0%, rgba(124,58,237,.10), transparent 65%),
+    radial-gradient(900px 600px at 0% 20%, rgba(13,148,136,.09), transparent 65%),
+    radial-gradient(1000px 700px at 100% 75%, rgba(37,99,235,.08), transparent 65%),
+    radial-gradient(900px 600px at 0% 100%, rgba(124,58,237,.07), transparent 65%),
+    linear-gradient(180deg, #f5f8ff 0%, #f9f8ff 50%, #f4f8fd 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+.intro { background: transparent; border-bottom: 1px solid rgba(15,23,42,.06); }
+.nav { background: rgba(247,249,254,.82); }
+.pubs { background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 10px; padding: 4px 20px; }
+.lead { background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; max-width: none; }
+footer { background: transparent; }
+/* Header neural-network animation */
+.intro > .wrap { position: relative; z-index: 1; }
+.net { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+.intro, main, footer { position: relative; z-index: 1; }
+.pubs, .lead, .xcol, .cw article, .edu.xp li { background: rgba(255,255,255,.88); }
+.intro h1, .intro .role, .intro .areas, .intro .links, .intro .photo { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+.intro .role { animation-delay: .08s; } .intro .areas { animation-delay: .16s; } .intro .links { animation-delay: .24s; } .intro .photo { animation-delay: .12s; }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .intro * { animation: none !important; } }
 @media print {
-  body { border: 0; font-size: 10pt; }
+  .net { display: none; }
+  body { border: 0; font-size: 10pt; background: #fff !important; }
   .nav, .skip, .btnrow { display: none; }
   a { color: #000; }
   section { padding-top: 16px; }
@@ -288,6 +315,7 @@ section { padding-top: 40px; }
 </style>
 </head>
 <body>
+<canvas class="net" aria-hidden="true"></canvas>
 <a class="skip" href="#main">Skip to content</a>
 
 <nav class="nav" aria-label="Primary">
@@ -309,15 +337,15 @@ section { padding-top: 40px; }
     <div class="grid" id="about">
       <div>
         <h1>Pritom Bhowmik</h1>
-        <p class="role">AI Security Researcher<span>/</span>LLM Agents &amp; Memory Security</p>
+        <p class="role">AI Security Researcher<span>/</span>Trustworthy AI Agents &amp; Adversarial ML</p>
         <p class="areas"><span class="al">Research Area:</span>
-          <span class="kw">LLM Agent Security</span><span class="kw">Memory Poisoning</span><span class="kw">Retrieval-Time Attacks</span><span class="kw">Defense Cost Evaluation</span><span class="kw">Multi-Agent Trust</span><span class="kw">Machine Learning</span></p>
+          <span class="kw">Trustworthy AI Agents</span><span class="kw">Adversarial Machine Learning</span><span class="kw">Memory &amp; Retrieval Poisoning</span><span class="kw">Security–Utility Cost of Defenses</span><span class="kw">Multi-Agent Trust</span><span class="kw">Human–AI Interaction</span></p>
         <p class="links" id="contact">
           <a class="mail" href="mailto:bhowmik01dev@gmail.com">bhowmik01dev@gmail.com</a><br>
           <a href="assets/resume/Resume.pdf">CV</a><span class="sep">/</span><a href="https://scholar.google.com/citations?hl=en&amp;user=rEI6U-EAAAAJ">Google Scholar</a><span class="sep">/</span><a href="https://github.com/pritom02bh">GitHub</a><span class="sep">/</span><a href="https://linkedin.com/in/bhowmikpritom">LinkedIn</a><span class="sep">/</span><a href="https://orcid.org/0000-0003-4585-6024">ORCID</a>
         </p>
       </div>
-      <img class="photo" src="assets/img/profile.jpg" alt="Portrait of Pritom Bhowmik" width="184" height="184">
+      <img class="photo" src="assets/img/profile.png" alt="Portrait of Pritom Bhowmik" width="230" height="230">
     </div>
 
   </div>
@@ -328,7 +356,7 @@ section { padding-top: 40px; }
 <section id="research" aria-labelledby="research-h">
   <div class="wrap">
     <div class="sh"><span class="n">01</span><h2 id="research-h">Research</h2></div>
-    <p class="lead">I work on the security of memory in LLM agents: how memory gets poisoned, how attacks enter at retrieval time, and what defenses cost in accuracy and compute. More broadly, I study trustworthy multi-agent systems and the integrity of agent-to-agent communication.</p>
+    <p class="lead">I work on trustworthy AI agents and adversarial machine learning. My current research asks what it costs to defend an agent’s memory against poisoning, and how agents in multi-agent systems can trust the memory they share. I am also interested in human–AI interaction.</p>
   </div>
 </section>
 
@@ -342,7 +370,7 @@ section { padding-top: 40px; }
         <div>
           <div class="ti">The Price of Safety: Benign-Case Utility and Token Overhead of Memory-Poisoning Defenses in LLM Agents</div>
           <div class="au"><b>Pritom Bhowmik</b></div>
-          <div class="ve">arXiv:2609.22818 [cs.CR], 2026. Under review, ARTMAN Workshop at ACSAC 2026.</div>
+          <div class="ve">arXiv:2609.22818 [cs.CR], 2026. Submitted, Workshop on Agentic Engineering (AGENT) at ICSE 2027.</div>
           <div class="ln"><a href="https://arxiv.org/pdf/2609.22818">[PDF]</a><a href="https://arxiv.org/abs/2609.22818">[arXiv]</a><!-- [ADD: Code URL] --></div>
         </div>
       </li>
@@ -350,8 +378,9 @@ section { padding-top: 40px; }
         <div class="yr">2026</div>
         <div>
           <div class="ti">Outcome-Bound Trust: Falsifiable Claims as a Security Primitive for Memory in Agent-to-Agent AI Systems</div>
-          <div class="au"><b>Pritom Bhowmik</b></div>
-          <div class="ve">Manuscript in preparation, 2026.</div>
+          <div class="au"><b>Pritom Bhowmik</b> and Hao Liu</div>
+          <div class="ve">To be submitted, Workshop on Trustworthy Evolution of AI Agents at AAAI 2027.</div>
+          <!-- [ADD: Code URL] The CV lists code for this paper. Add: <div class="ln"><a href="...">[Code]</a></div> -->
         </div>
       </li>
       <li id="pub-ml-production">
@@ -361,15 +390,6 @@ section { padding-top: 40px; }
           <div class="au"><b>Pritom Bhowmik</b></div>
           <div class="ve">ScienceOpen Preprints, 2022.</div>
           <div class="ln"><a href="https://www.opastpublishers.com/open-access-articles/machine-learning-in-production-from-experimented-ml-model-to-system.pdf">[PDF]</a><a href="https://doi.org/10.14293/S2199-1006.1.SOR-.PPKHXND.v1">[DOI]</a></div>
-        </div>
-      </li>
-      <li id="pub-data-centric">
-        <div class="yr">2021</div>
-        <div>
-          <div class="ti">A Data-Centric Approach to Improve Machine Learning Model’s Performance in Production</div>
-          <div class="au"><b>Pritom Bhowmik</b></div>
-          <div class="ve">International Journal of Engineering and Advanced Technology (IJEAT), 2021.</div>
-          <div class="ln"><a href="https://www.ijeat.org/portfolio-item/a32011011121/">[Paper]</a><a href="https://doi.org/10.35940/ijeat.a3201.1011121">[DOI]</a></div>
         </div>
       </li>
       <li id="pub-adversarial-cv">
@@ -403,10 +423,12 @@ section { padding-top: 40px; }
           <li>
             <div class="xt"><b>Researcher, AI Security</b><span class="xd">Sep 2025 – Present</span></div>
             <div class="xo">Memory Security in LLM Agent Systems</div>
+            <div class="xs">What defending agent memory costs, and how agents can trust memory they share.</div>
           </li>
           <li>
             <div class="xt"><b>Graduate Researcher, Data Science Lab</b><span class="xd">Jan 2024 – May 2025</span></div>
             <div class="xo">Montclair State University · Advisor: Dr. Hao Liu</div>
+            <div class="xs">Multi-agent RAG for pharmaceutical supply-chain decisions: query routing across retrieval, analytics, and web-search agents; retrieval accuracy 72% → 97%, latency 3.2 min → 12 s.</div>
           </li>
         </ul>
       </div>
@@ -416,7 +438,7 @@ section { padding-top: 40px; }
           <li>
             <div class="xt"><b>Adjunct Instructor, Computer Science</b><span class="xd">Sep 2025 – Jul 2026</span></div>
             <div class="xo">Monroe University, New Rochelle, NY</div>
-            <div class="xs">Undergraduate and graduate courses in computer science, data science, and database systems.</div>
+            <div class="xs">Programming Logic, Python, Database Systems, and Data Science (undergraduate and graduate). Designed Python, C++, and SQL labs for 100+ students per semester.</div>
           </li>
         </ul>
       </div>
@@ -429,21 +451,22 @@ section { padding-top: 40px; }
     <div class="sh"><span class="n">04</span><h2 id="cw-h">Current Research</h2></div>
     <div class="cw">
       <article>
-        <p class="tag">2026 · Under review, ARTMAN @ ACSAC 2026</p>
+        <p class="tag">2026 · Submitted, AGENT @ ICSE 2027</p>
         <h3>The Price of Safety</h3>
         <ul class="pts">
-          <li>Measures what memory-poisoning defenses cost when no attack is present, across 4 LLM backbones and 2 blinded judges (κ ≥ 0.84).</li>
-          <li>Write-time defenses: <b class="good">no measurable cost</b>.</li>
-          <li>Read-time reranker: <b class="bad">−4.4 points</b> accuracy; quarantines legitimate memories on <b class="bad">33.6%</b> of items.</li>
+          <li>Measures what memory-poisoning defenses cost an LLM agent on attack-free traffic, on the LoCoMo benchmark.</li>
+          <li>Write-time defenses: <b class="good">no detectable utility cost</b>.</li>
+          <li>Read-time reranker: <b class="bad">−4.4 points</b> accuracy; wrongly flags <b class="bad">9.9%</b> of retrieved memories, removing memory from <b class="bad">45%</b> of answers.</li>
         </ul>
         <p class="ln"><a href="https://arxiv.org/pdf/2609.22818">[PDF]</a><a href="https://arxiv.org/abs/2609.22818">[arXiv]</a></p>
       </article>
       <article>
-        <p class="tag">2026 · Manuscript in preparation</p>
+        <p class="tag">With Hao Liu · To be submitted, AAAI 2027 workshop</p>
         <h3>Outcome-Bound Trust</h3>
         <ul class="pts">
-          <li>Uses falsifiable claims as a security primitive for memory shared between agents.</li>
-          <li>Asks what a receiving agent should trust when another agent’s output becomes its memory.</li>
+          <li>Turns agent messages into checkable claims, and caps what an agent commits to each counterparty by the claims it has already honored.</li>
+          <li>In a supply-chain simulation: cut losses from lying agents by <b class="good">98.1%</b> at a <b class="bad">5.43%</b> utility cost.</li>
+          <li>Safety invariants model-checked in TLA+.</li>
         </ul>
       </article>
     </div>
@@ -477,5 +500,84 @@ section { padding-top: 40px; }
   </div>
 </footer>
 
+<script>
+(() => {
+  const c = document.querySelector('.net'); if (!c || !c.getContext) return;
+  const ctx = c.getContext('2d');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const LINK = 140, stops = [[13,148,136],[37,99,235],[124,58,237]];
+  const inText = x => { const half = Math.min(W, 900) / 2, d = Math.abs(x - W / 2); return d < half - 40 ? 1 : d > half + 120 ? 0 : (half + 120 - d) / 160; };
+  const fade = x => 1 - .65 * inText(x);
+  let W = 0, H = 0, nodes = [], pulses = [], mouse = { x: -1e4, y: -1e4 }, run = true, raf = 0;
+  const col = (px, a) => {
+    const t = Math.max(0, Math.min(1, px / W)), i = t < .5 ? 0 : 1, k = t < .5 ? t / .5 : (t - .5) / .5;
+    const [a1, b1] = [stops[i], stops[i + 1]];
+    return `rgba(${a1.map((v, j) => Math.round(v + (b1[j] - v) * k)).join(',')},${a})`;
+  };
+  function size() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.max(20, Math.min(70, Math.round(W * H / 14000)));
+    nodes = [];
+    while (nodes.length < n) {
+      const x = Math.random() * W;
+      if (inText(x) > .5 && Math.random() < .7) continue;
+      nodes.push({
+      x, y: Math.random() * H,
+      vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3,
+      r: Math.random() * 1.6 + 1.1, ph: Math.random() * 6.28
+      });
+    }
+    pulses = [];
+  }
+  function frame(time) {
+    ctx.clearRect(0, 0, W, H);
+    const edges = [];
+    for (const p of nodes) {
+      if (!still) { p.x += p.vx; p.y += p.vy; }
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+    }
+    for (let i = 0; i < nodes.length; i++) {
+      const a = nodes[i];
+      for (let j = i + 1; j < nodes.length; j++) {
+        const b = nodes[j], dx = a.x - b.x, dy = a.y - b.y, d = Math.hypot(dx, dy);
+        if (d > LINK) continue;
+        const mx = (a.x + b.x) / 2 - mouse.x, my = (a.y + b.y) / 2 - mouse.y;
+        const near = Math.max(0, 1 - Math.hypot(mx, my) / 180);
+        const mxp = (a.x + b.x) / 2;
+        ctx.strokeStyle = col(mxp, (1 - d / LINK) * (.16 + near * .3) * fade(mxp));
+        ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        edges.push([a, b]);
+      }
+    }
+    if (!still && edges.length && Math.random() < .09 && pulses.length < 10) {
+      const [a, b] = edges[(Math.random() * edges.length) | 0];
+      pulses.push(Math.random() < .5 ? { a, b, t: 0 } : { a: b, b: a, t: 0 });
+    }
+    pulses = pulses.filter(q => {
+      q.t += .018;
+      if (q.t >= 1 || Math.hypot(q.a.x - q.b.x, q.a.y - q.b.y) > LINK) return false;
+      const x = q.a.x + (q.b.x - q.a.x) * q.t, y = q.a.y + (q.b.y - q.a.y) * q.t;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, 7);
+      g.addColorStop(0, col(x, .85 * fade(x))); g.addColorStop(1, col(x, 0));
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 7, 0, 6.28); ctx.fill();
+      return true;
+    });
+    for (const p of nodes) {
+      const glow = .45 + .25 * Math.sin((time || 0) / 900 + p.ph);
+      ctx.fillStyle = col(p.x, glow * fade(p.x));
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.28); ctx.fill();
+    }
+    if (run && !still) raf = requestAnimationFrame(frame);
+  }
+  addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  document.addEventListener('mouseleave', () => { mouse.x = mouse.y = -1e4; });
+  let t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { size(); if (still) frame(0); }, 150); });
+  size(); frame(0);
+})();
+</script>
 </body>
 </html>
